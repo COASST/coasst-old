@@ -1,0 +1,21 @@
+<dl>
+  <dt>
+    <label for="record_roles">Roles</label>
+  </dt>
+  <dd id="roles-box">
+    <% checked = {1 => "", 2 => "", 3 => ""}
+       @record.roles.collect {|r| checked[r.id] = 'checked="checked"'}   
+       if volunteer_has_role('intern')
+         checked[1] += ' disabled="disabled"'
+         checked[2] += ' disabled="disabled"'
+         checked[3] += ' disabled="disabled"'
+       end
+     %>
+    <ul class="multiple_select role_types" style="margin-top: -15px;">
+      <li>
+        <input type="checkbox" value="1" name="record[roles][]" id="record_roles_1" <%= checked[1] %>/><label for="record_roles_1">Registered</label></li>
+      <li><input type="checkbox" value="2" name="record[roles][]" id="record_roles_2" <%= checked[2] %>/><label for="record_roles_2">Intern</label></li>
+      <li><input type="checkbox" value="3" name="record[roles][]" id="record_roles_3" <%= checked[3] %>/><label for="record_roles_3">Verifier</label></li>
+    </ul>
+  </dd>
+</dl>

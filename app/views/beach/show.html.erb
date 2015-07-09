@@ -1,0 +1,62 @@
+
+<div style="float: left">
+<h1><%=h @beach.name %></h1>
+
+<%= display_field_group "Geography",@beach,[:state, :region, :county, :city, :latitude, :longitude, :length, :width] %>
+<%= display_field_group "Geomorphology",@beach,[:geomorphology, :substrate] %>
+
+<%#= display_field_group "Meta", @beach,[:code,:description,:monitored,:ownership,:created_at,:updated_at] %>
+<%= display_field_group "Human Use",@beach,[:vehicles_allowed,:vehicles_start,:vehicles_end,:dogs_allowed] %>
+
+<br /><br />
+<% if @surveys_by_year.length > 0 %>
+  <h3>Surveys
+  <% if params[:oiled] == "1" %>
+   - oiled birds only
+  <% end %>
+  <% if params[:entangled] == "1" %>
+   - entangled birds only
+  <% end %>
+  </h3>
+  <table class="sortable-onload-1">
+    <tr>
+      <th class="sortable-numeric reverseSort">Survey Year</th>
+      <th class="sortable-numeric">Surveys</th>
+      <th class="sortable-numeric">Birds</th>
+    </tr>
+  <% for year in @years %>
+    <tr>
+      <!--<td><%#= link_to survey.survey_date, :controller=>"survey", :action=>"show", :id=>survey.id %></td>-->
+      <td><%= year%></td>
+      <td><%= @surveys_by_year[year] %></td>
+      <td><%= @birds_by_year[year] %></td>
+    </tr>
+  <% end %>
+  </table>
+
+  <h3>List of species</h3>
+  <table class="sortable-onload-2">
+    <tr>
+      <th class="sortable-numeric">Species</th>
+      <th class="sortable-numeric reverseSort">Count</th>
+    </tr>
+  <% for s in @species %>
+    <tr>
+      <td><%= s.nil? ? "Unknown" : s.name%></td>
+      <td><%= @by_species[s] %></td>
+    </tr>
+  <% end %>
+  </table>
+<% end %>
+</div>
+
+<% if @map %>
+  <%= @map.div(:width=>350, :height=>250) %>
+<% else %>
+  <div id="map" style="width: 358px; height: 260px; position: relative;">
+  <%= image_tag "unknown-beach-location.jpg" %>
+    <% if @beach.location_notes %>
+       <div id="caption">Location notes: <%= @beach.location_notes%></div>
+  <% end %>
+  </div>
+<% end %>

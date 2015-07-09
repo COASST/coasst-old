@@ -1,0 +1,92 @@
+<% form_for :survey, @survey, :url => { :action => "submit_step_birds" } do %>
+
+<% if @birds.length > 0%>
+  <table>
+    <tr>
+      <th>Bird #</th>
+      <% if @submitter.has_role?('verifier') %>
+      <th>Refind?</th>
+      <% end %>
+      <th>Bird Name</th>
+      <th>Tie #</th>
+    </tr>
+  <% @birds.each_with_index do |b,i| %>
+    <tr>
+      <td class="center"><%= (i+1) %></td>
+      <% if @submitter.has_role?('verifier') %>
+      <td align="center">
+        <%= b.refound.to_bs %>
+      </td>
+      <% end %>
+      <td>
+        <% if @submitter.has_role?('verifier')%>
+          <% if b.verified? %>
+            <%= image_tag "icons/accept.png", :alt => "bird is verified" %>
+          <% else %>
+            <%= image_tag "icons/bullet_red.png", :alt => "bird is NOT verified" %>
+          <% end %>
+        <% end %>
+        <%= render :partial => 'bird_name', :locals => {:bird => b} %>
+      </td>
+      <td align="center">
+        <%= b.tie_number %>
+      </td>
+      <td>
+        <div class="buttons sidepad" style="margin-top: 5px;">
+        <%= link_to "#{image_tag 'icons/delete.png', :alt => 'remove bird',
+              :title => 'remove bird'}Remove",
+              {:action => :confirm_remove_bird, :id => b.id},
+              :class => 'delete label', :style => 'margin-top: -5px;' %>
+        </div>
+      </td>
+    </tr>
+  <% end %>
+  </table>
+  <div class="buttons sidepad">
+    <%= link_to "#{image_tag 'icons/add.png'}Add Another Bird",
+          {:action => 'new_bird'}, :class => "positive label" %>
+  </div>
+<% else %>
+  <p>Were birds found during the survey?
+    <div class="buttons sidepad">
+      <%= link_to "#{image_tag 'icons/add.png'}Yes: Add A Bird",
+            {:action => 'new_bird'}, :class => "positive label xlarge middle" %>
+      <br />
+      <% if @submitter.has_role?('verifier') %>
+        <% no_birds = 'Complete Verification' %>
+      <% else %>
+        <% no_birds = 'Continue to Review' %>
+      <% end %>
+      <button class="neutral label middle snugtop" type="submit">
+        <%= image_tag "icons/arrow_right.png" %>No: <%= no_birds %>
+      </button>
+    </div>
+  </p>
+<% end%>
+
+<% if @survey.is_complete %>
+  <% if @submitter.has_role?('verifier') %>
+    <% if @survey.is_survey
+         @cancel_text = 'Not A Survey'
+         @status = 'not_survey'
+       else
+         @cancel_text = 'Is A Survey'
+         @status = 'is_survey'
+       end
+     %>
+    <%= button_div(:submit => {:text => 'Complete Verification', :url => "/data/verification_beach/#{@survey.beach_id}"}, :go_back => {:url => "3"}, :cancel => {:text => @cancel_text, :url => "/data/step_not_survey/#{@survey.id}/#{@status}"}) %>
+
+  <% else %>
+    <%= button_div(:submit => {:text => 'Return to Review', :url => "/survey/show/#{@survey.id}"},:go_back => {:url => "3"}) %>
+  <% end %>
+<% else %>
+  <% if @birds.length > 0 %>
+    <%= button_div(:submit => 'Continue to Review', :go_back=>{:url=>"3"}) %>
+  <% else %>
+    <%= button_div(:go_back => {:url => "3"}) %>
+  <% end %>
+<% end %>
+
+<% end %>
+
+<%= debug_block %>

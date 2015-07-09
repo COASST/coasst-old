@@ -1,0 +1,2 @@
+<%= collection_select "bird", "group_id", @group, :id, :name, {:include_blank=>true}, 
+      :onchange=>remote_function(:url => { :action => :update_group_section}, :with => "'group_id='+value") %>

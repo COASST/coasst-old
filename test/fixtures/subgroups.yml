@@ -1,0 +1,212 @@
+# == Schema Information
+#
+#  id       :integer       not null, primary key
+#  group_id :integer       not null
+#  name     :string(255)   not null
+#
+
+--- 
+subgroups_046: 
+  name: Unknown
+  group_id: "35"
+  id: "46"
+subgroups_035: 
+  name: Shearwaters
+  group_id: "24"
+  id: "35"
+subgroups_024: 
+  name: Mergansers
+  group_id: "8"
+  id: "24"
+subgroups_013: 
+  name: Guillemots
+  group_id: "18"
+  id: "13"
+subgroups_002: 
+  name: Auklets
+  group_id: "28"
+  id: "2"
+subgroups_047: 
+  name: Warblers
+  group_id: "32"
+  id: "47"
+subgroups_036: 
+  name: Skuas
+  group_id: "15"
+  id: "36"
+subgroups_025: 
+  name: Murrelets
+  group_id: "28"
+  id: "25"
+subgroups_014: 
+  name: Gulls
+  group_id: "12"
+  id: "14"
+subgroups_003: 
+  name: Canada Goose
+  group_id: "11"
+  id: "3"
+subgroups_048: 
+  name: Wrens
+  group_id: "32"
+  id: "48"
+subgroups_037: 
+  name: Small Cormorants
+  group_id: "5"
+  id: "37"
+subgroups_026: 
+  name: Murres
+  group_id: "18"
+  id: "26"
+subgroups_015: 
+  name: Herons
+  group_id: "14"
+  id: "15"
+subgroups_004: 
+  name: Coots
+  group_id: "4"
+  id: "4"
+subgroups_049: 
+  name: Vultures
+  group_id: "36"
+  id: "49"
+subgroups_038: 
+  name: Small Grebes
+  group_id: "29"
+  id: "38"
+subgroups_027: 
+  name: Pelicans
+  group_id: "23"
+  id: "27"
+subgroups_016: 
+  name: Jaegers
+  group_id: "15"
+  id: "16"
+subgroups_005: 
+  name: Cranes
+  group_id: "7"
+  id: "5"
+subgroups_050: 
+  name: Egrets
+  group_id: "37"
+  id: "50"
+subgroups_039: 
+  name: Small Hawks
+  group_id: "13"
+  id: "39"
+subgroups_028: 
+  name: Pheasants
+  group_id: "26"
+  id: "28"
+subgroups_017: 
+  name: Kingfishers
+  group_id: "16"
+  id: "17"
+subgroups_006: 
+  name: Crows
+  group_id: "6"
+  id: "6"
+subgroups_051: 
+  name: Kinglets
+  group_id: "32"
+  id: "51"
+subgroups_040: 
+  name: Small Loons
+  group_id: "30"
+  id: "40"
+subgroups_029: 
+  name: Pigeons
+  group_id: "27"
+  id: "29"
+subgroups_018: 
+  name: Kittiwakes
+  group_id: "17"
+  id: "18"
+subgroups_007: 
+  name: Dabbling Ducks
+  group_id: "34"
+  id: "7"
+subgroups_041: 
+  name: Small Owls
+  group_id: "21"
+  id: "41"
+subgroups_030: 
+  name: Puffins
+  group_id: "18"
+  id: "30"
+subgroups_019: 
+  name: Large Cormorants
+  group_id: "5"
+  id: "19"
+subgroups_008: 
+  name: Eagles
+  group_id: "9"
+  id: "8"
+subgroups_042: 
+  name: Starlings
+  group_id: "32"
+  id: "42"
+subgroups_031: 
+  name: Ravens
+  group_id: "6"
+  id: "31"
+subgroups_020: 
+  name: Large Falcons
+  group_id: "10"
+  id: "20"
+subgroups_009: 
+  name: Eiders
+  group_id: "8"
+  id: "9"
+subgroups_043: 
+  name: Storm-Petrels
+  group_id: "24"
+  id: "43"
+subgroups_032: 
+  name: Sapsuckers
+  group_id: "31"
+  id: "32"
+subgroups_021: 
+  name: Large Grebes
+  group_id: "19"
+  id: "21"
+subgroups_010: 
+  name: Fulmars
+  group_id: "24"
+  id: "10"
+subgroups_044: 
+  name: Terns
+  group_id: "33"
+  id: "44"
+subgroups_033: 
+  name: Scaups
+  group_id: "8"
+  id: "33"
+subgroups_022: 
+  name: Large Loons
+  group_id: "20"
+  id: "22"
+subgroups_011: 
+  name: Gadfly Petrels
+  group_id: "24"
+  id: "11"
+subgroups_045: 
+  name: Thrushes
+  group_id: "32"
+  id: "45"
+subgroups_034: 
+  name: Scoters
+  group_id: "8"
+  id: "34"
+subgroups_023: 
+  name: Large Owls
+  group_id: "21"
+  id: "23"
+subgroups_012: 
+  name: Geese
+  group_id: "11"
+  id: "12"
+subgroups_001: 
+  name: Albatrosses
+  group_id: "3"
+  id: "1"

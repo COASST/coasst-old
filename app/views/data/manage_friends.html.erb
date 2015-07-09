@@ -1,0 +1,51 @@
+<div class="thin">
+
+<h1>Manage Friends</h1>
+
+<p>
+  The friends list contains others you can add to your survey.  The list is
+  created automatically from your past surveys.
+</p>
+
+<h3>Add a friend</h3>
+
+<% form_tag :action => "new_friend" do %>
+  <p>
+    <%= hidden_field :volunteer, :volunteer_id%>
+    <label for="volunteer_volunteer_id">As you type, the list below will offer suggestions.</label>
+  </p>
+  <table>
+    <tr>
+    <td>
+      <%= text_field_with_auto_complete :volunteer, :fullname, {:class => "text"},
+            :indicator => 'activity_indicator',
+            :after_update_element => "function(element,value){node = document.getElementById('volunteer_volunteer_id'); node.value = value.id}" %>
+    </td>
+
+    <td>
+      <%= indicator_span %>
+    </td>
+    </tr>
+  </table>
+
+  <p>
+    Are we missing a volunteer? <%= link_to "Add a volunteer", :action => 'add_volunteer', :controller => :volunteer %>
+  </p>
+  <%= button_div(:submit => 'Add Friend') %>
+<% end %>
+
+<br /><br />
+<h3>Edit Friends</h3>
+<table id="surveyor_table">
+   <% if !@friends.blank? %>
+    <tr>
+      <td><hr /></td>
+    </tr>
+    <%= render :partial => 'survey_volunteer', :collection => @friends,
+        :locals => {:action => :remove_volunteer_from_friends} %>
+   <% end %>
+</table>
+
+<%= button_div(:submit => {:text => 'Save Friend List', :url => "1"}, :go_back=>{:url=>"1"})%>
+
+</div>

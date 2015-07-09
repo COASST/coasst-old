@@ -1,0 +1,19 @@
+# == Schema Information
+#
+#  id   :integer       not null, primary key
+#  name :string(255)   not null
+#
+
+--- 
+ages_002: 
+  name: juvenile
+  id: "2"
+ages_003: 
+  name: subadult
+  id: "3"
+ages_004: 
+  name: unknown
+  id: "4"
+ages_001: 
+  name: adult
+  id: "1"

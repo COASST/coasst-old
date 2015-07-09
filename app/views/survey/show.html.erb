@@ -1,0 +1,175 @@
+<h1>Survey #<%=h @survey.id %></h1>
+<br />
+
+<% if not @can_edit %>
+
+<span class="neutral-border">
+  Note: This survey has been verified by COASST, and can no longer be edited.<br />
+  <p id="code">Survey Code: <tt><%= @survey.code %></tt></p>
+</span>
+<% end %>
+
+<h3>Step 1: Data collectors</h3>
+<ul>
+  <% for v in @data_collectors%>
+    <li><%= v[:volunteer].fullname %><% if not v[:travel_time].blank? %>, spent <%= v[:travel_time] %> min travelling<% end %></li>
+  <% end %>
+</ul>
+
+<% if @can_edit %>
+(<%= link_to "Edit Who", :controller => :data, :action => :edit_survey, :s => 1, :id => @survey.id %>)
+<% end %>
+
+<h3>Step 2: When</h3>
+Date: <%= relative_date(@survey.survey_date.to_time) %>, <%= @survey.survey_date %><br />
+Time: <%= @survey.start_time.strftime("%I:%M %p").downcase %>&#8212;<%= @survey.end_time.strftime("%I:%M %p").downcase %><br />
+
+<% if @can_edit %>
+<p>(<%= link_to "Edit When", :controller => :data, :action => :enter_data, :s => 2, :id => @survey.id %>)</p>
+<% end %>
+<%= display_field_group "foo", @survey, [:wood_size, :wood_continuity] %>
+
+<%= display_field_group "Step 3: Beach", @survey,
+      [:beach, :weather], false %>
+
+  <b>Oil Present:</b> <%= @survey.oil_present.to_bs %><br />
+  <% if @survey.oil_present? %>
+    <div class="sidepad">
+      Frequency: <%= @survey.oil_frequency %><br />
+      Sheen:     <%= @survey.oil_sheen.to_bs %><br />
+      Tarballs:  <%= @survey.oil_tarballs.to_bs %><br />
+      Goopy:     <%= @survey.oil_goopy.to_bs %><br />
+      Mousse:    <%= @survey.oil_mousse.to_bs %><br />
+      <% if @survey.oil_comment %>
+        Comment:   <%= h(@survey.oil_comment) %><br />
+      <% end %>
+    </div>
+  <% end %>
+
+  <b>Wood Present:</b> <%= @survey.wood_present.to_bs %><br />
+  <% if @survey.wood_present? %>
+    <div class="sidepad">
+      Size:       <%= @survey.wood_size %><br />
+      Continuity: <%= @survey.wood_continuity %><br />
+      Zone:       <%= @survey.wood_zone %><br />
+    </div>
+  <% end %>
+
+  <b>Wrack Present:</b> <%= @survey.wrack_present.to_bs %><br />
+  <% if @survey.wrack_present? %>
+    <div class="sidepad">
+      Width:      <%= @survey.wrack_width %><br />
+      Continuity: <%= @survey.wrack_continuity%><br />
+    </div>
+  <% end %>
+
+  <b>Human Data:</b>
+
+  <% if @tracks.size < 1 %>
+    No<br />
+  <% else %>
+    Yes <br />
+    <div class="sidepad">
+    <% for tr in @tracks %>
+      <%=h "#{tr.human_track_type}:"%>
+      <% if tr.present? %>
+        Track present,
+      <% end %>
+
+      <% if tr.count.blank? or tr.count == 0 %>
+        no individuals
+      <% elsif tr.count == 1 %>
+        one individual
+      <% else %>
+        <%= tr.count %> individuals
+      <% end %>
+      seen<br />
+    <% end %>
+    </div>
+  <% end %>
+
+  <b>Comments:</b> <%= h(@survey.comments) %><br />
+
+<% if @can_edit %>
+<p>(<%= link_to "Edit Beach", :controller => :data, :action => :edit_survey, :s => 3, :id => @survey.id %>)</p>
+<% end %>
+
+<h3>Step 4: Birds found</h3>
+<% if @survey.birds.length > 0 %>
+<table class="ruled grid">
+  <tr>
+    <th>Bird #</th>
+    <th><acronym title="Where Found">WF</acronym></th>
+    <th><acronym title="Refound">R</acronym></th>
+    <th><acronym title="Collected">C</acronym></th>
+    <th><acronym title="Foot Condition">FC</acronym></th>
+    <th><acronym title="Eyes">E</acronym></th>
+    <th>Body Parts</th>
+    <th><acronym title="Entangled">EN</acronym></th>
+    <th>Oil</th>
+    <th style="width: 140px">Measurements</th>
+    <th>Species</th>
+    <th><acronym title="Age, Plumage, Sex">APS</acronym></th>
+    <th><acronym title="Tie Number">Tie #</acronym></th>
+  </tr>
+  <% @birds.each_with_index do |bird, i| %>
+    <tr>
+      <td><%= i + 1%></td>
+      <td><%= bird.where_found if bird.where_found.downcase != "unknown" %></td>
+      <td><%= bird.refound?.to_bs %></td>
+      <td><%= bird.collected?.to_bs %></td>
+      <td><%= bird.foot_condition %></td>
+      <td><%= bird.eyes %></td>
+      <td>
+        <%= bird.head ? 'Head' : 'No Head' %><br />
+        <%= bird.breast ? 'Breast' : 'No Breast' %><br />
+        <%= bird.wings %><br />
+        <%= bird.feet %>
+      </td>
+       <td><%= bird.entangled == "Not" ? "No" : bird.entangled %></td>
+      <td><%= bird.oil?.to_bs %></td>
+      <td align="right">
+        <% for name, unit in Species::Measurements %>
+           <% attr = bird.send("#{name}_length") %>
+           <% if not attr.nil? %>
+             <%= name.capitalize %>: <%= attr %> <%= units_abbr(unit) %><br />
+           <% end %>
+        <% end %>
+      </td>
+      <td><%= render :partial => 'data/bird_name', :locals => {:bird => bird, :hide_link => true} %></td>
+      <td>
+        <% if not bird.age.nil? %>
+          Age: <%= bird.age.name.capitalize %><br />
+        <% end %>
+
+        <% if not bird.plumage.nil? %>
+          Plumage: <%= bird.plumage.name.capitalize %><br />
+        <% end %>
+
+        <% if not bird.sex.nil? %>
+          Sex: <%=h bird.sex %><br />
+        <% end %>
+
+
+      </td>
+      <td align="center"><%= bird.tie_number %></td>
+   </tr>
+  <% end %>
+  </table>
+
+<% else %>
+  No birds found
+<% end %>
+
+<% if @can_edit %>
+<p>(<%= link_to "Edit Birds", :controller => :data, :action => :edit_survey, :s => 4, :id => @survey.id %>)</p>
+<% end %>
+
+<% if @display_buttons %>
+  <% if @can_edit %>
+    <%= button_div(:submit => {:text => 'Confirm Survey', :url => "/survey/survey_completed/#{@survey.id}"}, :go_back => :back) %>
+  <% else %>
+    <%= button_div(:go_back => :back) %>
+  <% end %>
+<% end %>
+<br /><br />

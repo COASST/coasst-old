@@ -1,0 +1,15 @@
+  <%= error_messages_for 'volunteer' %>
+
+  <fieldset id="thin-form">
+    <legend>Set a password to activate your account</legend>
+
+    <% form_for :volunteer, :url => { :action => :activate_volunteer_submit}, :id => @volunteer do %>
+      <%= hidden_field :volunteer, :id, :value => @volunteer.id %>
+
+      <%= render :partial => 'form_password' %>
+
+      <%= button_div(:submit => "Create my account", :cancel => {:url=>'/data'}) %>
+
+    <% end %>
+  </fieldset>
+</div>

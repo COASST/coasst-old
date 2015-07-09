@@ -1,0 +1,49 @@
+
+<%# "Points: "%><%#=@points.collect {|p| "("+p[0].to_s+","+p[1].to_s+")"} %>
+<%# "BBox: "%><%# @bbox[0][0].to_s+","+@bbox[0][1].to_s+" "+@bbox[1][0].to_s+","+@bbox[1][1].to_s %>
+
+
+<h1><%=h @region.name %></h1>
+
+
+
+<div id="map-text">
+<h3>Beaches</h3>
+
+<ul>
+<% for c in @counties %>
+  <li><%= c.name %>
+      <% if not c.division.blank? %>
+        <%= @county_divisions[c.division] %>
+      <% end %>
+    <ul>
+      <% for b in @beaches_by_county[c] %>
+        <li><%= link_to b.name, :controller => :beach, :action => :show, :id => b.id %>
+        <%- if @inactive_beaches.include? b.id %>
+        *
+        <% end %></li>
+      <% end %>
+    </ul>
+  </li>
+<% end %>
+</ul>
+
+<p><i>* Not surveyed within the preceding six months.</i></p>
+
+
+</div>
+
+<%
+if !@map.blank?
+  for b,  in @beaches_with_coords
+    marker = GMarker.new([b.latitude.to_f, b.longitude.to_f], :title => b.name, :info_window => beach_overlay(b, @beach_survey_count[b.id]))
+    @map.overlay_init(marker)
+  end
+%>
+  <%= @map.div(:width => 375, :height => 450) %>
+<% end %>
+
+<br clear="all" />
+
+<%# link_to 'Edit', :action => 'edit', :id => @region %>
+<%# link_to 'Back', :action => 'list' %>

@@ -1,0 +1,84 @@
+# == Schema Information
+#
+#  id       :integer       not null, primary key
+#  state_id :integer       
+#  code     :string(5)     
+#  name     :string(255)   not null
+#
+
+--- 
+concerns_007: 
+  name: Federally Endangered
+  code: FE
+  id: "7"
+  state_id: 
+concerns_008: 
+  name: Federally Threatened
+  code: FT
+  id: "8"
+  state_id: 
+concerns_009: 
+  name: Oregon Endangered
+  code: OE
+  id: "9"
+  state_id: "43"
+concerns_010: 
+  name: Oregon Sensitive
+  code: OS
+  id: "10"
+  state_id: "43"
+concerns_011: 
+  name: Oregon Threatened
+  code: OT
+  id: "11"
+  state_id: "43"
+concerns_012: 
+  name: Washington Candidate
+  code: WC
+  id: "12"
+  state_id: "56"
+concerns_001: 
+  name: Alaska Endangered
+  code: AE
+  id: "1"
+  state_id: "2"
+concerns_013: 
+  name: Washington Endangered
+  code: WE
+  id: "13"
+  state_id: "56"
+concerns_002: 
+  name: California Species of Concern
+  code: Cco
+  id: "2"
+  state_id: "6"
+concerns_014: 
+  name: Washington Sensitive
+  code: WS
+  id: "14"
+  state_id: "56"
+concerns_003: 
+  name: California Endangered
+  code: CE
+  id: "3"
+  state_id: "6"
+concerns_015: 
+  name: Washington Threatened
+  code: WT
+  id: "15"
+  state_id: "56"
+concerns_004: 
+  name: California Threatened
+  code: CT
+  id: "4"
+  state_id: "6"
+concerns_005: 
+  name: Federal Candidate
+  code: FC
+  id: "5"
+  state_id: 
+concerns_006: 
+  name: Federal Species of Concern
+  code: Fco
+  id: "6"
+  state_id: 

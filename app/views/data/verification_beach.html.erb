@@ -1,0 +1,101 @@
+<h1><%=h("Verification: #{@beach.name}") %></h1>
+<p>Total of <%= @survey_count %> surveys for this beach.</p>
+
+<% button_div do %>
+  <%= button_elem(:go_back, "Go Back to Beaches", "/data/verification_list_beaches/#{@region.id}") %> <br />
+<% end %>
+
+<h3>Unreviewed</h3>
+<% if @unreviewed_surveys.length > 0 %>
+  <table class="ruled">
+    <tr>
+      <th><%=h('Date') %></th>
+      <th><%=h('Cable Tie') %></th>
+      <th width="225"><%=h('Birds Found') %></th>
+      <th><%=h('Verified?') %></th>
+    </tr>
+
+  <% for s in @unreviewed_surveys %>
+    <tr>
+      <td><%= link_to s.survey_date, :action => :edit_survey, :id => s.id, :s => 1 %></td>
+      <% if s.birds.length > 0 %>
+        
+        <td class="right tie">
+          <% for bird in s.birds %>
+            <%= bird.tie_number %><br />
+          <% end%>
+        </td>
+        <td class="right bird">
+          <% for bird in s.birds %>
+            <%= render :partial => 'bird_name', :locals => {:bird => bird, :hide_link => true} %>
+            <%= image_tag "icons/bird_silhouette.png" %><br />
+          <% end %>
+        </td>
+        <td class="sidepad center">
+          <% for bird in s.birds %>
+            <% if bird.verified %>
+              <%= image_tag "icons/accept.png", :alt => "bird is verified" %>
+            <% else %>
+              <%= image_tag "icons/bullet_red.png", :alt => "bird is NOT verified" %>
+            <% end %>
+            <br />
+          <% end %>
+        </td>
+      <% else %>
+        <td colspan="2" class="right"><i>None found</i></td>
+        <td></td>
+      <% end %>
+    </tr>
+  <% end %>
+  </table>
+<% else %>
+  <p class="sidepad">No unreviewed surveys, whew!</p>
+<% end %>
+
+<h3>Reviewed</h3>
+<% if @reviewed_surveys.length > 0 %>
+  <table class="ruled">
+    <tr>
+      <th><%=h('Date') %></th>
+      <th><%=h('Cable Tie') %></th>
+      <th width="225"><%=h('Birds Found') %></th>
+    </tr>
+
+  <% for s in @reviewed_surveys %>
+    <tr>
+      <td>
+        <%= link_to s.survey_date, :action => :edit_survey, :id => s.id %>
+        <% if not s.is_survey? %>
+          <%= image_tag "icons/error.png", :alt => "not a survey" %>
+        <% end %>
+      </td>
+      <% if s.birds.length > 0 %>
+        <td class="right tie">
+        <% for bird in s.birds %>
+          <%= bird.tie_number %><br />
+        <% end%>
+        </td>
+        <td class="right bird">
+        <% for bird in s.birds %>
+          <%= render :partial => 'bird_name', :locals => {:bird => bird} %>
+          <%= image_tag "icons/bird_silhouette.png" %>
+          <% if not bird.is_bird? %>
+            <%= image_tag "icons/error.png", :alt => "not a bird" %>
+          <% end %>
+          <br />
+        <% end %>
+        </td>
+     <% else %>
+        <td colspan="2" class="right"><i>None found</i></td>
+      <% end %>
+    </tr>
+  <% end %>
+  </table>
+<% else %>
+  <p class="sidepad">No reviewed surveys.</p>
+<% end %>
+
+<% button_div do %>
+  <%= button_elem(:go_back, "Go Back to Beaches", "/data/verification_list_beaches/#{@region.id}") %>
+<% end %>
+<%= debug_block %>

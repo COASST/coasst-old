@@ -1,0 +1,110 @@
+<% if @id.nil? %>
+  <h1>Species of Concern</h1>
+<% else %>
+  <h1>Species of Concern: <%= @concern.name %></h1>
+  <%= link_to 'Return to Concern List', :action => :species_of_concern, :id => nil %>
+<% end %>
+
+
+<% if @id.nil? %>
+  <% default_state = ''
+     for c in @concerns
+       basename = c.name.split(" ")[0]
+       state = basename =~ /federal/i ? 'Federal' : basename
+   %>
+     <% if state != default_state
+          default_state = state %>
+        <br />
+        <h2><%= state %></h2>
+    <% end %>
+    <p>
+      <b><%= link_to c.name, :action=>:species_of_concern, :id=>c.id %></b>
+    </p>
+  <% end %>
+<% else %>
+       <%#=@counts_by_year_by_species["All Years"].keys.join(", ")%><br />
+      <%#=@counts_by_year_by_species["All Years"].values.join(", ")%> <br />
+      <%#=@conditions%><br />
+      <%#=@full_counts_by_year.values.join(", ")%> <br />
+  <% if @species_count > 0 %>
+    Species found: <%=@species_count%> <br />
+  <% end %>
+
+  <% for year in @years.reverse %>
+    <% @sorted_counts = @counts_by_year[year] %>
+    <% bird_count = @totals_by_year[year] %>
+    <% total_count = @full_counts_by_year[year] %>
+    <% if bird_count == 0 %>
+      <% if year =~ /All/%>
+        <p><b>Listed species:</b></p>
+        <ul>
+        <% @all_species.each do |species| %>
+          <li><%= link_to species.name, :controller=>:species, :action=>:show, :id=>species.id %></li>
+        <% end %>
+        </ul>
+        <p> No carcasses have yet been found by COASST volunteers. </p>
+        <% break %>
+      <% else %>
+        <% next%>
+      <% end %>
+
+    <% end %>
+    <p class="highlight">
+
+    <span class="h2f"><%= year %></span>
+      <%#= link_to_remote "View as graph", :url=>{:action=>:species_by_count_by_year_inline, :year=>year, :format=>:graph} %>
+    </p>
+    <div id="graph-div-<%=year.to_s.downcase.gsub(" ","-")%>"></div>
+    <%#=@species_by_id.keys.join(", ")%>
+    <table class="report">
+      <tr>
+        <th class="left">Species</th>
+        <th>Count</th>
+        <th style="width: 14em;"></th>
+      </tr>
+
+      <%
+      @all_species.each do |species|
+        species_id = species.id
+        count = @counts_by_year_by_species[year][species_id]
+         # ignore birds not found in the year
+          if !count.blank? %>
+          <tr>
+            <td class="left">
+              <% if not species_id.nil? %>
+                <% if year !~ /All/i %>
+                  <%= link_to @species_by_id[species_id], :controller=>:species, :action=>:show, :id=>species_id, :year=>year %>
+                <% else %>
+                  <%= link_to @species_by_id[species_id], :controller=>:species, :action=>:show, :id=>species_id %>
+                <% end %>
+              <% else %>
+                Unknown
+              <% end %>
+            </td>
+
+            <td class="pad-wide"><%= count %></td>
+          </tr>
+        <% end %>
+      <% end %>
+      <tr class="totals">
+        <td class="left"><i>TOTAL</i></td>
+        <% if @year.nil? %>
+          <td><%=bird_count %></td>
+        <% else %>
+          <td><%=bird_count %></td>
+        <% end %>
+        <td colspan="2" style="text-align: left; padding-left: 15px;">
+        <% percentage = ((bird_count * 100)/ total_count.to_f).round
+            time_frame = year =~ /All/i ? "by COASST" : "in #{year}"
+           of_total   = percentage == 0 ? 'less than 1' : percentage
+         %>
+          Representing <%= of_total %>%<br />
+          of all carcasses found <%= time_frame %>
+        </td>
+      </tr>
+    </table>
+  <% end %>
+<% end %>
+
+<br />
+

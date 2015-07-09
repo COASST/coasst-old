@@ -1,0 +1,20 @@
+
+<h1>Add Bird #<%= @index %></h1>
+
+<div class="buttons" id="cancel">
+  <%= link_to_remote "#{image_tag 'icons/cross.png'}Cancel this bird", 
+      {:url => {:action => 'confirm_cancel_bird'}},
+      :class => "label negative" %>
+</div>
+<div id="cancel-div" class="slideout-container" style="display: none;">
+ Are you sure? <%= link_to "Yes", {:action => 'enter_data', :s => 4} %>
+</div>
+
+<%= error_messages_for 'bird' %>
+
+<% form_for :bird, @bird, :url => { :action => "create_bird" }, :html => {:id => 'bird_form'} do |f| %>
+  <%= render :partial => 'bird_form', :locals=>{:f=>f}%>
+  <%= button_div(:submit=>"Add Bird") %>
+<% end %>
+
+<%= debug_block %>

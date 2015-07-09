@@ -1,0 +1,20 @@
+<h1><%=h("#{@role.capitalize}: Unreviewed Surveys") %></h1>
+
+<%= render :partial => 'add_survey_block' %>
+
+<table class="sortable ruled">
+  <tr>
+    <th class="sortable"><%= h('Region') %></th>
+    <th class="sortable"><%= h('Unreviewed') %></th>
+  </tr>
+
+  <% for r in @regions %>
+    <tr>
+      <td><%=link_to r.name, :action => @next_step, :id => r.id %></td>
+      <td class="sidepad right"><%= @unreviewed_regions[r.id] %></td>
+    </tr>
+  <% end %>
+  </table>
+
+
+<%= debug_block %>

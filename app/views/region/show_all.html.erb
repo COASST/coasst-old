@@ -1,0 +1,44 @@
+
+<%# "Points: " %><%#= @points.collect {|p| "("+p[0].to_s+","+p[1].to_s+")"} %>
+<%# "BBox: "%><%#= @bbox[0][0].to_s+","+@bbox[0][1].to_s+" "+@bbox[1][0].to_s+","+@bbox[1][1].to_s %>
+
+
+<div style="float: left;">
+<%#= @regions_by_state.to_yaml %>
+<h1>Regions</h1>
+<ul>
+  <% for s in @states %>
+    <li>
+      <%= h(s.name) %>
+      <ul class="flat">
+        <% for sr in s.regions %>
+          <li><%= link_to sr.name, :controller => :region, :action => :show, :id => sr.id%></li>
+        <% end %>
+      </ul>
+    </li>
+  <% end %>
+</ul>
+</div>
+
+
+
+<%
+if @map
+  for r in @regions
+
+    if @latitude.has_key?(r.id)
+
+      marker = GMarker.new([@latitude[r.id],@longitude[r.id]],:title=>r.name,:info_window=>region_overlay(r))
+      @map.overlay_init(marker)
+
+    end
+  end
+
+%>
+  <%= @map.div(:width => 400, :height => 350) %>
+<% end %>
+
+<br clear="all" />
+
+<%# link_to 'Edit', :action => 'edit', :id => @region %>
+<%# link_to 'Back', :action => 'list' %>

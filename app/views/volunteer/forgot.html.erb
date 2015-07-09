@@ -1,0 +1,14 @@
+<div class="form">
+  <fieldset id="thin-form">
+    <legend>Forgot? Let the Computer Remember for You</legend>
+    <% form_tag :action => 'forgot_password' do %>
+      <p>
+        <label for="email">Email address:<label>
+      </p>
+      <%= text_field_tag :email, params[:email], :size => 30 %>
+
+    <%= button_div(:submit => 'email password') %>
+
+    <% end %>
+  </fieldset>
+</div>

@@ -1,0 +1,21 @@
+<h3>Add a beach</h3>
+
+<% form_tag :action => "new_beach" do %>
+  <%= hidden_field :beach, :beach_id%>
+
+  <p><label for="name">As you type, the list below will offer suggestions.</label></p>
+
+  <table><tr>
+    <td>
+      <%= text_field_with_auto_complete :beach, :name, {:class => "text", :size => 40},
+            :indicator => 'activity_indicator',
+            :after_update_element => "function(element,value){node = document.getElementById('beach_beach_id'); node.value = value.id}" %>
+    </td>
+    <td>
+      <%= indicator_span %>
+    </td>
+  </table>
+
+  <%= button_div(:submit => 'Add Beach', :go_back => :back) %>
+
+<% end %>

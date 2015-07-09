@@ -1,0 +1,19 @@
+<h1>Survey Completed!</h1>
+<br />
+<div id="code">
+  Survey Code:
+  <span id="notice" style="font-size: larger"> <tt><%= @survey.code %></tt></span>
+
+  <p>Please write this code on your datasheet.</p>
+
+</div>
+
+
+<div class="buttons">
+  <a class="neutral" href="/data/">
+    <%= image_tag "icons/application_cascade.png" %> Return to list of surveys
+  </a>
+  <a class="positive" href="/data/start_survey">
+    <%= image_tag "icons/add.png" %> Add New Survey
+  </a>
+</div>

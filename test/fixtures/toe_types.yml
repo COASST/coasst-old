@@ -1,0 +1,39 @@
+# == Schema Information
+#
+#  id     :integer       not null, primary key
+#  code   :string(5)     not null
+#  name   :string(20)    not null
+#  active :boolean       default(TRUE)
+#
+
+--- 
+toe_types_001: 
+  name: Free
+  code: F
+  id: "1"
+  active: t
+toe_types_002: 
+  name: Feet Missing
+  code: FM
+  id: "2"
+  active: t
+toe_types_003: 
+  name: Lobed
+  code: L
+  id: "3"
+  active: t
+toe_types_004: 
+  name: Other
+  code: O
+  id: "4"
+  active: f
+toe_types_005: 
+  name: Unknown
+  code: U
+  id: "5"
+  active: f
+toe_types_006: 
+  name: Webbed
+  code: W
+  id: "6"
+  active: t

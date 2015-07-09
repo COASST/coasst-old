@@ -1,0 +1,183 @@
+
+  <% form_for :survey, @survey, :url => { :action => "submit_step_beach" } do |f| %>
+
+  <% if @submitter.has_role?(['intern', 'verifier']) %>
+    <p>
+      <label for="survey_beach_id">Beach:</label>
+       <%= hidden_field :survey, :beach_id%>
+    </p>
+    <table>
+      <tr>
+        <td>
+          <p class="small">As you type, the list below will offer suggestions.</p>
+        <%= text_field_with_auto_complete :beach, :name, {:class => "text"},
+              :indicator => 'activity_indicator',
+              :after_update_element => "function(element,value){node = document.getElementById('survey_beach_id'); node.value = value.id}" %>
+        </td>
+      </tr>
+      <tr>
+        <td><%= indicator_span %></td>
+      </tr>
+    </table>
+  <% else %>
+    <% if !@beaches.empty? %>
+        <p><label for="survey_beach_id">Beach:</label></p>
+
+        <div class="tall">
+          <div class="xlarge" id="selected_beach"><%= @selected_beach %></div>
+
+          <% if @beaches.length > 1 %>
+            <%= f.collection_select(:beach_id, @beaches, :id, :name, {:include_blank=>true}, :onchange=>remote_function(:url=>{:action=>:update_beach_information},:with=>"'beach_id='+value")) %>
+          <% else %>
+            <%= f.collection_select(:beach_id, @beaches, :id, :name) %>
+          <% end %><br />
+
+          Missing your beach? <%= link_to "Add it to your list", :action => 'add_beach' %>
+        </div>
+        <div id="duplicate-survey-warning-div"></div>
+    <% else %>
+      <p>It looks like you haven't entered any surveys yet,<br /> <b>please <%= link_to "add a beach", :action => 'add_beach' %> you've surveyed.</b></p>
+     <% end %>
+  <% end %>
+
+    <div id="travel-data">
+      <%= render :partial=>"travel_times" %>
+    </div>
+
+    <p><label for="weather">Weather:</label></p>
+    <ul id="weather" style="padding-bottom: 50px">
+      <% @weather.each do |show_name, db_name| %>
+      <li>
+      <%= image_tag "icons/weather_#{db_name.downcase}.png", :width => 16, :height => 16%><br />
+      <%= show_name %><br />
+      <%= f.radio_button :weather, "#{db_name}" %>
+      </li>
+    <% end %>
+    </ul>
+
+    <div class="clearfloat"><br /></div>
+
+      <p>Oil Present?<br />
+        <%= f.radio_button :oil_present, true, :onclick=>"Effect.BlindDown('oil-data', {queue: 'end'})" %> Yes
+        <%= f.radio_button :oil_present, false, :onclick=>"Effect.BlindUp('oil-data', {queue: 'end'})" %> No
+      </p>
+      <% if @survey.oil_present %>
+        <div id="oil-data" class="slideout-container">
+      <% else %>
+        <div id="oil-data" class="slideout-container" style="display: none;">
+      <% end %>
+        <div class="slideout">
+      <p>How frequent? One oil patch every:</p>
+        <%= f.select(:oil_frequency, Survey::OilFrequency, { :include_blank => true })%>
+
+      <p>What types of oil?</p>
+        <%= multiple_select('survey', 'oil_types', @oil_types, :outer_class => 'multiple_select oil_types') %>
+
+       <p>Oil comment. It&rsquo;s important to us.</p>
+         <%= f.text_area :oil_comment, :cols => 45, :rows => 4  %>
+      </div>
+      </div>
+
+    <p>Wood Present?<br />
+      <%# @survey.wood_present = nil %>
+      <%= f.radio_button :wood_present, true, :onclick=>"Effect.BlindDown('wood-data', {queue: 'end'})" %> Yes
+      <%= f.radio_button :wood_present, false, :onclick=>"Effect.BlindUp('wood-data', {queue: 'end'})" %> No
+      </p>
+      <% if @survey.wood_present %>
+        <div id="wood-data" class="slideout-container">
+      <% else %>
+        <div id="wood-data" class="slideout-container" style="display: none;">
+      <% end %>
+      <div class="slideout">
+        <table>
+          <tr>
+            <td>What size?</td>
+            <td>Continuity?</td>
+            <td>Which Zone?</td>
+          </tr>
+          <tr>
+            <td><%= f.select(:wood_size, Survey::WoodSize, { :include_blank => true })%></td>
+            <td><%= f.select(:wood_continuity, Survey::Continuity, { :include_blank => true })%></td>
+            <td><%= f.select(:wood_zone, Survey::WoodZone, { :include_blank => true })%></td>
+          </tr>
+        </table>
+      </div>
+      </div>
+   <% if !@survey.wrack_present
+        data_class = "display: none"
+      else
+        data_class = ""
+      end   %>
+    <p>Wrack Present?<br />
+      <%= f.radio_button :wrack_present, true, :onclick=>"Effect.BlindDown('wrack-data', {queue: 'end'})"  %> Yes
+      <%= f.radio_button :wrack_present, false, :onclick=>"Effect.BlindUp('wrack-data', {queue: 'end'})"  %> No
+      </p>
+
+      <div id="wrack-data" class="slideout-container" style="<%= data_class %>">
+        <div class="slideout">
+        <table>
+          <tr>
+            <td>How wide?</td>
+            <td>Continuity?</td>
+          </tr>
+          <tr>
+            <td><%= f.select(:wrack_width, Survey::WrackWidth, { :include_blank => true })%></td>
+            <td><%= f.select(:wrack_continuity, Survey::Continuity, { :include_blank => true })%></td>
+          </tr>
+        </table>
+      </div>
+    </div>
+
+    <p>Human Data?
+       <%= f.radio_button :tracks_present, true, :onclick=>"Effect.BlindDown('track-data', {duration: .5, queue: 'end'})" %> Yes
+      <%= f.radio_button :tracks_present, false, :onclick=>"Effect.BlindUp('track-data', {duration: .5, queue: 'end'})" %> No
+    </p>
+    <% if @survey.tracks_present %>
+    <div id="track-data" class="slideout-container">
+    <% else %>
+    <div id="track-data" class="slideout-container" style="display: none;">
+       <% end %>
+        <div class="slideout">
+        <table>
+          <tr>
+            <th>Type</th>
+            <th>Tracks?</th>
+            <th>Individuals seen?</th>
+          </tr>
+          <% @tracks.each do |t|%>
+          <tr>
+            <td><%=t.human_track_type%></td>
+            <td>
+              <% if t.track_possible? %>
+                <%= check_box_tag "survey_track["+t.track_type+"][present]", true, t.present, :id=>"survey_track_#{t.track_type.underscore}_present" %> Yes
+              <% end %>
+            </td>
+            <td><%= text_field_tag "survey_track["+t.track_type+"][count]", t.count, :size => 3, :id=>"survey_track_#{t.track_type.underscore}_count" %></td>
+          </tr>
+          <% end %>
+        </table>
+      </div>
+    </div>
+
+    <p>Any comments on the state of the beach?</p>
+    <div style="padding-left: 10px">
+      <%= f.text_area :comments, :cols => 45, :rows => 6 %>
+    </div>
+
+    <% if @role == 'admin' %>
+    <!-- verification only block -->
+    <p>
+      <label for="project">Project</label><br />
+      <% Survey::Projects.each do |p| %>
+        <%= f.radio_button(:project, p) %> <%=h p %><br />
+      <% end %>
+    </p>
+
+    <!-- end verification block -->
+    <% end %>
+    <%= button_div(:submit => @submit[:text], :go_back => {:url => @submit[:url]})%>
+
+  <% end %>
+
+<%= debug_block %>
+<%#= debug @travel_time %>

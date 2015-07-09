@@ -1,0 +1,33 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>COASST Index</title>
+  <meta http-equiv='content-type' content='text/html;charset=utf-8' />
+  <%= javascript_include_tag 'prototype' %>
+  <%= javascript_include_tag "effects" %>
+  <%= javascript_include_tag "controls" %>
+  <%= stylesheet_link_tag "habitual", :media => "all" %>
+  <%= stylesheet_link_tag "plain", :media => "all" %>
+  <%= javascript_include_tag 'tablesort_v2' %>
+  <!--[if IE 6]>
+    <%= stylesheet_link_tag "IE-6.0-iframe.css" %>
+  <![endif]-->
+  <% if @map %>
+    <%= GMap.header %>
+    <%= @map.to_html %>
+  <% end %>
+</head>
+<body>
+
+    <h1 id="header"><%= @page_title || "" %></h1>
+    <div id="main">
+    <% if flash[:notice] -%>
+      <div id="notice"><%= flash[:notice] %></div>
+    <% end -%>
+
+      <%= yield :layout %>
+    </div>
+
+</body>
+</html>
+

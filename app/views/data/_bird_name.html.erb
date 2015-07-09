@@ -1,0 +1,9 @@
+<% if defined?(hide_link) and not hide_link.nil? %>
+  <%=h bird.highest_taxon.name %>
+<% else %>
+  <%= link_to bird.highest_taxon.name, :action => :edit_bird, :id => bird.id %> 
+<% end %>
+
+<% if bird.highest_taxon.class.to_s != 'Species' %>
+  <i>(<%= bird.highest_taxon.class.to_s.titleize.chomp(" Family") %>)</i>
+<% end %>

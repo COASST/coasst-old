@@ -1,0 +1,43 @@
+<div id="<%= surveyor.gsub(' ', '_') %>">
+<table id="surveyor_table">
+  <tr>
+    <td><b><%= h(surveyor.titleize.pluralize) %></b></td>
+  </tr>
+   <% if !volunteers.blank? %>
+    <tr>
+      <td><hr /></td>
+    </tr>
+    <%= render :partial => 'survey_volunteer', :collection => volunteers, 
+        :locals => {:action => :remove_volunteer_from_survey} %>
+<% end %>
+</table>
+
+<% if !disable_form %>
+  <div class="sidepad">
+  <% if @friends.length > 0 %>
+    <% form_for :survey_volunteer, :url => { :action => "add_volunteer_to_survey" } do |f| %>
+    <table>
+      <tr>
+        <td colspan="2">Add additional <%= h(surveyor.pluralize) %> to the survey:</td>
+      </tr>
+      <tr>
+        <td>
+          <%= f.collection_select(:friend_id, @friends, :friend_id, :name, {:include_blank => true},
+                :onchange => remote_function(
+                  :url => {:action => :add_volunteer_to_survey}, 
+                  :with => "'volunteer_id='+value")) %>
+          <%= f.hidden_field :role, :value => surveyor %>
+        </td>
+      </tr>
+    </table>
+    <% end %>
+  <% else %>
+    <p>
+      Looks like you have a new account: <br /> 
+      <b><%= link_to 'Add people you work with to your list', :action => 'manage_friends' %></b>
+    </p>
+  <% end %>
+  </div>
+<% end %>
+</div>
+<br />

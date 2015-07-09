@@ -1,0 +1,132 @@
+# == Schema Information
+#
+#  id          :integer       not null, primary key
+#  toe_type_id :integer       not null
+#  name        :string(255)   not null
+#  description :string(255)   
+#  active      :boolean       default(TRUE)
+#
+
+--- 
+foot_type_families_011: 
+  name: Pigeons
+  toe_type_id: "1"
+  id: "11"
+  description: 4 free, fleshy toes
+  active: t
+foot_type_families_012: 
+  name: Pouchbills
+  toe_type_id: "6"
+  id: "12"
+  description: 4 Webbed Toes
+  active: t
+foot_type_families_001: 
+  name: Alcids
+  toe_type_id: "6"
+  id: "1"
+  description: 3 webbed, 4th absent
+  active: t
+foot_type_families_013: 
+  name: Raptors
+  toe_type_id: "5"
+  id: "13"
+  description: 4 free with all nails nearly as long as toes
+  active: t
+foot_type_families_002: 
+  name: Coots
+  toe_type_id: "3"
+  id: "2"
+  description: 3 webbed, 4th absent, huge foot
+  active: t
+foot_type_families_014: 
+  name: Shorebirds
+  toe_type_id: "5"
+  id: "14"
+  description: 
+  active: t
+foot_type_families_003: 
+  name: Cranes
+  toe_type_id: "5"
+  id: "3"
+  description: 
+  active: t
+foot_type_families_015: 
+  name: Tubenoses
+  toe_type_id: "5"
+  id: "15"
+  description: 
+  active: t
+foot_type_families_004: 
+  name: Grebes
+  toe_type_id: "3"
+  id: "4"
+  description: 4 lobed, flat tarsus
+  active: t
+foot_type_families_016: 
+  name: Unknown
+  toe_type_id: "5"
+  id: "16"
+  description: 
+  active: f
+foot_type_families_005: 
+  name: Herons
+  toe_type_id: "1"
+  id: "5"
+  description: |
+    4 free and very long toes, middle nail comb-like
+
+  active: t
+foot_type_families_017: 
+  name: Waterfowl
+  toe_type_id: "6"
+  id: "17"
+  description: 3 Webbed Toes
+  active: t
+foot_type_families_006: 
+  name: Kingfishers
+  toe_type_id: "1"
+  id: "6"
+  description: "4 Free Toes; 2 Fused                                                       "
+  active: t
+foot_type_families_018: 
+  name: Woodpeckers
+  toe_type_id: "5"
+  id: "18"
+  description: 4 free, 2 front and 2 back
+  active: t
+foot_type_families_007: 
+  name: Larids
+  toe_type_id: "6"
+  id: "7"
+  description: 3 webbed, 4th minute, swollen heel
+  active: t
+foot_type_families_019: 
+  name: Feet Missing
+  toe_type_id: "2"
+  id: "19"
+  description: No Feet on Bird
+  active: t
+foot_type_families_008: 
+  name: Loons
+  toe_type_id: "6"
+  id: "8"
+  description: 3 webbed, 4th minute, flat tarsus
+  active: t
+foot_type_families_020: 
+  name: Vultures
+  toe_type_id: "1"
+  id: "20"
+  description: 3 free, 4th minute
+  active: t
+foot_type_families_009: 
+  name: Perching Birds
+  toe_type_id: "1"
+  id: "9"
+  description: 4 Free, 4th Nail Strongly Arched
+  active: t
+foot_type_families_010: 
+  name: Pheasants
+  toe_type_id: "1"
+  id: "10"
+  description: 4 free, large foot (5th spurred in males)
+  active: t

@@ -1,0 +1,7 @@
+<h1><%=h @state.name %> Beaches</h1>
+
+<ul>
+<% for b in @state.beaches %>
+  <li><%= link_to h(b.name), :controller => :beach, :action => :show, :id => b.id %></li>
+<% end %>
+</ul>

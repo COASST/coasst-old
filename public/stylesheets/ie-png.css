@@ -1,0 +1,4 @@
+/* IE hack for PNG transparency */  
+img, div { 
+	behavior: url(/javascripts/iepngfix.htc);
+}

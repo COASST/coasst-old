@@ -1,0 +1,1969 @@
+# == Schema Information
+#
+#  id                  :integer       not null, primary key
+#  foot_type_family_id :integer       not null
+#  group_id            :integer       not null
+#  subgroup_id         :integer       
+#  code                :string(255)   not null
+#  name                :string(255)   not null
+#  sex_difference      :boolean       
+#  tarsus_min          :integer       default(0), not null
+#  tarsus_max          :integer       default(999), not null
+#  wing_min            :integer       default(0), not null
+#  wing_max            :integer       default(999), not null
+#  bill_min            :integer       default(0), not null
+#  bill_max            :integer       default(999), not null
+#  active              :boolean       default(TRUE)
+#
+
+--- 
+species_115: 
+  sex_difference: f
+  name: Western Sandpiper
+  wing_min: "9"
+  code: WESA
+  foot_type_family_id: "14"
+  bill_max: "29"
+  subgroup_id: 
+  group_id: "22"
+  id: "118"
+  tarsus_max: "25"
+  bill_min: "21"
+  wing_max: "10"
+  tarsus_min: "21"
+  active: t
+species_088: 
+  sex_difference: f
+  name: Ring-billed Gull
+  wing_min: "34"
+  code: RBGU
+  foot_type_family_id: "7"
+  bill_max: "44"
+  subgroup_id: "14"
+  group_id: "12"
+  id: "90"
+  tarsus_max: "62"
+  bill_min: "35"
+  wing_max: "40"
+  tarsus_min: "52"
+  active: t
+species_001: 
+  sex_difference: f
+  name: American Coot
+  wing_min: "17"
+  code: "AMCO "
+  foot_type_family_id: "2"
+  bill_max: "39"
+  subgroup_id: "4"
+  group_id: "4"
+  id: "1"
+  tarsus_max: "64"
+  bill_min: "30"
+  wing_max: "20"
+  tarsus_min: "52"
+  active: t
+species_116: 
+  sex_difference: f
+  name: Western Screech-Owl
+  wing_min: "0"
+  code: WESO
+  foot_type_family_id: "13"
+  bill_max: "999"
+  subgroup_id: "23"
+  group_id: "21"
+  id: "119"
+  tarsus_max: "999"
+  bill_min: "0"
+  wing_max: "999"
+  tarsus_min: "0"
+  active: t
+species_030: 
+  sex_difference: t
+  name: Common Goldeneye
+  wing_min: "19"
+  code: COGO
+  foot_type_family_id: "17"
+  bill_max: "42"
+  subgroup_id: "7"
+  group_id: "34"
+  id: "30"
+  tarsus_max: "43"
+  bill_min: "37"
+  wing_max: "24"
+  tarsus_min: "33"
+  active: t
+species_089: 
+  sex_difference: t
+  name: Ring-necked Pheasant
+  wing_min: "20"
+  code: RIPH
+  foot_type_family_id: "10"
+  bill_max: "75"
+  subgroup_id: "28"
+  group_id: "26"
+  id: "91"
+  tarsus_max: "35"
+  bill_min: "62"
+  wing_max: "25"
+  tarsus_min: "25"
+  active: t
+species_002: 
+  sex_difference: f
+  name: American Crow
+  wing_min: "26"
+  code: "AMCR "
+  foot_type_family_id: "9"
+  bill_max: "52"
+  subgroup_id: "6"
+  group_id: "6"
+  id: "2"
+  tarsus_max: "63"
+  bill_min: "42"
+  wing_max: "33"
+  tarsus_min: "45"
+  active: t
+species_117: 
+  sex_difference: f
+  name: Whimbrel
+  wing_min: "22"
+  code: WHIM
+  foot_type_family_id: "14"
+  bill_max: "100"
+  subgroup_id: "6"
+  group_id: "2"
+  id: "120"
+  tarsus_max: "65"
+  bill_min: "74"
+  wing_max: "26"
+  tarsus_min: "52"
+  active: t
+species_031: 
+  sex_difference: f
+  name: Common Loon
+  wing_min: "32"
+  code: COLO
+  foot_type_family_id: "8"
+  bill_max: "90"
+  subgroup_id: "22"
+  group_id: "20"
+  id: "31"
+  tarsus_max: "98"
+  bill_min: "72"
+  wing_max: "38"
+  tarsus_min: "80"
+  active: t
+species_003: 
+  sex_difference: f
+  name: American Robin
+  wing_min: "12"
+  code: AMRO
+  foot_type_family_id: "9"
+  bill_max: "35"
+  subgroup_id: "45"
+  group_id: "32"
+  id: "3"
+  tarsus_max: "22"
+  bill_min: "32"
+  wing_max: "13"
+  tarsus_min: "19"
+  active: t
+species_118: 
+  sex_difference: f
+  name: Whiskered Auklet
+  wing_min: "0"
+  code: WHAU
+  foot_type_family_id: "1"
+  bill_max: "999"
+  subgroup_id: "2"
+  group_id: "28"
+  id: "121"
+  tarsus_max: "999"
+  bill_min: "0"
+  wing_max: "999"
+  tarsus_min: "0"
+  active: t
+species_032: 
+  sex_difference: t
+  name: Common Merganser
+  wing_min: "23"
+  code: COME
+  foot_type_family_id: "17"
+  bill_max: "55"
+  subgroup_id: "24"
+  group_id: "8"
+  id: "32"
+  tarsus_max: "59"
+  bill_min: "47"
+  wing_max: "28"
+  tarsus_min: "54"
+  active: t
+species_004: 
+  sex_difference: t
+  name: American Wigeon
+  wing_min: "21"
+  code: AMWI
+  foot_type_family_id: "17"
+  bill_max: "39"
+  subgroup_id: "7"
+  group_id: "34"
+  id: "4"
+  tarsus_max: "41"
+  bill_min: "34"
+  wing_max: "28"
+  tarsus_min: "35"
+  active: t
+species_060: 
+  sex_difference: f
+  name: Least Auklet
+  wing_min: "9"
+  code: LEAU
+  foot_type_family_id: "1"
+  bill_max: "21"
+  subgroup_id: "2"
+  group_id: "28"
+  id: "62"
+  tarsus_max: "10"
+  bill_min: "18"
+  wing_max: "10"
+  tarsus_min: "8"
+  active: t
+species_119: 
+  sex_difference: t
+  name: White-Winged Scoter
+  wing_min: "25"
+  code: WWSC
+  foot_type_family_id: "17"
+  bill_max: "44"
+  subgroup_id: "34"
+  group_id: "8"
+  id: "122"
+  tarsus_max: "54"
+  bill_min: "35"
+  wing_max: "29"
+  tarsus_min: "48"
+  active: t
+species_033: 
+  sex_difference: f
+  name: Common Murre
+  wing_min: "12"
+  code: COMU
+  foot_type_family_id: "1"
+  bill_max: "53"
+  subgroup_id: "26"
+  group_id: "18"
+  id: "35"
+  tarsus_max: "42"
+  bill_min: "11"
+  wing_max: "23"
+  tarsus_min: "20"
+  active: t
+species_005: 
+  sex_difference: f
+  name: Ancient Murrelet
+  wing_min: "13"
+  code: ANMU
+  foot_type_family_id: "1"
+  bill_max: "15"
+  subgroup_id: "25"
+  group_id: "28"
+  id: "5"
+  tarsus_max: "29"
+  bill_min: "12"
+  wing_max: "15"
+  tarsus_min: "25"
+  active: t
+species_061: 
+  sex_difference: f
+  name: Lesser Scaup
+  wing_min: "0"
+  code: LESC
+  foot_type_family_id: "17"
+  bill_max: "999"
+  subgroup_id: "33"
+  group_id: "8"
+  id: "63"
+  tarsus_max: "999"
+  bill_min: "0"
+  wing_max: "999"
+  tarsus_min: "0"
+  active: t
+species_006: 
+  sex_difference: f
+  name: Arctic Tern
+  wing_min: "25"
+  code: ARTE
+  foot_type_family_id: "7"
+  bill_max: "17"
+  subgroup_id: "44"
+  group_id: "33"
+  id: "6"
+  tarsus_max: "34"
+  bill_min: "15"
+  wing_max: "27"
+  tarsus_min: "30"
+  active: t
+species_090: 
+  sex_difference: f
+  name: Rock Dove
+  wing_min: "20"
+  code: RODO
+  foot_type_family_id: "11"
+  bill_max: "20"
+  subgroup_id: "29"
+  group_id: "27"
+  id: "92"
+  tarsus_max: "33"
+  bill_min: "18"
+  wing_max: "23"
+  tarsus_min: "27"
+  active: t
+species_062: 
+  sex_difference: f
+  name: Long-tailed Jaeger
+  wing_min: "0"
+  code: LOJA
+  foot_type_family_id: "7"
+  bill_max: "999"
+  subgroup_id: "16"
+  group_id: "15"
+  id: "64"
+  tarsus_max: "999"
+  bill_min: "0"
+  wing_max: "999"
+  tarsus_min: "0"
+  active: t
+species_034: 
+  sex_difference: f
+  name: Common Raven
+  wing_min: "40"
+  code: CORA
+  foot_type_family_id: "9"
+  bill_max: "90"
+  subgroup_id: "31"
+  group_id: "6"
+  id: "36"
+  tarsus_max: "68"
+  bill_min: "70"
+  wing_max: "45"
+  tarsus_min: "62"
+  active: t
+species_007: 
+  sex_difference: f
+  name: Bald Eagle
+  wing_min: "56"
+  code: BAEA
+  foot_type_family_id: "13"
+  bill_max: "95"
+  subgroup_id: "8"
+  group_id: "9"
+  id: "7"
+  tarsus_max: "56"
+  bill_min: "84"
+  wing_max: "61"
+  tarsus_min: "48"
+  active: t
+species_091: 
+  sex_difference: t
+  name: Ruddy Duck
+  wing_min: "13"
+  code: RUDU
+  foot_type_family_id: "17"
+  bill_max: "41"
+  subgroup_id: "42"
+  group_id: "8"
+  id: "93"
+  tarsus_max: "38"
+  bill_min: "37"
+  wing_max: "15"
+  tarsus_min: "33"
+  active: t
+species_063: 
+  sex_difference: t
+  name: Mallard
+  wing_min: "25"
+  code: MALL
+  foot_type_family_id: "17"
+  bill_max: "60"
+  subgroup_id: "7"
+  group_id: "34"
+  id: "65"
+  tarsus_max: "49"
+  bill_min: "47"
+  wing_max: "29"
+  tarsus_min: "41"
+  active: t
+species_035: 
+  sex_difference: f
+  name: Crested Auklet
+  wing_min: "13"
+  code: CRAU
+  foot_type_family_id: "1"
+  bill_max: "32"
+  subgroup_id: "2"
+  group_id: "28"
+  id: "37"
+  tarsus_max: "14"
+  bill_min: "26"
+  wing_max: "15"
+  tarsus_min: "11"
+  active: t
+species_008: 
+  sex_difference: f
+  name: Band-tailed Pigeon
+  wing_min: "21"
+  code: BTPI
+  foot_type_family_id: "11"
+  bill_max: "21"
+  subgroup_id: "29"
+  group_id: "27"
+  id: "8"
+  tarsus_max: "30"
+  bill_min: "17"
+  wing_max: "23"
+  tarsus_min: "26"
+  active: t
+species_092: 
+  sex_difference: f
+  name: Sabine's Gull
+  wing_min: "26"
+  code: SAGU
+  foot_type_family_id: "7"
+  bill_max: "37"
+  subgroup_id: "14"
+  group_id: "12"
+  id: "94"
+  tarsus_max: "29"
+  bill_min: "32"
+  wing_max: "29"
+  tarsus_min: "22"
+  active: t
+species_064: 
+  sex_difference: f
+  name: Marbled Godwit
+  wing_min: "22"
+  code: MAGO
+  foot_type_family_id: "14"
+  bill_max: "78"
+  subgroup_id: "12"
+  group_id: "2"
+  id: "66"
+  tarsus_max: "110"
+  bill_min: "64"
+  wing_max: "24"
+  tarsus_min: "85"
+  active: t
+species_036: 
+  sex_difference: f
+  name: Double-Crested Cormorant
+  wing_min: "27"
+  code: DCCO
+  foot_type_family_id: "12"
+  bill_max: "63"
+  subgroup_id: "19"
+  group_id: "5"
+  id: "38"
+  tarsus_max: "71"
+  bill_min: "52"
+  wing_max: "33"
+  tarsus_min: "61"
+  active: t
+species_120: 
+  sex_difference: f
+  name: Wilson's Warbler
+  wing_min: "5"
+  code: WIWA
+  foot_type_family_id: "9"
+  bill_max: "2"
+  subgroup_id: "47"
+  group_id: "32"
+  id: "123"
+  tarsus_max: "9"
+  bill_min: "2"
+  wing_max: "6"
+  tarsus_min: "8"
+  active: t
+species_009: 
+  sex_difference: t
+  name: Belted Kingfisher
+  wing_min: "14"
+  code: BEKI
+  foot_type_family_id: "6"
+  bill_max: "12"
+  subgroup_id: "17"
+  group_id: "16"
+  id: "9"
+  tarsus_max: "63"
+  bill_min: "10"
+  wing_max: "16"
+  tarsus_min: "48"
+  active: t
+species_093: 
+  sex_difference: f
+  name: Sanderling
+  wing_min: "12"
+  code: SAND
+  foot_type_family_id: "14"
+  bill_max: "28"
+  subgroup_id: 
+  group_id: "1"
+  id: "95"
+  tarsus_max: "28"
+  bill_min: "24"
+  wing_max: "13"
+  tarsus_min: "23"
+  active: t
+species_065: 
+  sex_difference: f
+  name: Marbled Murrelet
+  wing_min: "12"
+  code: MAMU
+  foot_type_family_id: "1"
+  bill_max: "17"
+  subgroup_id: "25"
+  group_id: "28"
+  id: "67"
+  tarsus_max: "18"
+  bill_min: "13"
+  wing_max: "14"
+  tarsus_min: "14"
+  active: t
+species_037: 
+  sex_difference: f
+  name: Dunlin
+  wing_min: "11"
+  code: DUNL
+  foot_type_family_id: "14"
+  bill_max: "44"
+  subgroup_id: 
+  group_id: "2"
+  id: "39"
+  tarsus_max: "29"
+  bill_min: "34"
+  wing_max: "12"
+  tarsus_min: "24"
+  active: t
+species_121: 
+  sex_difference: f
+  name: Winter Wren
+  wing_min: "4"
+  code: WIWR
+  foot_type_family_id: "9"
+  bill_max: "19"
+  subgroup_id: "48"
+  group_id: "32"
+  id: "124"
+  tarsus_max: "14"
+  bill_min: "17"
+  wing_max: "4"
+  tarsus_min: "13"
+  active: t
+species_094: 
+  sex_difference: f
+  name: Sandhill Crane
+  wing_min: "0"
+  code: SACR
+  foot_type_family_id: "3"
+  bill_max: "240"
+  subgroup_id: "5"
+  group_id: "7"
+  id: "96"
+  tarsus_max: "125"
+  bill_min: "210"
+  wing_max: "999"
+  tarsus_min: "110"
+  active: t
+species_066: 
+  sex_difference: f
+  name: Mew Gull
+  wing_min: "32"
+  code: MEGU
+  foot_type_family_id: "7"
+  bill_max: "38"
+  subgroup_id: "14"
+  group_id: "12"
+  id: "68"
+  tarsus_max: "53"
+  bill_min: "30"
+  wing_max: "37"
+  tarsus_min: "47"
+  active: t
+species_038: 
+  sex_difference: f
+  name: Eared Grebe
+  wing_min: "13"
+  code: EAGR
+  foot_type_family_id: "4"
+  bill_max: "51"
+  subgroup_id: "38"
+  group_id: "29"
+  id: "40"
+  tarsus_max: "26"
+  bill_min: "42"
+  wing_max: "15"
+  tarsus_min: "21"
+  active: t
+species_122: 
+  sex_difference: f
+  name: Yellow-billed Loon
+  wing_min: "36"
+  code: YBLO
+  foot_type_family_id: "8"
+  bill_max: "98"
+  subgroup_id: "22"
+  group_id: "20"
+  id: "125"
+  tarsus_max: "97"
+  bill_min: "85"
+  wing_max: "39"
+  tarsus_min: "80"
+  active: t
+species_095: 
+  sex_difference: f
+  name: Sharp-shinned Hawk
+  wing_min: "15"
+  code: SSHA
+  foot_type_family_id: "13"
+  bill_max: "60"
+  subgroup_id: "39"
+  group_id: "13"
+  id: "97"
+  tarsus_max: "11"
+  bill_min: "47"
+  wing_max: "20"
+  tarsus_min: "10"
+  active: t
+species_067: 
+  sex_difference: f
+  name: Mottled Petrel
+  wing_min: "0"
+  code: MOPE
+  foot_type_family_id: "15"
+  bill_max: "999"
+  subgroup_id: "11"
+  group_id: "24"
+  id: "69"
+  tarsus_max: "999"
+  bill_min: "0"
+  wing_max: "999"
+  tarsus_min: "0"
+  active: t
+species_039: 
+  sex_difference: f
+  name: Emperor Goose
+  wing_min: "37"
+  code: EMGO
+  foot_type_family_id: "17"
+  bill_max: "37"
+  subgroup_id: "12"
+  group_id: "11"
+  id: "41"
+  tarsus_max: "81"
+  bill_min: "35"
+  wing_max: "38"
+  tarsus_min: "79"
+  active: t
+species_123: 
+  sex_difference: f
+  name: Great Egret
+  wing_min: "0"
+  code: GREG
+  foot_type_family_id: "5"
+  bill_max: "999"
+  subgroup_id: "50"
+  group_id: "37"
+  id: "126"
+  tarsus_max: "999"
+  bill_min: "0"
+  wing_max: "999"
+  tarsus_min: "0"
+  active: t
+species_096: 
+  sex_difference: f
+  name: Short-eared Owl
+  wing_min: "28"
+  code: SEOW
+  foot_type_family_id: "13"
+  bill_max: "999"
+  subgroup_id: "41"
+  group_id: "21"
+  id: "98"
+  tarsus_max: "17"
+  bill_min: "0"
+  wing_max: "31"
+  tarsus_min: "16"
+  active: t
+species_068: 
+  sex_difference: f
+  name: Northern Fulmar
+  wing_min: "28"
+  code: NOFU
+  foot_type_family_id: "15"
+  bill_max: "42"
+  subgroup_id: "10"
+  group_id: "24"
+  id: "70"
+  tarsus_max: "55"
+  bill_min: "34"
+  wing_max: "33"
+  tarsus_min: "47"
+  active: t
+species_124: 
+  sex_difference: f
+  name: Turkey Vulture
+  wing_min: "0"
+  code: TUVU
+  foot_type_family_id: "20"
+  bill_max: "999"
+  subgroup_id: "49"
+  group_id: "32"
+  id: "127"
+  tarsus_max: "999"
+  bill_min: "0"
+  wing_max: "999"
+  tarsus_min: "0"
+  active: t
+species_010: 
+  sex_difference: f
+  name: Black Oystercatcher
+  wing_min: "23"
+  code: BLOY
+  foot_type_family_id: "14"
+  bill_max: "88"
+  subgroup_id: "26"
+  group_id: "1"
+  id: "10"
+  tarsus_max: "55"
+  bill_min: "70"
+  wing_max: "27"
+  tarsus_min: "47"
+  active: t
+species_069: 
+  sex_difference: t
+  name: Northern Pintail
+  wing_min: "23"
+  code: NOPI
+  foot_type_family_id: "17"
+  bill_max: "56"
+  subgroup_id: "7"
+  group_id: "34"
+  id: "71"
+  tarsus_max: "57"
+  bill_min: "43"
+  wing_max: "29"
+  tarsus_min: "47"
+  active: t
+species_097: 
+  sex_difference: f
+  name: Short-tailed Albatross
+  wing_min: "0"
+  code: STAL
+  foot_type_family_id: "15"
+  bill_max: "999"
+  subgroup_id: "1"
+  group_id: "3"
+  id: "99"
+  tarsus_max: "999"
+  bill_min: "0"
+  wing_max: "999"
+  tarsus_min: "0"
+  active: t
+species_125: 
+  sex_difference: t
+  name: Eurasian Widgeon
+  wing_min: "0"
+  code: EUWI
+  foot_type_family_id: "17"
+  bill_max: "999"
+  subgroup_id: "7"
+  group_id: "34"
+  id: "128"
+  tarsus_max: "999"
+  bill_min: "0"
+  wing_max: "999"
+  tarsus_min: "0"
+  active: t
+species_011: 
+  sex_difference: t
+  name: Black Scoter
+  wing_min: "20"
+  code: BLSC
+  foot_type_family_id: "17"
+  bill_max: "48"
+  subgroup_id: "34"
+  group_id: "8"
+  id: "11"
+  tarsus_max: "62"
+  bill_min: "35"
+  wing_max: "24"
+  tarsus_min: "45"
+  active: t
+species_098: 
+  sex_difference: f
+  name: Short-tailed Shearwater
+  wing_min: "26"
+  code: STSH
+  foot_type_family_id: "15"
+  bill_max: "35"
+  subgroup_id: "35"
+  group_id: "24"
+  id: "100"
+  tarsus_max: "51"
+  bill_min: "29"
+  wing_max: "29"
+  tarsus_min: "44"
+  active: t
+species_126: 
+  sex_difference: f
+  name: Red-necked Phalarope
+  wing_min: "0"
+  code: RNPH
+  foot_type_family_id: "14"
+  bill_max: "999"
+  subgroup_id: 
+  group_id: "25"
+  id: "129"
+  tarsus_max: "999"
+  bill_min: "0"
+  wing_max: "999"
+  tarsus_min: "0"
+  active: t
+species_012: 
+  sex_difference: f
+  name: Black-bellied Plover
+  wing_min: "18"
+  code: BBPL
+  foot_type_family_id: "14"
+  bill_max: "51"
+  subgroup_id: "23"
+  group_id: "2"
+  id: "12"
+  tarsus_max: "33"
+  bill_min: "45"
+  wing_max: "20"
+  tarsus_min: "27"
+  active: t
+species_040: 
+  sex_difference: f
+  name: European Starling
+  wing_min: "12"
+  code: EUST
+  foot_type_family_id: "9"
+  bill_max: "29"
+  subgroup_id: "42"
+  group_id: "32"
+  id: "42"
+  tarsus_max: "30"
+  bill_min: "25"
+  wing_max: "13"
+  tarsus_min: "26"
+  active: t
+species_099: 
+  sex_difference: f
+  name: Snow Goose
+  wing_min: "38"
+  code: SNGO
+  foot_type_family_id: "17"
+  bill_max: "91"
+  subgroup_id: "12"
+  group_id: "11"
+  id: "102"
+  tarsus_max: "62"
+  bill_min: "77"
+  wing_max: "46"
+  tarsus_min: "50"
+  active: t
+species_127: 
+  sex_difference: f
+  name: Barn Owl
+  wing_min: "0"
+  code: BAOW
+  foot_type_family_id: "13"
+  bill_max: "999"
+  subgroup_id: "23"
+  group_id: "21"
+  id: "130"
+  tarsus_max: "999"
+  bill_min: "0"
+  wing_max: "999"
+  tarsus_min: "0"
+  active: t
+species_041: 
+  sex_difference: f
+  name: Fork-tailed Storm-Petrel
+  wing_min: "14"
+  code: FTSP
+  foot_type_family_id: "15"
+  bill_max: "16"
+  subgroup_id: "43"
+  group_id: "24"
+  id: "43"
+  tarsus_max: "29"
+  bill_min: "14"
+  wing_max: "17"
+  tarsus_min: "24"
+  active: t
+species_013: 
+  sex_difference: f
+  name: Black-Footed Albatross
+  wing_min: "48"
+  code: BFAL
+  foot_type_family_id: "15"
+  bill_max: "113"
+  subgroup_id: "1"
+  group_id: "3"
+  id: "13"
+  tarsus_max: "95"
+  bill_min: "94"
+  wing_max: "53"
+  tarsus_min: "80"
+  active: t
+species_128: 
+  sex_difference: t
+  name: Yellow Warbler
+  wing_min: "0"
+  code: YEWA
+  foot_type_family_id: "9"
+  bill_max: "999"
+  subgroup_id: "47"
+  group_id: "32"
+  id: "131"
+  tarsus_max: "999"
+  bill_min: "0"
+  wing_max: "999"
+  tarsus_min: "0"
+  active: t
+species_070: 
+  sex_difference: f
+  name: Northern Saw-whet Owl
+  wing_min: "13"
+  code: NSWO
+  foot_type_family_id: "13"
+  bill_max: "26"
+  subgroup_id: "41"
+  group_id: "21"
+  id: "72"
+  tarsus_max: "13"
+  bill_min: "23"
+  wing_max: "14"
+  tarsus_min: "11"
+  active: t
+species_042: 
+  sex_difference: f
+  name: Franklin's Gull
+  wing_min: "26"
+  code: FRGU
+  foot_type_family_id: "7"
+  bill_max: "45"
+  subgroup_id: "14"
+  group_id: "12"
+  id: "44"
+  tarsus_max: "31"
+  bill_min: "39"
+  wing_max: "29"
+  tarsus_min: "27"
+  active: t
+species_014: 
+  sex_difference: f
+  name: Black-Legged Kittiwake
+  wing_min: "29"
+  code: BLKI
+  foot_type_family_id: "7"
+  bill_max: "39"
+  subgroup_id: "18"
+  group_id: "17"
+  id: "14"
+  tarsus_max: "36"
+  bill_min: "33"
+  wing_max: "32"
+  tarsus_min: "31"
+  active: t
+species_129: 
+  sex_difference: f
+  name: Northwestern Crow
+  wing_min: "0"
+  code: NWCR
+  foot_type_family_id: "9"
+  bill_max: "999"
+  subgroup_id: "6"
+  group_id: "6"
+  id: "132"
+  tarsus_max: "999"
+  bill_min: "0"
+  wing_max: "999"
+  tarsus_min: "0"
+  active: t
+species_071: 
+  sex_difference: t
+  name: Northern Shoveler
+  wing_min: "22"
+  code: NOSH
+  foot_type_family_id: "17"
+  bill_max: "40"
+  subgroup_id: "7"
+  group_id: "34"
+  id: "73"
+  tarsus_max: "65"
+  bill_min: "36"
+  wing_max: "25"
+  tarsus_min: "60"
+  active: t
+species_043: 
+  sex_difference: t
+  name: Gadwall
+  wing_min: "24"
+  code: GADW
+  foot_type_family_id: "17"
+  bill_max: "50"
+  subgroup_id: "7"
+  group_id: "34"
+  id: "45"
+  tarsus_max: "43"
+  bill_min: "40"
+  wing_max: "28"
+  tarsus_min: "37"
+  active: t
+species_015: 
+  sex_difference: f
+  name: Bonaparte's Gull
+  wing_min: "25"
+  code: BOGU
+  foot_type_family_id: "7"
+  bill_max: "38"
+  subgroup_id: "14"
+  group_id: "12"
+  id: "15"
+  tarsus_max: "31"
+  bill_min: "34"
+  wing_max: "27"
+  tarsus_min: "28"
+  active: t
+species_072: 
+  sex_difference: f
+  name: Pacific Loon
+  wing_min: "28"
+  code: PALO
+  foot_type_family_id: "8"
+  bill_max: "55"
+  subgroup_id: "40"
+  group_id: "30"
+  id: "74"
+  tarsus_max: "78"
+  bill_min: "49"
+  wing_max: "30"
+  tarsus_min: "67"
+  active: t
+species_044: 
+  sex_difference: f
+  name: Glaucous Gull
+  wing_min: "41"
+  code: GLGU
+  foot_type_family_id: "7"
+  bill_max: "77"
+  subgroup_id: "14"
+  group_id: "12"
+  id: "46"
+  tarsus_max: "67"
+  bill_min: "63"
+  wing_max: "48"
+  tarsus_min: "53"
+  active: t
+species_016: 
+  sex_difference: f
+  name: Brandt's Cormorant
+  wing_min: "26"
+  code: "BRCO "
+  foot_type_family_id: "12"
+  bill_max: "80"
+  subgroup_id: "19"
+  group_id: "5"
+  id: "16"
+  tarsus_max: "72"
+  bill_min: "60"
+  wing_max: "30"
+  tarsus_min: "59"
+  active: t
+species_073: 
+  sex_difference: f
+  name: Parakeet Auklet
+  wing_min: "14"
+  code: PAAU
+  foot_type_family_id: "1"
+  bill_max: "34"
+  subgroup_id: "2"
+  group_id: "28"
+  id: "75"
+  tarsus_max: "17"
+  bill_min: "26"
+  wing_max: "16"
+  tarsus_min: "13"
+  active: t
+species_045: 
+  sex_difference: f
+  name: Glaucous-Winged Gull
+  wing_min: "38"
+  code: GWGU
+  foot_type_family_id: "7"
+  bill_max: "64"
+  subgroup_id: "14"
+  group_id: "12"
+  id: "47"
+  tarsus_max: "76"
+  bill_min: "49"
+  wing_max: "45"
+  tarsus_min: "62"
+  active: t
+species_100: 
+  sex_difference: f
+  name: Song Sparrow
+  wing_min: "5"
+  code: SOSP
+  foot_type_family_id: "9"
+  bill_max: "27"
+  subgroup_id: "41"
+  group_id: "32"
+  id: "103"
+  tarsus_max: "18"
+  bill_min: "20"
+  wing_max: "8"
+  tarsus_min: "13"
+  active: t
+species_017: 
+  sex_difference: f
+  name: Brant Goose
+  wing_min: "30"
+  code: BRAN
+  foot_type_family_id: "17"
+  bill_max: "34"
+  subgroup_id: "12"
+  group_id: "11"
+  id: "17"
+  tarsus_max: "69"
+  bill_min: "31"
+  wing_max: "35"
+  tarsus_min: "58"
+  active: t
+species_074: 
+  sex_difference: f
+  name: Parasitic Jaeger
+  wing_min: "31"
+  code: PAJA
+  foot_type_family_id: "7"
+  bill_max: "49"
+  subgroup_id: "16"
+  group_id: "15"
+  id: "76"
+  tarsus_max: "35"
+  bill_min: "40"
+  wing_max: "35"
+  tarsus_min: "29"
+  active: t
+species_046: 
+  sex_difference: f
+  name: Great Blue Heron
+  wing_min: "44"
+  code: GBHE
+  foot_type_family_id: "5"
+  bill_max: "186"
+  subgroup_id: "15"
+  group_id: "14"
+  id: "48"
+  tarsus_max: "152"
+  bill_min: "170"
+  wing_max: "48"
+  tarsus_min: "125"
+  active: t
+species_101: 
+  sex_difference: f
+  name: Sooty Shearwater
+  wing_min: "28"
+  code: SOSH
+  foot_type_family_id: "15"
+  bill_max: "48"
+  subgroup_id: "35"
+  group_id: "24"
+  id: "104"
+  tarsus_max: "60"
+  bill_min: "38"
+  wing_max: "32"
+  tarsus_min: "53"
+  active: t
+species_018: 
+  sex_difference: f
+  name: Brown Pelican
+  wing_min: "48"
+  code: BRPE
+  foot_type_family_id: "12"
+  bill_max: "370"
+  subgroup_id: "27"
+  group_id: "23"
+  id: "18"
+  tarsus_max: "89"
+  bill_min: "300"
+  wing_max: "59"
+  tarsus_min: "70"
+  active: t
+species_130: 
+  sex_difference: t
+  name: Golden-crowned Kinglet
+  wing_min: "0"
+  code: GCKI
+  foot_type_family_id: "9"
+  bill_max: "999"
+  subgroup_id: "51"
+  group_id: "32"
+  id: "133"
+  tarsus_max: "999"
+  bill_min: "0"
+  wing_max: "999"
+  tarsus_min: "0"
+  active: t
+species_075: 
+  sex_difference: f
+  name: Pelagic Cormorant
+  wing_min: "22"
+  code: PECO
+  foot_type_family_id: "12"
+  bill_max: "56"
+  subgroup_id: "37"
+  group_id: "5"
+  id: "77"
+  tarsus_max: "58"
+  bill_min: "41"
+  wing_max: "29"
+  tarsus_min: "42"
+  active: t
+species_047: 
+  sex_difference: f
+  name: Great Horned Owl
+  wing_min: "34"
+  code: GHOW
+  foot_type_family_id: "13"
+  bill_max: "999"
+  subgroup_id: "23"
+  group_id: "21"
+  id: "49"
+  tarsus_max: "31"
+  bill_min: "0"
+  wing_max: "40"
+  tarsus_min: "27"
+  active: t
+species_102: 
+  sex_difference: f
+  name: South Polar Skua
+  wing_min: "36"
+  code: SPSK
+  foot_type_family_id: "7"
+  bill_max: "70"
+  subgroup_id: "36"
+  group_id: "15"
+  id: "105"
+  tarsus_max: "54"
+  bill_min: "58"
+  wing_max: "43"
+  tarsus_min: "45"
+  active: t
+species_019: 
+  sex_difference: t
+  name: Bufflehead
+  wing_min: "15"
+  code: BUFF
+  foot_type_family_id: "17"
+  bill_max: "30"
+  subgroup_id: "2"
+  group_id: "8"
+  id: "19"
+  tarsus_max: "35"
+  bill_min: "23"
+  wing_max: "18"
+  tarsus_min: "30"
+  active: t
+species_048: 
+  sex_difference: t
+  name: Greater Scaup
+  wing_min: "20"
+  code: GRSC
+  foot_type_family_id: "17"
+  bill_max: "48"
+  subgroup_id: "33"
+  group_id: "8"
+  id: "50"
+  tarsus_max: "42"
+  bill_min: "40"
+  wing_max: "23"
+  tarsus_min: "37"
+  active: t
+species_103: 
+  sex_difference: t
+  name: Spectacled Eider
+  wing_min: "0"
+  code: SPPS
+  foot_type_family_id: "17"
+  bill_max: "999"
+  subgroup_id: "9"
+  group_id: "8"
+  id: "106"
+  tarsus_max: "999"
+  bill_min: "0"
+  wing_max: "999"
+  tarsus_min: "0"
+  active: t
+species_076: 
+  sex_difference: f
+  name: Peregrine Falcon
+  wing_min: "31"
+  code: PEFA
+  foot_type_family_id: "13"
+  bill_max: "56"
+  subgroup_id: "20"
+  group_id: "10"
+  id: "78"
+  tarsus_max: "25"
+  bill_min: "47"
+  wing_max: "37"
+  tarsus_min: "19"
+  active: t
+species_049: 
+  sex_difference: f
+  name: Greater White-fronted Goose
+  wing_min: "38"
+  code: GWFG
+  foot_type_family_id: "17"
+  bill_max: "53"
+  subgroup_id: "12"
+  group_id: "11"
+  id: "51"
+  tarsus_max: "77"
+  bill_min: "47"
+  wing_max: "45"
+  tarsus_min: "73"
+  active: t
+species_104: 
+  sex_difference: f
+  name: Spotted Owl
+  wing_min: "31"
+  code: OWL
+  foot_type_family_id: "13"
+  bill_max: "23"
+  subgroup_id: "23"
+  group_id: "21"
+  id: "107"
+  tarsus_max: "999"
+  bill_min: "21"
+  wing_max: "34"
+  tarsus_min: "0"
+  active: t
+species_077: 
+  sex_difference: f
+  name: Pigeon Guillemot
+  wing_min: "17"
+  code: PIGU
+  foot_type_family_id: "1"
+  bill_max: "39"
+  subgroup_id: "13"
+  group_id: "18"
+  id: "79"
+  tarsus_max: "37"
+  bill_min: "32"
+  wing_max: "19"
+  tarsus_min: "32"
+  active: t
+species_105: 
+  sex_difference: t
+  name: Steller's Eider
+  wing_min: "0"
+  code: STEI
+  foot_type_family_id: "17"
+  bill_max: "999"
+  subgroup_id: "9"
+  group_id: "8"
+  id: "108"
+  tarsus_max: "999"
+  bill_min: "0"
+  wing_max: "999"
+  tarsus_min: "0"
+  active: f
+species_078: 
+  sex_difference: f
+  name: Pink-footed Shearwater
+  wing_min: "32"
+  code: PFSH
+  foot_type_family_id: "15"
+  bill_max: "46"
+  subgroup_id: "35"
+  group_id: "24"
+  id: "80"
+  tarsus_max: "53"
+  bill_min: "40"
+  wing_max: "35"
+  tarsus_min: "47"
+  active: t
+species_106: 
+  sex_difference: t
+  name: Surf Scoter
+  wing_min: "21"
+  code: SUSC
+  foot_type_family_id: "17"
+  bill_max: "41"
+  subgroup_id: "34"
+  group_id: "8"
+  id: "109"
+  tarsus_max: "59"
+  bill_min: "33"
+  wing_max: "25"
+  tarsus_min: "48"
+  active: t
+species_020: 
+  sex_difference: f
+  name: Buller's Shearwater
+  wing_min: "0"
+  code: BUSH
+  foot_type_family_id: "15"
+  bill_max: "999"
+  subgroup_id: "35"
+  group_id: "24"
+  id: "20"
+  tarsus_max: "999"
+  bill_min: "0"
+  wing_max: "999"
+  tarsus_min: "0"
+  active: t
+species_079: 
+  sex_difference: f
+  name: Pomarine Jaeger
+  wing_min: "34"
+  code: POJA
+  foot_type_family_id: "7"
+  bill_max: "58"
+  subgroup_id: "16"
+  group_id: "15"
+  id: "81"
+  tarsus_max: "44"
+  bill_min: "50"
+  wing_max: "38"
+  tarsus_min: "36"
+  active: t
+species_107: 
+  sex_difference: f
+  name: Surfbird
+  wing_min: "16"
+  code: SURF
+  foot_type_family_id: "14"
+  bill_max: "33"
+  subgroup_id: 
+  group_id: "2"
+  id: "110"
+  tarsus_max: "26"
+  bill_min: "31"
+  wing_max: "18"
+  tarsus_min: "21"
+  active: t
+species_021: 
+  sex_difference: f
+  name: California Gull
+  wing_min: "34"
+  code: CAGU
+  foot_type_family_id: "7"
+  bill_max: "59"
+  subgroup_id: "14"
+  group_id: "12"
+  id: "21"
+  tarsus_max: "65"
+  bill_min: "38"
+  wing_max: "42"
+  tarsus_min: "44"
+  active: t
+species_108: 
+  sex_difference: f
+  name: Thick-billed Murre
+  wing_min: "21"
+  code: TBMU
+  foot_type_family_id: "1"
+  bill_max: "39"
+  subgroup_id: "26"
+  group_id: "18"
+  id: "111"
+  tarsus_max: "40"
+  bill_min: "35"
+  wing_max: "23"
+  tarsus_min: "35"
+  active: t
+species_050: 
+  sex_difference: t
+  name: Green-winged Teal
+  wing_min: "17"
+  code: GWTE
+  foot_type_family_id: "17"
+  bill_max: "40"
+  subgroup_id: "7"
+  group_id: "34"
+  id: "52"
+  tarsus_max: "34"
+  bill_min: "35"
+  wing_max: "19"
+  tarsus_min: "30"
+  active: t
+species_022: 
+  sex_difference: f
+  name: Canada Goose (aleutian)
+  wing_min: "0"
+  code: CAGOa
+  foot_type_family_id: "17"
+  bill_max: "999"
+  subgroup_id: "3"
+  group_id: "11"
+  id: "22"
+  tarsus_max: "999"
+  bill_min: "0"
+  wing_max: "999"
+  tarsus_min: "0"
+  active: t
+species_109: 
+  sex_difference: f
+  name: Trumpeter Swan
+  wing_min: "0"
+  code: TRSW
+  foot_type_family_id: "17"
+  bill_max: "145"
+  subgroup_id: 
+  group_id: "32"
+  id: "112"
+  tarsus_max: "131"
+  bill_min: "105"
+  wing_max: "999"
+  tarsus_min: "101"
+  active: t
+species_051: 
+  sex_difference: f
+  name: Heermann's Gull
+  wing_min: "39"
+  code: HEEG
+  foot_type_family_id: "7"
+  bill_max: "70"
+  subgroup_id: "14"
+  group_id: "12"
+  id: "53"
+  tarsus_max: "76"
+  bill_min: "53"
+  wing_max: "46"
+  tarsus_min: "62"
+  active: t
+species_023: 
+  sex_difference: f
+  name: Canada Goose (canadensis)
+  wing_min: "45"
+  code: CAGOc
+  foot_type_family_id: "17"
+  bill_max: "65"
+  subgroup_id: "3"
+  group_id: "11"
+  id: "23"
+  tarsus_max: "97"
+  bill_min: "48"
+  wing_max: "55"
+  tarsus_min: "78"
+  active: t
+species_052: 
+  sex_difference: f
+  name: Herring Gull
+  wing_min: "33"
+  code: HEGU
+  foot_type_family_id: "7"
+  bill_max: "48"
+  subgroup_id: "14"
+  group_id: "12"
+  id: "54"
+  tarsus_max: "58"
+  bill_min: "37"
+  wing_max: "37"
+  tarsus_min: "49"
+  active: t
+species_024: 
+  sex_difference: f
+  name: Canada Goose (minima)
+  wing_min: "33"
+  code: CAGOm
+  foot_type_family_id: "17"
+  bill_max: "32"
+  subgroup_id: "3"
+  group_id: "11"
+  id: "24"
+  tarsus_max: "75"
+  bill_min: "25"
+  wing_max: "39"
+  tarsus_min: "60"
+  active: t
+species_080: 
+  sex_difference: f
+  name: Red Phalarope
+  wing_min: "12"
+  code: REPH
+  foot_type_family_id: "14"
+  bill_max: "25"
+  subgroup_id: 
+  group_id: "25"
+  id: "82"
+  tarsus_max: "23"
+  bill_min: "20"
+  wing_max: "14"
+  tarsus_min: "21"
+  active: t
+species_053: 
+  sex_difference: f
+  name: Horned Grebe
+  wing_min: "13"
+  code: "HOGR "
+  foot_type_family_id: "4"
+  bill_max: "26"
+  subgroup_id: "38"
+  group_id: "29"
+  id: "55"
+  tarsus_max: "51"
+  bill_min: "21"
+  wing_max: "15"
+  tarsus_min: "42"
+  active: t
+species_025: 
+  sex_difference: f
+  name: Caspian Tern
+  wing_min: "39"
+  code: CATE
+  foot_type_family_id: "7"
+  bill_max: "75"
+  subgroup_id: "44"
+  group_id: "33"
+  id: "25"
+  tarsus_max: "46"
+  bill_min: "60"
+  wing_max: "44"
+  tarsus_min: "40"
+  active: t
+species_081: 
+  sex_difference: t
+  name: Red-breasted Merganser
+  wing_min: "21"
+  code: RBME
+  foot_type_family_id: "17"
+  bill_max: "50"
+  subgroup_id: "24"
+  group_id: "8"
+  id: "83"
+  tarsus_max: "64"
+  bill_min: "43"
+  wing_max: "25"
+  tarsus_min: "54"
+  active: f
+species_054: 
+  sex_difference: f
+  name: Horned Puffin
+  wing_min: "17"
+  code: HOPU
+  foot_type_family_id: "1"
+  bill_max: "56"
+  subgroup_id: "30"
+  group_id: "18"
+  id: "56"
+  tarsus_max: "37"
+  bill_min: "45"
+  wing_max: "21"
+  tarsus_min: "25"
+  active: t
+species_026: 
+  sex_difference: f
+  name: Cassin's Auklet
+  wing_min: "11"
+  code: CAAU
+  foot_type_family_id: "1"
+  bill_max: "22"
+  subgroup_id: "2"
+  group_id: "28"
+  id: "26"
+  tarsus_max: "28"
+  bill_min: "18"
+  wing_max: "13"
+  tarsus_min: "23"
+  active: t
+species_082: 
+  sex_difference: f
+  name: Red-breasted Sapsucker
+  wing_min: "12"
+  code: RBSA
+  foot_type_family_id: "18"
+  bill_max: "26"
+  subgroup_id: "32"
+  group_id: "31"
+  id: "84"
+  tarsus_max: "22"
+  bill_min: "22"
+  wing_max: "13"
+  tarsus_min: "19"
+  active: t
+species_110: 
+  sex_difference: f
+  name: Tufted Puffin
+  wing_min: "18"
+  code: TUPU
+  foot_type_family_id: "1"
+  bill_max: "66"
+  subgroup_id: "30"
+  group_id: "18"
+  id: "113"
+  tarsus_max: "42"
+  bill_min: "50"
+  wing_max: "22"
+  tarsus_min: "31"
+  active: t
+species_027: 
+  sex_difference: t
+  name: Chicken
+  wing_min: "0"
+  code: CHIC
+  foot_type_family_id: "10"
+  bill_max: "999"
+  subgroup_id: "28"
+  group_id: "26"
+  id: "27"
+  tarsus_max: "999"
+  bill_min: "0"
+  wing_max: "999"
+  tarsus_min: "0"
+  active: t
+species_083: 
+  sex_difference: f
+  name: Red-faced Cormorant
+  wing_min: "24"
+  code: RFCO
+  foot_type_family_id: "12"
+  bill_max: "61"
+  subgroup_id: "19"
+  group_id: "5"
+  id: "85"
+  tarsus_max: "60"
+  bill_min: "50"
+  wing_max: "28"
+  tarsus_min: "52"
+  active: t
+species_055: 
+  sex_difference: t
+  name: King Eider
+  wing_min: "0"
+  code: KIEI
+  foot_type_family_id: "17"
+  bill_max: "999"
+  subgroup_id: "9"
+  group_id: "8"
+  id: "57"
+  tarsus_max: "999"
+  bill_min: "0"
+  wing_max: "999"
+  tarsus_min: "0"
+  active: t
+species_111: 
+  sex_difference: f
+  name: Unknown
+  wing_min: "0"
+  code: UNK
+  foot_type_family_id: "16"
+  bill_max: "999"
+  subgroup_id: "46"
+  group_id: "35"
+  id: "114"
+  tarsus_max: "999"
+  bill_min: "0"
+  wing_max: "999"
+  tarsus_min: "0"
+  active: t
+species_028: 
+  sex_difference: t
+  name: Clark's Grebe
+  wing_min: "18"
+  code: CLGR
+  foot_type_family_id: "4"
+  bill_max: "84"
+  subgroup_id: "21"
+  group_id: "19"
+  id: "28"
+  tarsus_max: "80"
+  bill_min: "67"
+  wing_max: "21"
+  tarsus_min: "55"
+  active: t
+species_084: 
+  sex_difference: f
+  name: Red-legged Kittiwake
+  wing_min: "30"
+  code: RLKI
+  foot_type_family_id: "7"
+  bill_max: "33"
+  subgroup_id: "18"
+  group_id: "17"
+  id: "86"
+  tarsus_max: "32"
+  bill_min: "28"
+  wing_max: "33"
+  tarsus_min: "23"
+  active: t
+species_056: 
+  sex_difference: f
+  name: Kittlitz's Murrelet
+  wing_min: "0"
+  code: KIMU
+  foot_type_family_id: "1"
+  bill_max: "999"
+  subgroup_id: "25"
+  group_id: "28"
+  id: "58"
+  tarsus_max: "999"
+  bill_min: "0"
+  wing_max: "999"
+  tarsus_min: "0"
+  active: t
+species_029: 
+  sex_difference: t
+  name: Common Eider
+  wing_min: "0"
+  code: COEI
+  foot_type_family_id: "17"
+  bill_max: "999"
+  subgroup_id: "9"
+  group_id: "8"
+  id: "29"
+  tarsus_max: "999"
+  bill_min: "0"
+  wing_max: "999"
+  tarsus_min: "0"
+  active: t
+species_085: 
+  sex_difference: f
+  name: Red-necked Grebe
+  wing_min: "18"
+  code: RNGR
+  foot_type_family_id: "4"
+  bill_max: "58"
+  subgroup_id: "38"
+  group_id: "29"
+  id: "87"
+  tarsus_max: "71"
+  bill_min: "43"
+  wing_max: "21"
+  tarsus_min: "57"
+  active: t
+species_057: 
+  sex_difference: f
+  name: Large Immature Gull
+  wing_min: "0"
+  code: LIGU
+  foot_type_family_id: "7"
+  bill_max: "999"
+  subgroup_id: "14"
+  group_id: "12"
+  id: "59"
+  tarsus_max: "999"
+  bill_min: "0"
+  wing_max: "999"
+  tarsus_min: "0"
+  active: t
+species_112: 
+  sex_difference: t
+  name: Varied Thrush
+  wing_min: "0"
+  code: VATH
+  foot_type_family_id: "9"
+  bill_max: "999"
+  subgroup_id: "45"
+  group_id: "32"
+  id: "115"
+  tarsus_max: "999"
+  bill_min: "0"
+  wing_max: "999"
+  tarsus_min: "0"
+  active: t
+species_086: 
+  sex_difference: f
+  name: Red-Throated Loon
+  wing_min: "26"
+  code: RTLO
+  foot_type_family_id: "8"
+  bill_max: "57"
+  subgroup_id: "40"
+  group_id: "30"
+  id: "88"
+  tarsus_max: "78"
+  bill_min: "46"
+  wing_max: "29"
+  tarsus_min: "66"
+  active: t
+species_058: 
+  sex_difference: f
+  name: Laysan Albatross
+  wing_min: "47"
+  code: LAAL
+  foot_type_family_id: "15"
+  bill_max: "85"
+  subgroup_id: "1"
+  group_id: "3"
+  id: "60"
+  tarsus_max: "112"
+  bill_min: "80"
+  wing_max: "50"
+  tarsus_min: "100"
+  active: t
+species_113: 
+  sex_difference: t
+  name: Western Grebe
+  wing_min: "18"
+  code: WEGR
+  foot_type_family_id: "4"
+  bill_max: "80"
+  subgroup_id: "21"
+  group_id: "19"
+  id: "116"
+  tarsus_max: "84"
+  bill_min: "55"
+  wing_max: "21"
+  tarsus_min: "67"
+  active: t
+species_087: 
+  sex_difference: f
+  name: Rhinoceros Auklet
+  wing_min: "17"
+  code: RHAU
+  foot_type_family_id: "1"
+  bill_max: "36"
+  subgroup_id: "30"
+  group_id: "18"
+  id: "89"
+  tarsus_max: "34"
+  bill_min: "30"
+  wing_max: "19"
+  tarsus_min: "26"
+  active: t
+species_059: 
+  sex_difference: f
+  name: Leach's Storm-Petrel
+  wing_min: "14"
+  code: LESP
+  foot_type_family_id: "15"
+  bill_max: "17"
+  subgroup_id: "43"
+  group_id: "24"
+  id: "61"
+  tarsus_max: "25"
+  bill_min: "14"
+  wing_max: "17"
+  tarsus_min: "21"
+  active: t
+species_114: 
+  sex_difference: f
+  name: Western Gull
+  wing_min: "38"
+  code: WEGU
+  foot_type_family_id: "7"
+  bill_max: "61"
+  subgroup_id: "14"
+  group_id: "12"
+  id: "117"
+  tarsus_max: "76"
+  bill_min: "47"
+  wing_max: "44"
+  tarsus_min: "55"
+  active: t

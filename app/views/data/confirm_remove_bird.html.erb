@@ -1,0 +1,11 @@
+Are you sure you want to delete this bird?
+
+<h3><%= render :partial => 'bird_name', :locals => {:bird => @bird}%></h3>
+
+<% form_tag :action => "remove_bird" do %>
+
+  <%= hidden_field :bird, :id, :value => @bird.id %>
+
+  <%= button_div(:submit => 'Remove Bird', :go_back => {:url => "4"}) %>
+
+<% end %>

@@ -1,0 +1,234 @@
+# == Schema Information
+#
+#  id                  :integer       not null, primary key
+#  foot_type_family_id :integer       not null
+#  name                :string(255)   not null
+#  code                :string(5)     not null
+#  active              :boolean       default(TRUE)
+#  description         :string(255)   
+#  composite           :boolean       
+#
+
+--- 
+groups_035: 
+  name: Unknown
+  code: UNK
+  foot_type_family_id: "16"
+  id: "35"
+  active: f
+groups_024: 
+  name: Petrels
+  code: PTL
+  foot_type_family_id: "15"
+  id: "24"
+  active: t
+groups_013: 
+  name: Hawks
+  code: HWK
+  foot_type_family_id: "13"
+  id: "13"
+  active: t
+groups_002: 
+  name: 4-Toed Shorebirds
+  code: 4TSH
+  foot_type_family_id: "14"
+  id: "2"
+  active: t
+groups_036: 
+  name: Vultures
+  code: VUL
+  foot_type_family_id: "20"
+  id: "36"
+  active: t
+groups_025: 
+  name: Phalaropes
+  code: PLP
+  foot_type_family_id: "14"
+  id: "25"
+  active: t
+groups_014: 
+  name: Herons
+  code: HRN
+  foot_type_family_id: "5"
+  id: "14"
+  active: t
+groups_003: 
+  name: Albatross
+  code: ALB
+  foot_type_family_id: "15"
+  id: "3"
+  active: t
+groups_037: 
+  name: Egrets
+  code: EGRT
+  foot_type_family_id: "5"
+  id: "37"
+  active: t
+groups_026: 
+  name: Pheasants
+  code: PHEA
+  foot_type_family_id: "10"
+  id: "26"
+  active: t
+groups_015: 
+  name: Jaegers
+  code: LGR
+  foot_type_family_id: "7"
+  id: "15"
+  active: t
+groups_004: 
+  name: Coots
+  code: "CTS  "
+  foot_type_family_id: "2"
+  id: "4"
+  active: t
+groups_027: 
+  name: Pigeons
+  code: PGN
+  foot_type_family_id: "11"
+  id: "27"
+  active: t
+groups_016: 
+  name: Kingfishers
+  code: KING
+  foot_type_family_id: "6"
+  id: "16"
+  active: t
+groups_005: 
+  name: Cormorants
+  code: CRMT
+  foot_type_family_id: "12"
+  id: "5"
+  active: t
+groups_028: 
+  name: Small Alcids
+  code: SMA
+  foot_type_family_id: "1"
+  id: "28"
+  active: t
+groups_017: 
+  name: Kittiwakes
+  code: KITT
+  foot_type_family_id: "7"
+  id: "17"
+  active: t
+groups_006: 
+  name: Corvids
+  code: CVD
+  foot_type_family_id: "9"
+  id: "6"
+  active: t
+groups_029: 
+  name: Small Grebe
+  code: SMG
+  foot_type_family_id: "4"
+  id: "29"
+  active: t
+groups_018: 
+  name: Lg Alcids
+  code: LGA
+  foot_type_family_id: "1"
+  id: "18"
+  active: t
+groups_007: 
+  name: Cranes
+  code: CRN
+  foot_type_family_id: "3"
+  id: "7"
+  active: t
+groups_030: 
+  name: Small Loons
+  code: SML
+  foot_type_family_id: "8"
+  id: "30"
+  active: t
+groups_019: 
+  name: Large grebes
+  code: LGG
+  foot_type_family_id: "4"
+  id: "19"
+  active: t
+groups_008: 
+  name: Diving Ducks
+  code: DIVD
+  foot_type_family_id: "17"
+  id: "8"
+  active: t
+groups_031: 
+  name: Small Woodpeckers
+  code: SMW
+  foot_type_family_id: "18"
+  id: "31"
+  active: t
+groups_020: 
+  name: Large Loons
+  code: LGL
+  foot_type_family_id: "8"
+  id: "20"
+  active: t
+groups_009: 
+  name: Eagles
+  code: EGL
+  foot_type_family_id: "13"
+  id: "9"
+  active: t
+groups_032: 
+  name: Songbirds
+  code: SNG
+  foot_type_family_id: "9"
+  id: "32"
+  active: t
+groups_021: 
+  name: Owls
+  code: Owl
+  foot_type_family_id: "13"
+  id: "21"
+  active: t
+groups_010: 
+  name: Falcons
+  code: FLN
+  foot_type_family_id: "13"
+  id: "10"
+  active: t
+groups_033: 
+  name: Terns
+  code: TRN
+  foot_type_family_id: "7"
+  id: "33"
+  active: t
+groups_022: 
+  name: Partly-Webbed Shorebirds
+  code: PWS
+  foot_type_family_id: "14"
+  id: "22"
+  active: t
+groups_011: 
+  name: Geese
+  code: GEES
+  foot_type_family_id: "17"
+  id: "11"
+  active: t
+groups_034: 
+  name: Tippers
+  code: TPRL
+  foot_type_family_id: "17"
+  id: "34"
+  active: t
+groups_023: 
+  name: Pelicans
+  code: PLN
+  foot_type_family_id: "12"
+  id: "23"
+  active: t
+groups_012: 
+  name: Gulls
+  code: GUL
+  foot_type_family_id: "7"
+  id: "12"
+  active: t
+groups_001: 
+  name: 3-Toed Shorebirds
+  code: 3TSH
+  foot_type_family_id: "14"
+  id: "1"
+  active: t

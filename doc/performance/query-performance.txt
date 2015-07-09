@@ -1,0 +1,307 @@
+COASST: Query Performance
+
+EXPLAIN ANALYZE SELECT * FROM surveys s
+    LEFT JOIN birds b ON s.id = b.survey_id 
+    LEFT JOIN plumages pl ON pl.id = b.plumage_id
+    LEFT JOIN ages a ON a.id = b.age_id
+    LEFT JOIN species sp ON sp.id = b.species_id 
+    LEFT JOIN groups g ON g.id = b.group_id 
+    LEFT JOIN subgroups sg ON sg.id = b.subgroup_id 
+    LEFT JOIN beaches be ON s.beach_id = be.id 
+    LEFT JOIN regions r ON be.region_id = r.id 
+    WHERE s.survey_date >= '01-01-2008' AND
+          s.survey_date <= '01-01-2008'
+    ORDER BY s.survey_date;
+
+--------------------------------
+ Sort  (cost=6312.53..6312.53 rows=2 width=5539)
+   Sort Key: s.survey_date
+   ->  Nested Loop Left Join  (cost=0.00..6312.52 rows=2 width=5539)
+         Join Filter: (be.region_id = r.id)
+         ->  Nested Loop Left Join  (cost=0.00..6309.93 rows=2 width=4987)
+               ->  Nested Loop Left Join  (cost=0.00..6309.37 rows=2 width=4454)
+                     ->  Nested Loop Left Join  (cost=0.00..6308.81 rows=2 width=3934)
+                           ->  Nested Loop Left Join  (cost=0.00..6308.25 rows=2 width=3852)
+                                 ->  Nested Loop Left Join  (cost=0.00..6307.69 rows=2 width=2786)
+                                       ->  Nested Loop Left Join  (cost=0.00..6307.13 rows=2 width=2262)
+                                             Join Filter: (s.id = b.survey_id)
+                                             ->  Nested Loop Left Join  (cost=0.00..1116.99 rows=1 width=472)
+                                                   ->  Seq Scan on surveys s  (cost=0.00..1108.70 rows=1 width=193)
+                                                         Filter: ((survey_date >= '2008-01-01'::date) AND (survey_date <= '2008-01-01'::date))
+                                                   ->  Index Scan using beaches_pkey on beaches be  (cost=0.00..8.27 rows=1 width=279)
+                                                         Index Cond: (s.beach_id = be.id)
+                                             ->  Seq Scan on birds b  (cost=0.00..4666.73 rows=41873 width=1790)
+                                       ->  Index Scan using subgroups_pkey on subgroups sg  (cost=0.00..0.27 rows=1 width=524)
+                                             Index Cond: (sg.id = b.subgroup_id)
+                                 ->  Index Scan using groups_pkey on groups g  (cost=0.00..0.27 rows=1 width=1066)
+                                       Index Cond: (g.id = b.group_id)
+                           ->  Index Scan using species_pkey on species sp  (cost=0.00..0.27 rows=1 width=82)
+                                 Index Cond: (sp.id = b.species_id)
+                     ->  Index Scan using ages_pkey on ages a  (cost=0.00..0.27 rows=1 width=520)
+                           Index Cond: (a.id = b.age_id)
+               ->  Index Scan using plumages_pkey on plumages pl  (cost=0.00..0.27 rows=1 width=533)
+                     Index Cond: (pl.id = b.plumage_id)
+         ->  Seq Scan on regions r  (cost=0.00..1.13 rows=13 width=552)
+(28 rows)
+
+ Sort  (cost=6312.53..6312.53 rows=2 width=5539) (actual time=1484.085..1484.085 rows=11 loops=1)
+   Sort Key: s.survey_date
+   Sort Method:  quicksort  Memory: 35kB
+   ->  Nested Loop Left Join  (cost=0.00..6312.52 rows=2 width=5539) (actual time=156.009..1484.085 rows=11 loops=1)
+         Join Filter: (be.region_id = r.id)
+         ->  Nested Loop Left Join  (cost=0.00..6309.93 rows=2 width=4987) (actual time=156.009..1484.085 rows=11 loops=1)
+               ->  Nested Loop Left Join  (cost=0.00..6309.37 rows=2 width=4454) (actual time=156.009..1484.085 rows=11 loops=1)
+                     ->  Nested Loop Left Join  (cost=0.00..6308.81 rows=2 width=3934) (actual time=156.009..1484.085 rows=11 loops=1)
+                           ->  Nested Loop Left Join  (cost=0.00..6308.25 rows=2 width=3852) (actual time=156.009..1484.085 rows=11 loops=1)
+                                 ->  Nested Loop Left Join  (cost=0.00..6307.69 rows=2 width=2786) (actual time=156.009..1484.085 rows=11 loops=1)
+                                       ->  Nested Loop Left Join  (cost=0.00..6307.13 rows=2 width=2262) (actual time=156.009..1484.085 rows=11 loops=1)
+                                             Join Filter: (s.id = b.survey_id)
+                                             ->  Nested Loop Left Join  (cost=0.00..1116.99 rows=1 width=472) (actual time=12.001..20.002 rows=6 loops=1)
+                                                   ->  Seq Scan on surveys s  (cost=0.00..1108.70 rows=1 width=193) (actual time=12.001..20.002 rows=6 loops=1)
+                                                         Filter: ((survey_date >= '2008-01-01'::date) AND (survey_date <= '2008-01-01'::date))
+                                                   ->  Index Scan using beaches_pkey on beaches be  (cost=0.00..8.27 rows=1 width=279) (actual time=0.000..0.000 rows=1 loops=6)
+                                                         Index Cond: (s.beach_id = be.id)
+                                             ->  Seq Scan on birds b  (cost=0.00..4666.73 rows=41873 width=1790) (actual time=0.000..154.008 rows=41348 loops=6)
+                                       ->  Index Scan using subgroups_pkey on subgroups sg  (cost=0.00..0.27 rows=1 width=524) (actual time=0.000..0.000 rows=0 loops=11)
+                                             Index Cond: (sg.id = b.subgroup_id)
+                                 ->  Index Scan using groups_pkey on groups g  (cost=0.00..0.27 rows=1 width=1066) (actual time=0.000..0.000 rows=0 loops=11)
+                                       Index Cond: (g.id = b.group_id)
+                           ->  Index Scan using species_pkey on species sp  (cost=0.00..0.27 rows=1 width=82) (actual time=0.000..0.000 rows=1 loops=11)
+                                 Index Cond: (sp.id = b.species_id)
+                     ->  Index Scan using ages_pkey on ages a  (cost=0.00..0.27 rows=1 width=520) (actual time=0.000..0.000 rows=1 loops=11)
+                           Index Cond: (a.id = b.age_id)
+               ->  Index Scan using plumages_pkey on plumages pl  (cost=0.00..0.27 rows=1 width=533) (actual time=0.000..0.000 rows=1 loops=11)
+                     Index Cond: (pl.id = b.plumage_id)
+         ->  Seq Scan on regions r  (cost=0.00..1.13 rows=13 width=552) (actual time=0.000..0.000 rows=14 loops=11)
+ Total runtime: 1484.085 ms
+ Total runtime: 780.044 ms
+ Total runtime: 772.044 ms
+ Total runtime: 1212.069 ms 
+Total runtime: 832.048 ms
+
+
+after adding index on survey_date:
+
+
+Nested Loop Left Join  (cost=0.00..5201.32 rows=2 width=2503) (actual time=116.007..920.052 rows=11 loops=1)
+   Join Filter: (be.region_id = r.id)
+   ->  Nested Loop Left Join  (cost=0.00..5198.69 rows=2 width=2477) (actual time=116.007..920.052 rows=11 loops=1)
+         ->  Nested Loop Left Join  (cost=0.00..5198.13 rows=2 width=2462) (actual time=116.007..920.052 rows=11 loops=1)
+               ->  Nested Loop Left Join  (cost=0.00..5197.56 rows=2 width=2450) (actual time=116.007..920.052 rows=11 loops=1)
+                     ->  Nested Loop Left Join  (cost=0.00..5197.00 rows=2 width=2368) (actual time=116.007..920.052 rows=11 loops=1)
+                           ->  Nested Loop Left Join  (cost=0.00..5196.44 rows=2 width=2312) (actual time=116.007..920.052 rows=11 loops=1)
+                                 ->  Nested Loop Left Join  (cost=0.00..5195.88 rows=2 width=2295) (actual time=116.007..920.052 rows=11 loops=1)
+                                       Join Filter: (s.id = b.survey_id)
+                                       ->  Nested Loop Left Join  (cost=0.00..16.55 rows=1 width=503) (actual time=0.000..0.000 rows=6 loops=1)
+                                             ->  Index Scan using survey_date_idx on surveys s  (cost=0.00..8.27 rows=1 width=191) (actual time=0.000..0.000 rows=6 loops=1)
+                                                   Index Cond: ((survey_date >= '2008-01-01'::date) AND (survey_date <= '2008-01-01'::date))
+                                             ->  Index Scan using beaches_pkey on beaches be  (cost=0.00..8.27 rows=1 width=312) (actual time=0.000..0.000 rows=1 loops=6)
+                                                   Index Cond: (s.beach_id = be.id)
+                                       ->  Seq Scan on birds b  (cost=0.00..4662.48 rows=41348 width=1792) (actual time=0.000..90.672 rows=41348 loops=6)
+                                 ->  Index Scan using subgroups_pkey on subgroups sg  (cost=0.00..0.27 rows=1 width=17) (actual time=0.000..0.000 rows=0 loops=11)
+                                       Index Cond: (sg.id = b.subgroup_id)
+                           ->  Index Scan using groups_pkey on groups g  (cost=0.00..0.27 rows=1 width=56) (actual time=0.000..0.000 rows=0 loops=11)
+                                 Index Cond: (g.id = b.group_id)
+                     ->  Index Scan using species_pkey on species sp  (cost=0.00..0.27 rows=1 width=82) (actual time=0.000..0.000 rows=1 loops=11)
+                           Index Cond: (sp.id = b.species_id)
+               ->  Index Scan using ages_pkey on ages a  (cost=0.00..0.27 rows=1 width=12) (actual time=0.000..0.000 rows=1 loops=11)
+                     Index Cond: (a.id = b.age_id)
+         ->  Index Scan using plumages_pkey on plumages pl  (cost=0.00..0.27 rows=1 width=15) (actual time=0.000..0.000 rows=1 loops=11)
+               Index Cond: (pl.id = b.plumage_id)
+   ->  Seq Scan on regions r  (cost=0.00..1.14 rows=14 width=26) (actual time=0.000..0.000 rows=14 loops=11)
+ Total runtime: 920.052 ms
+ Total runtime: 804.045 ms
+ Total runtime: 728.041 ms
+ Total runtime: 936.053 ms
+ Total runtime: 848.048 ms
+
+
+EXPLAIN ANALYZE SELECT * FROM surveys s
+    LEFT JOIN birds b ON s.id = b.survey_id 
+    LEFT JOIN plumages pl ON pl.id = b.plumage_id
+    LEFT JOIN ages a ON a.id = b.age_id
+    LEFT JOIN species sp ON sp.id = b.species_id 
+    LEFT JOIN groups g ON g.id = b.group_id 
+    LEFT JOIN subgroups sg ON sg.id = b.subgroup_id 
+    LEFT JOIN beaches be ON s.beach_id = be.id 
+    LEFT JOIN regions r ON be.region_id = r.id 
+    WHERE s.survey_date >= '01-01-2008' AND
+          s.survey_date <= '01-01-2008'
+    ORDER BY s.survey_date;
+
+
+after adding an inext to the bird.survey_id: Sort  (cost=9968.44..9969.84 rows=560 width=2500) (actual time=24.002..28.002 rows=604 loops=1)
+   Sort Key: s.survey_date
+   Sort Method:  quicksort  Memory: 808kB
+   ->  Hash Left Join  (cost=44.04..9337.38 rows=560 width=2500) (actual time=0.000..20.001 rows=604 loops=1)
+         Hash Cond: (be.region_id = r.id)
+         ->  Hash Left Join  (cost=42.73..9328.45 rows=560 width=2474) (actual time=0.000..16.001 rows=604 loops=1)
+               Hash Cond: (b.plumage_id = pl.id)
+               ->  Hash Left Join  (cost=41.39..9319.63 rows=560 width=2459) (actual time=0.000..12.000 rows=604 loops=1)
+                     Hash Cond: (b.age_id = a.id)
+                     ->  Hash Left Join  (cost=40.28..9310.86 rows=560 width=2447) (actual time=0.000..8.000 rows=604 loops=1)
+                           Hash Cond: (b.species_id = sp.id)
+                           ->  Hash Left Join  (cost=34.13..9297.02 rows=560 width=2365) (actual time=0.000..8.000 rows=604 loops=1)
+                                 Hash Cond: (b.group_id = g.id)
+                                 ->  Hash Left Join  (cost=32.25..9290.38 rows=560 width=2309) (actual time=0.000..8.000 rows=604 loops=1)
+                                       Hash Cond: (b.subgroup_id = sg.id)
+                                       ->  Nested Loop Left Join  (cost=29.81..9284.12 rows=560 width=2292) (actual time=0.000..8.000 rows=604 loops=1)
+                                             ->  Hash Left Join  (cost=29.81..571.92 rows=246 width=505) (actual time=0.000..4.000 rows=242 loops=1)
+                                                   Hash Cond: (s.beach_id = be.id)
+                                                   ->  Bitmap Heap Scan on surveys s  (cost=6.77..545.50 rows=246 width=193) (actual time=0.000..4.000 rows=242 loops=1)
+                                                         Recheck Cond: ((survey_date >= '2008-01-01'::date) AND (survey_date <= '2008-01-31'::date))
+                                                         ->  Bitmap Index Scan on survey_date_idx  (cost=0.00..6.71 rows=246 width=0) (actual time=0.000..0.000 rows=242 loops=1)
+                                                               Index Cond: ((survey_date >= '2008-01-01'::date) AND (survey_date <= '2008-01-31'::date))
+                                                   ->  Hash  (cost=17.46..17.46 rows=446 width=312) (actual time=0.000..0.000 rows=446 loops=1)
+                                                         ->  Seq Scan on beaches be  (cost=0.00..17.46 rows=446 width=312) (actual time=0.000..0.000 rows=446 loops=1)
+                                             ->  Index Scan using bird_survey_id_idx on birds b  (cost=0.00..35.24 rows=14 width=1787) (actual time=0.017..0.017 rows=2 loops=242)
+                                                   Index Cond: (s.id = b.survey_id)
+                                       ->  Hash  (cost=1.64..1.64 rows=64 width=17) (actual time=0.000..0.000 rows=64 loops=1)
+                                             ->  Seq Scan on subgroups sg  (cost=0.00..1.64 rows=64 width=17) (actual time=0.000..0.000 rows=64 loops=1)
+                                 ->  Hash  (cost=1.39..1.39 rows=39 width=56) (actual time=0.000..0.000 rows=39 loops=1)
+                                       ->  Seq Scan on groups g  (cost=0.00..1.39 rows=39 width=56) (actual time=0.000..0.000 rows=39 loops=1)
+                           ->  Hash  (cost=4.40..4.40 rows=140 width=82) (actual time=0.000..0.000 rows=140 loops=1)
+                                 ->  Seq Scan on species sp  (cost=0.00..4.40 rows=140 width=82) (actual time=0.000..0.000 rows=140 loops=1)
+                     ->  Hash  (cost=1.05..1.05 rows=5 width=12) (actual time=0.000..0.000 rows=5 loops=1)
+                           ->  Seq Scan on ages a  (cost=0.00..1.05 rows=5 width=12) (actual time=0.000..0.000 rows=5 loops=1)
+               ->  Hash  (cost=1.15..1.15 rows=15 width=15) (actual time=0.000..0.000 rows=15 loops=1)
+                     ->  Seq Scan on plumages pl  (cost=0.00..1.15 rows=15 width=15) (actual time=0.000..0.000 rows=15 loops=1)
+         ->  Hash  (cost=1.14..1.14 rows=14 width=26) (actual time=0.000..0.000 rows=14 loops=1)
+               ->  Seq Scan on regions r  (cost=0.00..1.14 rows=14 width=26) (actual time=0.000..0.000 rows=14 loops=1)
+ Total runtime: 28.002 ms
+
+
+A full year:
+
+Sort  (cost=32255.95..32272.81 rows=6744 width=2500) (actual time=2776.158..2832.161 rows=9582 loops=1)
+   Sort Key: s.survey_date
+   Sort Method:  external merge  Disk: 12552kB
+   ->  Hash Left Join  (cost=1166.28..17253.05 rows=6744 width=2500) (actual time=228.013..2644.149 rows=9582 l
+oops=1)
+         Hash Cond: (be.region_id = r.id)
+         ->  Hash Left Join  (cost=1164.97..17159.92 rows=6744 width=2474) (actual time=228.013..2608.147 rows=
+9582 loops=1)
+               Hash Cond: (b.species_id = sp.id)
+               ->  Hash Left Join  (cost=1158.82..17061.22 rows=6744 width=2392) (actual time=228.013..2548.144
+ rows=9582 loops=1)
+                     Hash Cond: (b.plumage_id = pl.id)
+                     ->  Hash Left Join  (cost=1157.48..16969.80 rows=6744 width=2377) (actual time=228.013..24
+88.136 rows=9582 loops=1)
+                           Hash Cond: (b.group_id = g.id)
+                           ->  Hash Left Join  (cost=1155.60..16910.60 rows=6744 width=2321) (actual time=228.0
+13..2440.134 rows=9582 loops=1)
+                                 Hash Cond: (s.beach_id = be.id)
+                                 ->  Hash Left Join  (cost=1132.57..16794.84 rows=6744 width=2009) (actual time
+=228.013..2408.131 rows=9582 loops=1)
+                                       Hash Cond: (b.subgroup_id = sg.id)
+                                       ->  Hash Left Join  (cost=1130.13..16746.36 rows=6744 width=1992) (actua
+l time=228.013..2368.129 rows=9582 loops=1)
+                                             Hash Cond: (b.age_id = a.id)
+                                             ->  Merge Right Join  (cost=1129.02..16652.99 rows=6744 width=1980
+) (actual time=228.013..2340.128 rows=9582 loops=1)
+                                                   Merge Cond: (b.survey_id = s.id)
+                                                   ->  Index Scan using bird_survey_id_idx on birds b  (cost=0.
+00..15319.44 rows=41349 width=1787) (actual time=0.000..2200.121 rows=41203 loops=1)
+                                                   ->  Sort  (cost=1129.02..1136.43 rows=2964 width=193) (actua
+l time=24.001..48.002 rows=9580 loops=1)
+                                                         Sort Key: s.id
+                                                         Sort Method:  external sort  Disk: 600kB
+                                                         ->  Bitmap Heap Scan on surveys s  (cost=66.63..958.09 rows=2964 width=193) (actual time=0.000..8.001 rows=3002 loops=1)
+                                                               Recheck Cond: ((survey_date >= '2008-01-01'::date) AND (survey_date <= '2008-12-31'::date))
+                                                               ->  Bitmap Index Scan on survey_date_idx  (cost=0.00..65.89 rows=2964 width=0) (actual time=0.000..0.000 rows=3002 loops=1)
+                                                                     Index Cond: ((survey_date >= '2008-01-01'::date) AND (survey_date <= '2008-12-31'::date))
+                                             ->  Hash  (cost=1.05..1.05 rows=5 width=12) (actual time=0.000..0.000 rows=5 loops=1)
+                                                   ->  Seq Scan on ages a  (cost=0.00..1.05 rows=5 width=12) (actual time=0.000..0.000 rows=5 loops=1)
+                                       ->  Hash  (cost=1.64..1.64 rows=64 width=17) (actual time=0.000..0.000 rows=64 loops=1)
+                                             ->  Seq Scan on subgroups sg  (cost=0.00..1.64 rows=64 width=17) (actual time=0.000..0.000 rows=64 loops=1)
+                                 ->  Hash  (cost=17.46..17.46 rows=446 width=312) (actual time=0.000..0.000 rows=446 loops=1)
+                                       ->  Seq Scan on beaches be  (cost=0.00..17.46 rows=446 width=312) (actual time=0.000..0.000 rows=446 loops=1)
+                           ->  Hash  (cost=1.39..1.39 rows=39 width=56) (actual time=0.000..0.000 rows=39 loops=1)
+                                 ->  Seq Scan on groups g  (cost=0.00..1.39 rows=39 width=56) (actual time=0.000..0.000 rows=39 loops=1)
+                     ->  Hash  (cost=1.15..1.15 rows=15 width=15) (actual time=0.000..0.000 rows=15 loops=1)
+                           ->  Seq Scan on plumages pl  (cost=0.00..1.15 rows=15 width=15) (actual time=0.000..0.000 rows=15 loops=1)
+               ->  Hash  (cost=4.40..4.40 rows=140 width=82) (actual time=0.000..0.000 rows=140 loops=1)
+                     ->  Seq Scan on species sp  (cost=0.00..4.40 rows=140 width=82) (actual time=0.000..0.000 rows=140 loops=1)
+         ->  Hash  (cost=1.14..1.14 rows=14 width=26) (actual time=0.000..0.000 rows=14 loops=1)
+               ->  Seq Scan on regions r  (cost=0.00..1.14 rows=14 width=26) (actual time=0.000..0.000 rows=14 loops=1)
+ Total runtime: 2876.164 ms
+
+      EXPLAIN ANALYZE SELECT 
+      EXTRACT(day FROM s.survey_date) AS survey_day,
+      EXTRACT(month FROM s.survey_date) AS survey_day,
+      EXTRACT(year FROM s.survey_date) AS survey_day,
+      s.survey_date,
+      s.id   AS survey_id,
+      s.code AS survey_code,
+      b.id   AS bird_code,
+      r.name AS region,
+      be.name as beach_name,
+      be.length as beach_length,
+      to_char(s.start_time, 'HH24:MI') AS survey_start_time,
+      to_char(s.end_time, 'HH24:MI') AS survey_end_time,
+      s.duration,
+      s.weather,
+      s.oil_present,
+      s.oil_frequency,
+      s.oil_sheen,
+      s.oil_tarballs,
+      s.oil_goopy,
+      s.oil_mousse,
+      s.oil_comment AS survey_oil_comment,
+      s.wood_present,
+      s.wood_size,
+      s.wood_continuity,
+      s.wood_zone,
+      s.wrack_present,
+      s.wrack_width,
+      s.wrack_continuity, 
+      s.verified,
+      be.substrate,
+      be.orientation,
+      s.comments AS survey_comments,
+      b.verified AS bird_verified,
+      b.refound AS bird_refound,
+      b.where_found as bird_where_found,
+      b.foot_condition,
+      b.eyes,
+      b.intact,
+      b.head AS head_present,
+      b.breast AS breast_present,
+      b.feet,
+      b.wings,
+      b.entangled,
+      b.entangled_comment,
+      b.oil,
+      b.oil_comment,
+      b.sex,
+      b.collected,
+      b.collected_comment,
+      b.photo_count,
+      b.tie_location,
+      b.tie_location_comment,
+      b.tie_number,
+      b.is_bird,
+      b.comment,
+      b.verification_comment,
+      b.identification_level,
+      b.tie_other,
+      sp.name AS species_name,
+      g.name AS group_name,
+      sg.name AS subgroup_name,
+      a.name AS age,
+      pl.name AS plumage,
+      b.bill_length,
+      b.wing_length,
+      b.tarsus_length
+      FROM surveys s 
+      LEFT JOIN birds b ON s.id = b.survey_id 
+      LEFT JOIN plumages pl ON pl.id = b.plumage_id
+      LEFT JOIN ages a ON a.id = b.age_id
+      LEFT JOIN species sp ON sp.id = b.species_id 
+      LEFT JOIN groups g ON g.id = b.group_id 
+      LEFT JOIN subgroups sg ON sg.id = b.subgroup_id 
+      LEFT JOIN beaches be ON s.beach_id = be.id 
+      LEFT JOIN regions r ON be.region_id = r.id 
+      WHERE s.survey_date >= '2008-01-01' AND
+            s.survey_date <= '2008-12-31'
+      ORDER BY s.survey_date;

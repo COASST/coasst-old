@@ -1,0 +1,27 @@
+<h1>Administer COASST</h1>
+
+<h3>Export</h3>
+<p>
+  <ul class="xlarge tall">
+    <li><%= link_to 'Export Data', :action => :export %></li>
+  </ul>
+</p>
+
+<h3>Update</h3>
+  <ul class="xlarge tall">
+    <li><%= link_to 'Beaches', :action => :beach %>
+      <ul>
+        <li><%= link_to 'Counties', :action => :county %></li>
+      </ul>
+    </li>
+    <li>
+      <%= link_to 'Species', :action => :species %>
+      <ul>
+        <li><%= link_to 'Groups', :action => :group %></li>
+        <li><%= link_to 'Subgroups', :action => :subgroup %></li>
+        <li><%= link_to 'Foot Type Families', :action => :foot_type_family %></li>
+        <li><%= link_to 'Plumages', :action => :plumage %></li>
+      </ul>
+    </li>
+    <li><%= link_to 'Volunteers', :action => :volunteer %></li>
+  </ul>

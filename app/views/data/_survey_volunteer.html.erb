@@ -1,0 +1,15 @@
+<tr id="element_<%= survey_volunteer.id %>">
+  <td id="label_<%= survey_volunteer.id %>">
+    <%= image_tag "icons/user.png" %>
+    <%= survey_volunteer.name %>
+  </td> 
+  <td>
+    <% if survey_volunteer != @submitter %>
+      <div class="buttons">
+        <%= link_to_remote "#{image_tag 'icons/delete.png'}Remove", 
+              {:url => {:action => action, :id => survey_volunteer.id}},
+              :class => 'delete label removeButton' %>
+      </div>
+    <% end %>
+  </td>
+</tr>

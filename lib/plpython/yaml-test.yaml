@@ -1,0 +1,48 @@
+--- !ruby/object:Bird
+attributes:
+  head: f
+  tie_color_middle: "6"
+  comment: possible kittiwake
+  foot_condition: Feet Missing
+  wings: Left Wing Present
+  code:
+  collected_comment: ""
+  photo_count: "3"
+  created_on: 2009-12-09 11:00:32.720544
+  where_found: Wrack
+  is_bird: t
+  survey_id: "17316"
+  foot_type_family_id: "7"
+  breast: f
+  eyes: Head Missing
+  tie_location_comment: ""
+  tie_number: "368"
+  original_data:
+  id: "39367"
+  group_id: "17"
+  subgroup_id:
+  intact: f
+  feet: Feet Missing
+  tarsus_length:
+  tie_color_closest: "3"
+  verification_method:
+  updated_on: 2009-12-09 11:06:21.396414
+  tie_other:
+  plumage_id: "1"
+  refound: f
+  sex:
+  wing_length: "25.80"
+  tie_location: Left Wing
+  tie_color_farthest: "8"
+  age_id: "4"
+  oil: f
+  oil_comment: ""
+  verification_comment:
+  species_id: "114"
+  verified: f
+  collected: f
+  entangled: Not
+  entangled_comment: ""
+  bill_length:
+  identification_level:
+  attributes_cache: {}

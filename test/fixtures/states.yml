@@ -1,0 +1,248 @@
+# == Schema Information
+#
+#  id     :integer       not null, primary key
+#  prefix :string(2)     not null
+#  name   :string(255)   not null
+#
+
+--- 
+states_054: 
+  name: Virgin Islands
+  prefix: VI
+  id: "54"
+states_043: 
+  name: Oregon
+  prefix: OR
+  id: "43"
+states_032: 
+  name: Nebraska
+  prefix: NE
+  id: "32"
+states_021: 
+  name: Kentucky
+  prefix: KY
+  id: "21"
+states_010: 
+  name: District of Columbia
+  prefix: DC
+  id: "10"
+states_055: 
+  name: Virginia
+  prefix: VA
+  id: "55"
+states_044: 
+  name: Palau
+  prefix: PW
+  id: "44"
+states_033: 
+  name: Nevada
+  prefix: NV
+  id: "33"
+states_022: 
+  name: Louisiana
+  prefix: LA
+  id: "22"
+states_011: 
+  name: Federated States of Micronesia
+  prefix: FM
+  id: "11"
+states_056: 
+  name: Washington
+  prefix: WA
+  id: "56"
+states_045: 
+  name: Pennsylvania
+  prefix: PA
+  id: "45"
+states_034: 
+  name: New Hampshire
+  prefix: NH
+  id: "34"
+states_023: 
+  name: Maine
+  prefix: ME
+  id: "23"
+states_012: 
+  name: Florida
+  prefix: FL
+  id: "12"
+states_001: 
+  name: Alabama
+  prefix: AL
+  id: "1"
+states_057: 
+  name: West Virginia
+  prefix: WV
+  id: "57"
+states_046: 
+  name: Puerto Rico
+  prefix: PR
+  id: "46"
+states_035: 
+  name: New Jersey
+  prefix: NJ
+  id: "35"
+states_024: 
+  name: Marshall Islands
+  prefix: MH
+  id: "24"
+states_013: 
+  name: Georgia
+  prefix: GA
+  id: "13"
+states_002: 
+  name: Alaska
+  prefix: AK
+  id: "2"
+states_058: 
+  name: Wisconsin
+  prefix: WI
+  id: "58"
+states_047: 
+  name: Rhode Island
+  prefix: RI
+  id: "47"
+states_036: 
+  name: New Mexico
+  prefix: NM
+  id: "36"
+states_025: 
+  name: Maryland
+  prefix: MD
+  id: "25"
+states_014: 
+  name: Guam
+  prefix: GU
+  id: "14"
+states_003: 
+  name: American Samoa
+  prefix: AS
+  id: "3"
+states_059: 
+  name: Wyoming
+  prefix: WY
+  id: "59"
+states_048: 
+  name: South Carolina
+  prefix: SC
+  id: "48"
+states_037: 
+  name: New York
+  prefix: NY
+  id: "37"
+states_026: 
+  name: Massachusetts
+  prefix: MA
+  id: "26"
+states_015: 
+  name: Hawaii
+  prefix: HI
+  id: "15"
+states_004: 
+  name: Arizona
+  prefix: AZ
+  id: "4"
+states_060: 
+  name: Unknown
+  prefix: XX
+  id: "60"
+states_049: 
+  name: South Dakota
+  prefix: SD
+  id: "49"
+states_038: 
+  name: North Carolina
+  prefix: NC
+  id: "38"
+states_027: 
+  name: Michigan
+  prefix: MI
+  id: "27"
+states_016: 
+  name: Idaho
+  prefix: ID
+  id: "16"
+states_005: 
+  name: Arkansas
+  prefix: AR
+  id: "5"
+states_050: 
+  name: Tennessee
+  prefix: TN
+  id: "50"
+states_039: 
+  name: North Dakota
+  prefix: ND
+  id: "39"
+states_028: 
+  name: Minnesota
+  prefix: MN
+  id: "28"
+states_017: 
+  name: Illinois
+  prefix: IL
+  id: "17"
+states_006: 
+  name: California
+  prefix: CA
+  id: "6"
+states_051: 
+  name: Texas
+  prefix: TX
+  id: "51"
+states_040: 
+  name: Northern Mariana Islands
+  prefix: MP
+  id: "40"
+states_029: 
+  name: Mississippi
+  prefix: MS
+  id: "29"
+states_018: 
+  name: Indiana
+  prefix: IN
+  id: "18"
+states_007: 
+  name: Colorado
+  prefix: CO
+  id: "7"
+states_052: 
+  name: Utah
+  prefix: UT
+  id: "52"
+states_041: 
+  name: Ohio
+  prefix: OH
+  id: "41"
+states_030: 
+  name: Missouri
+  prefix: MO
+  id: "30"
+states_019: 
+  name: Iowa
+  prefix: IA
+  id: "19"
+states_008: 
+  name: Connecticut
+  prefix: CT
+  id: "8"
+states_053: 
+  name: Vermont
+  prefix: VT
+  id: "53"
+states_042: 
+  name: Oklahoma
+  prefix: OK
+  id: "42"
+states_031: 
+  name: Montana
+  prefix: MT
+  id: "31"
+states_020: 
+  name: Kansas
+  prefix: KS
+  id: "20"
+states_009: 
+  name: Delaware
+  prefix: DE
+  id: "9"

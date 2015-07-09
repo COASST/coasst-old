@@ -1,0 +1,32 @@
+<h1>COASST Species List</h1>
+<p>
+  This table includes all species found by COASST since the program started in 1999, including total number
+  of birds found of each species and the percent of the overall total represented by each species.
+</p>
+
+<p class="h2f"># of Species: <%= @species_count %></h3>
+
+  <table class="report">
+    <tr>
+      <th class="left">Species</th>
+      <th>Count</th>
+      <th class="summary">Percent</th>
+    </tr>
+<% @sorted_counts.each do |species_id, count| %>
+  <tr>
+    <td class="left">
+      <% if not species_id.nil? %>
+        <%= link_to @species_by_id[species_id].name, :controller=>:species, :action=>:show, :id=>species_id %>
+      <% else %>
+        Unknown
+      <% end %>
+    </td>
+    <td class="pad-wide"><%= count %></td>
+    <td class="pad-xwide"><%= ((count * 100)/ @bird_count.to_f).truncate(2)  %></td>
+      </tr>
+<% end %>
+  <tr class="totals">
+    <td class="left"><i>TOTAL</i></td>
+    <td><%= @bird_count %></td>
+  </tr>
+</table>

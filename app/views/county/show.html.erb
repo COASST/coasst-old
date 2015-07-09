@@ -1,0 +1,16 @@
+<div style="float: left">
+<h1><%=h @county.name %> <%= @type %></h1>
+
+<%= display_field_group "Information",@county,[:state] %>
+
+<h3>County Beaches:</h3>
+<ul>
+<% for beach in @beaches %>
+  <li><%= link_to beach.name, :controller => 'beach', :action => 'show', :id => beach %></li>
+<% end %>
+</ul>
+</div>
+
+<% if @map %>
+  <%= @map.div(:width=>300, :height=>250) %>
+<% end %>

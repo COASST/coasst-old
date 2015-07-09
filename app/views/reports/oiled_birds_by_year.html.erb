@@ -1,0 +1,62 @@
+<h1>Oiled <%= params[:type] == "beach" ? "beaches" : "birds"%></h1>
+<p>
+  Occasionally, COASST finds dead oiled birds on the beach.  Very rarely, these birds are associated
+  with a known spill in the area.  In most cases, these oiling events are the only evidence of a mystery
+  release of oil somewhere in the coastal environment.  By documenting incidents of oiled birds, COASST is
+  able to track the rate of chronic oiling.  Fortunately, chronic oiling rates are low in all areas that COASST
+  currently monitors.  Data on oiled birds are presented in two ways:
+</p>
+<p>
+First, by species, including the total number of birds of each species that was found oiled and the percent of all oiled
+birds represented by each species.
+</p>
+<p>
+Second, by beach, including the total number of oiled birds found on each beach and the percent of all birds found on that beach that were oiled.
+For a breakdown of oiling data by year, please click the see species by year or see beaches by year links following each table.
+</p>
+<p><i>Note: Only verified data used for this report</i></p>
+
+<table class="report">
+  <% for year in @years %>
+    <tr>
+       <th class="left"><h3><%=year%></h3></td>
+    </tr>
+    <tr>
+      <th class="left"><%= params[:type] == "beach" ? "Beach" : "Species" %></th>
+      <th>Count</th>
+      <th class="summary">% of Total Oiled</th>
+    </tr>
+    <% item_list = @by_year_by_type[year].sort {|a,b| b[1] <=> a[1]} %>
+    <% item_list.each do |link_id,count| %>
+      <tr>
+        <td class="left">
+          <% if not link_id.nil? %>
+            <% category_name = @category_name[link_id] %>
+            <% if params[:type] == "beach" %>
+              <%= link_to category_name, :controller=>:beach, :action=>:show, :id=>link_id, :oiled=>1 if not category_name.nil? %>
+            <% else %>
+              <%= link_to category_name, :controller=>:species, :action=>:show, :id=>link_id, :oiled=>1 if not category_name.nil? %>
+            <% end %>
+          <% else %>
+            Unknown
+          <% end %>
+        </td>
+        <td class="pad-wide"><%= count %></td>
+        <td class="pad-xwide"><%= ((count * 100)/@oiled_by_year[year].to_f).truncate(2) %></td>
+      </tr>
+    <% end %>
+      <tr class="totals">
+        <td class="left">TOTAL</td>
+        <td class="pad-wide"><%=@oiled_by_year[year]%></td>
+        <td>Representing <%=((@oiled_by_year[year] * 100)/ @total_by_year[year].to_f).truncate(2) %>%<br />
+         of <%=year%> total</td>
+      </tr>
+  <% end %>
+
+</table>
+
+<h4>      Total birds oiled: <%=@total_oiled %>
+      of <%= @total_birds  %>
+      (<%= ((@total_oiled * 100) / @total_birds.to_f).truncate(2) %>%)</h4>
+
+<p><i>Note: Only verified data used for this report</i></p>

@@ -1,0 +1,28 @@
+    <table class="wide">
+      <tr>
+        <td><label for="first_name">First</label><span class="req"><b>*</b></span></td>
+        <td><label for="middle_intial"><acronym title="Middle Initial">MI</acronym></label></td>
+        <td><label for="last_name">Last</label><span class="req"><b>*</b></span></td>
+      </tr>
+      <tr>
+        <td>
+          <%= text_field :volunteer, :first_name, :size => 20 %>
+        </td>
+        <td>
+          <%= text_field :volunteer, :middle_initial, :size => 2 %>
+        </td>
+        <td>
+          <%= text_field :volunteer, :last_name, :size => 20 %>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="3"><label for="email">Email address</label><% 
+          if require_email == true 
+          %><span class="req"><b>*</b></span>
+         <% end %>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="3"><%= text_field :volunteer, :email, :size => 40 %></td>
+      </tr>
+    </table>

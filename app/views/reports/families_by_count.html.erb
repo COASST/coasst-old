@@ -1,0 +1,32 @@
+<h1>Families by count</h1>
+
+<p class="h2f"># of families: <%= @families_count %></p>
+
+<table class="report">
+  <tr>
+    <th class="left">Species</th>
+    <th>Count</th>
+    <th>Percent</th>
+    <th></th>
+  </tr>
+
+<%
+@sorted_counts.each do |family_id, count|
+%>
+  <tr>
+    <td class="left">
+      <% if not family_id.blank? and not @family_by_id[family_id].blank? %>
+        <%= @family_by_id[family_id].name %>
+      <% else %>
+        Unknown
+      <% end %>
+    </td>
+    <td class="pad-short"><%= count %></td>
+    <td class="pad-short"><%= ((count * 100)/ @bird_count.to_f).truncate(2)  %></td>
+  </tr>
+<% end %>
+</table>
+For a total of <%=@bird_count%> carcasses identified to species by COASST from <%=@min_year%> to <%=@max_year%>
+
+<br />
+

@@ -1,0 +1,108 @@
+<% if @year.nil? %>
+  <h1>COASST Top 10 </h1>
+<% else %>
+  <h1>COASST Species in <%= @year %></h1>
+<% end %>
+
+<p>
+  While the COASST species list totals more than 100, the majority of birds found are
+  of only a few species.  The following tables (and graphs) provide data on the top 10
+  species found cumulatively, and in each year.  Data include the total number of birds
+  found of each species and the percent of the overall total represented by each species.
+  Note that the increase in number of birds found over time reflects an increase in survey
+  effort (not an increase in the number of dead birds).
+</p>
+
+<% if !@gchart.nil? %>
+  <%= @gchart %>
+<% end %>
+
+<% if !@year.nil? %>
+<%# may be off by 1 since "Unknown" counted as species %>
+  <h3>Total species: <%= @counts_by_year[@year].length %></h3>
+<% end %>
+
+<% for year in @years.reverse %>
+  <% @sorted_counts = @counts_by_year[year] %>
+  <% bird_count = @totals_by_year[year] %>
+  <% top10_count = @top10_totals_by_year[year] %>
+  <% next if bird_count == 0%>
+  <p class="highlight">
+  <% if @year.nil? %>
+    <span class="h2f"><%= year %></span>
+  <% end %>
+    <%= link_to_remote "View as graph", :url=>{:action=>:species_by_count_by_year_inline, :year=>year, :format=>:graph} %>
+  </p>
+  <div id="graph-div-<%=year.to_s.downcase.gsub(" ","-")%>"></div>
+  <table class="report">
+    <tr>
+      <th class="left">Species</th>
+      <th>Count</th>
+      <th>Percent</th>
+      <th style="width: 14em;"></th>
+    </tr>
+
+  <%
+  @sorted_counts.each do |count_array|
+    species_id = count_array[0]
+    count = count_array[1]
+  %>
+    <% if count > 0 %>
+      <tr>
+        <td class="left">
+          <% if not species_id.nil? %>
+            <% if year !~ /All/i %>
+              <%= link_to @species_by_id[species_id].name, :controller=>:species, :action=>:show, :id=>species_id, :year=>year %>
+            <% else %>
+              <%= link_to @species_by_id[species_id].name, :controller=>:species, :action=>:show, :id=>species_id %>
+            <% end %>
+          <% else %>
+            Unknown
+          <% end %>
+        </td>
+
+        <td class="pad-wide"><%= count %></td>
+        <td class="pad-short"><%= ((count * 100)/ bird_count.to_f).truncate(2)  %></td>
+
+      </tr>
+    <% end %>
+  <% end %>
+  <tr class="totals">
+    <td class="left"><i>TOTAL</i></td>
+    <% if @year.nil? %>
+      <td><%=top10_count %></td>
+    <% else %>
+      <td><%=bird_count %></td>
+    <% end %>
+    <td colspan="2" style="text-align: left; padding-left: 15px;">
+    <% if year !~ /All/i %>
+      <% if @year.nil? %>
+        Representing <%=((top10_count * 100)/ bird_count.to_f).round %>%<br />
+        of <%=year%> total
+      <% else %>
+        Representing <%=((bird_count * 100)/ @total_count.to_f).round %>%<br />
+        of carcasses found by COASST
+      <% end %>
+    <% else %>
+      Representing <%=((top10_count * 100)/ bird_count.to_f).round %>%<br />
+      of carcasses found by COASST
+    <% end %>
+    </td>
+  </tr>
+  </table>
+  <% if @year.nil? %>
+    <% if year !~ /All/i %>
+      <%= link_to "See all for #{year}", :action=>:species_by_count_by_year, :year=>year %>
+    <% else %>
+      <%= link_to "See all species", :action=>:species_by_count%>
+    <% end %>
+  <% else %>
+    <%= link_to "Go back", :action=>:species_by_count_by_year, :id=>nil%>
+  <% end %>
+
+  <br />
+
+<% end %>
+
+<br />
+

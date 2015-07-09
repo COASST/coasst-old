@@ -1,0 +1,11 @@
+ArrayAsHash
+===========
+
+.to_h function converts an array of arrays to a hash:
+
+[ ['test, 'foo'], ['joe', 'bloggs']] # => {'test' => 'foo', 'joe' => 'bloggs'}
+
+
+.map_to_hash allows mappings which use hashes instead of arrays:
+
+[1, 2, 3].map_to_hash { |e| {e => e + 100} } # => {1 => 101, 2 => 102, 3 => 103}

@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+psql -U rails -c "DROP TABLE export_surveys;" data_entry_production > /dev/null 2>&1
+psql -U rails -c "CREATE TABLE export_surveys AS SELECT * FROM export_surveys_unmaterialized;" data_entry_production > /dev/null 2>&1
+psql -U rails -c "CREATE INDEX export_surveys_survey_date_idx ON export_surveys(survey_date);" data_entry_production > /dev/null 2>&1
+

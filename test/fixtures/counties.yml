@@ -1,0 +1,164 @@
+# == Schema Information
+#
+#  id       :integer       not null, primary key
+#  state_id :integer       
+#  name     :string(255)   not null
+#  division :string(255)   default("county")
+#
+
+--- 
+counties_026: 
+  name: Whatcom
+  id: "26"
+  division: county
+  state_id: "56"
+counties_015: 
+  name: Lincoln
+  id: "15"
+  division: county
+  state_id: "56"
+counties_004: 
+  name: Coos
+  id: "4"
+  division: county
+  state_id: "43"
+counties_027: 
+  name: Aleutians East
+  id: "27"
+  division: borough
+  state_id: "2"
+counties_016: 
+  name: Mason
+  id: "16"
+  division: county
+  state_id: "56"
+counties_005: 
+  name: Del Norte
+  id: "5"
+  division: county
+  state_id: "6"
+counties_028: 
+  name: Ketchikan Gateway
+  id: "28"
+  division: borough
+  state_id: "2"
+counties_017: 
+  name: Pacific
+  id: "17"
+  division: county
+  state_id: "56"
+counties_006: 
+  name: Grays Harbor
+  id: "6"
+  division: county
+  state_id: "56"
+counties_030: 
+  name: Kodiak Island
+  id: "30"
+  division: borough
+  state_id: "2"
+counties_029: 
+  name: Sitka
+  id: "29"
+  division: borough
+  state_id: "2"
+counties_018: 
+  name: Pierce
+  id: "18"
+  division: county
+  state_id: "56"
+counties_007: 
+  name: Hawaii
+  id: "7"
+  division: county
+  state_id: "15"
+counties_031: 
+  name: Dillingham
+  id: "31"
+  division: census area
+  state_id: "2"
+counties_020: 
+  name: Skagit
+  id: "20"
+  division: county
+  state_id: "56"
+counties_019: 
+  name: San Juan
+  id: "19"
+  division: county
+  state_id: "56"
+counties_008: 
+  name: Humboldt
+  id: "8"
+  division: county
+  state_id: "6"
+counties_021: 
+  name: Snohomish
+  id: "21"
+  division: county
+  state_id: "56"
+counties_010: 
+  name: Jefferson
+  id: "10"
+  division: county
+  state_id: "56"
+counties_009: 
+  name: Island
+  id: "9"
+  division: county
+  state_id: "56"
+counties_022: 
+  name: Thurston
+  id: "22"
+  division: county
+  state_id: "56"
+counties_011: 
+  name: Kenai Peninsula
+  id: "11"
+  division: borough
+  state_id: "2"
+counties_023: 
+  name: Tillamook
+  id: "23"
+  division: county
+  state_id: "43"
+counties_012: 
+  name: King
+  id: "12"
+  division: county
+  state_id: "56"
+counties_001: 
+  name: Aleutians West
+  id: "1"
+  division: census area
+  state_id: "2"
+counties_024: 
+  name: Unknown
+  id: "24"
+  division: county
+  state_id: "60"
+counties_013: 
+  name: Kitsap
+  id: "13"
+  division: county
+  state_id: "56"
+counties_002: 
+  name: Clallam
+  id: "2"
+  division: county
+  state_id: "56"
+counties_025: 
+  name: Valdez-Cordova
+  id: "25"
+  division: census area
+  state_id: "2"
+counties_014: 
+  name: Lane
+  id: "14"
+  division: county
+  state_id: "43"
+counties_003: 
+  name: Clatsop
+  id: "3"
+  division: county
+  state_id: "43"

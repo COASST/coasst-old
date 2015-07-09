@@ -1,0 +1,16 @@
+  <%= error_messages_for 'volunteer' %>
+
+  <fieldset id="thin-form">
+    <legend>Update your volunteer information</legend>
+
+    <% form_for :volunteer, :url => { :action => :edit_volunteer}, :id => @volunteer do %>
+      <%= hidden_field :volunteer, :id, :value => @volunteer.id %>
+      <%= render :partial => 'form_name', :locals => {:require_email => true} %>
+      <%= render :partial => 'form_address' %>
+
+      <%= button_div(:submit => "Update my account", :cancel => {:url=>'/data'}) %>
+
+    <% end %>
+  </fieldset>
+  <%= link_to 'Need to change your password?', :action => 'forgot_password', :email => @volunteer.email %>
+</div>

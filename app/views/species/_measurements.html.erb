@@ -1,0 +1,8 @@
+<% Species::Measurements.each do |measure, units| %>
+  <tr>
+    <td><%= measure %>:</td>
+    <td><%= eval("@species.#{measure}_min.to_s") + "&ndash;" + eval("@species.#{measure}_max.to_s") %>
+        <%= units_abbr(units) %>
+    </td>
+  </tr>
+<% end %> 

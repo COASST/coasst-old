@@ -1,0 +1,2 @@
+module FootTypeFamilyHelper
+end

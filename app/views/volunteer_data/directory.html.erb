@@ -1,0 +1,27 @@
+<%= link_to 'Return to Volunteer List', :action => :index %>
+<br /><br />
+
+<% for v in @volunteers %>
+
+  <h3><%= v.fullname.titlecase %></h3>
+  <% if v.trained_date %>
+    Volunteer since <%= v.trained_date %><br />
+  <% end %>
+  <% if v.directory_phone? %>
+    <%= v.phone_formatted %><br />
+  <% end %>
+
+  <% if v.directory_email? %>
+    <%= v.email %><br />
+  <% end %>
+
+  <% if v.directory_guest? %>
+    <i>willing to host guests</i><br />
+  <% end %>
+
+  <% if v.directory_substitute? %>
+    <i> willing to substitute</i> <br />
+  <% end %>
+  <hr style="color:black; height:1px; width:200px; margin: 4px 0 4px;" />
+  
+<% end %>

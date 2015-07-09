@@ -1,0 +1,78 @@
+
+
+
+
+<h1>Oiled birds</h1>
+
+<p>
+  Occasionally, COASST finds dead oiled birds on the beach.  Very rarely, these birds are associated
+  with a known spill in the area.  In most cases, these oiling events are the only evidence of a mystery
+  release of oil somewhere in the coastal environment.  By documenting incidents of oiled birds, COASST is
+  able to track the rate of chronic oiling.  Fortunately, chronic oiling rates are low in all areas that COASST
+  currently monitors.  Data on oiled birds are presented in two ways:
+</p>
+<p>
+First, by species, including the total number of birds of each species that was found oiled and the percent of all oiled
+birds represented by each species.
+</p>
+<p>
+Second, by beach, including the total number of oiled birds found on each beach and the percent of all birds found on that beach that were oiled.
+For a breakdown of oiling data by year, please click the see species by year or see beaches by year links following each table.
+</p>
+<p><i>Note: Only verified data used for this report</i></p>
+
+<h3>Species</h3>
+<table class="report">
+  <tr>
+     <th class="left">Species</td>
+    <th>Count</th>
+    <th class="summary">% of Total Oiled</th>
+  </tr>
+  <% by_species_sorted = @by_species.map {|a,b| [a,b]}.sort {|a,b| b[1] <=> a[1]}.map {|a| a[0]}  %>
+  <% by_species_sorted.each do |species| %>
+  <% count = @by_species[species]%>
+    <tr>
+      <td class="left">
+          <%= link_to species.name, :controller=>:species, :action=>:show, :id=>species.id, :oiled=>1 %>
+      </td>
+      <td class="pad-wide"><%= count %></td>
+      <td class="pad-xwide"><%= ((count * 100) / @total_oiled.to_f).truncate(2) %></td>
+    </tr>
+  <% end %>
+  <tr class="totals">
+    <td class="left">TOTAL</td>
+    <td><%=@total_oiled %></td>
+    <td>Representing <%= ((@total_oiled * 100) / @total_birds.to_f).truncate(2) %>%<br />
+     of all birds found</td>
+  </tr>
+</table>
+<%= link_to "See species by year", :action=>:oiled_birds_by_year, :type=>:species %>
+
+<br /><br />
+
+<h3>Beaches with oiled birds</h3>
+<table class="report">
+  <tr>
+     <th class="left">Beach</td>
+    <th>Count</th>
+    <th class="summary">% of total birds found on each beach</th>
+  </tr>
+  <% by_beach_sorted = @by_beach.map {|a,b| [a,b]}.sort {|a,b| b[1] <=> a[1]}.map {|a| a[0]}  %>
+  <% by_beach_sorted.each do |beach| %>
+  <% count = @by_beach[beach]%>
+    <tr>
+      <td class="left">
+          <%= link_to beach.name, :controller=>:beach, :action=>:show, :id=>beach.id, :oiled=>1 %>
+      </td>
+      <td class="pad-wide"><%= count %></td>
+      <td class="pad-xwide"><%= ((count * 100)/ @beach_total[beach.id].to_f).truncate(2)  %></td>
+    </tr>
+  <% end %>
+  <tr class="totals">
+    <td class="left">TOTAL</td>
+    <td><%=@total_oiled %></td>
+    <td>Representing <%= ((@total_oiled * 100) / @total_birds.to_f).truncate(2) %>%<br /> of all birds found</td>
+  </tr>
+</table>
+<%= link_to "See beaches by year", :action=>:oiled_birds_by_year, :type=>:beach %>
+

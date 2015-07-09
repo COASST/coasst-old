@@ -1,0 +1,28 @@
+<% if @submitter.has_role?('verifier') %>
+  <%= render :partial => 'surveyor', :locals => {
+        :surveyor     => 'submitter',
+        :volunteers   => @survey.submitter,
+        :survey       => @survey,
+        :disable_form => true}%>
+<% end %>
+
+<%= render :partial => 'surveyor', :locals => {
+      :surveyor     => @surveyor,
+      :volunteers   => @survey.data_collectors,
+      :survey       => @survey,
+      :disable_form => @submitter.has_role?(['intern', 'verifier'])}%>
+
+<% if @submitter.has_role?(['intern', 'verifier']) %>
+  <%= render :partial => "add_friend_form", :locals => {:submitter => @submitter} %>
+<% elsif @friends.length > 0 %>
+  <%= h(@surveyor.capitalize) %> not among your choices? <%= link_to "Manage your list", :action => 'manage_friends' %>
+<% end %>
+
+<% form_for :survey, @survey_data, :url => { :action => "submit_step_who" } do |s| %>
+
+<%= button_div(:submit => @submit[:text], :go_back => :back)%>
+
+
+<% end %>
+
+<%= debug_block %>

@@ -1,0 +1,7 @@
+SELECT year, count(*) FROM (
+  SELECT extract(year from s.survey_date) AS year, beach_id
+  FROM surveys s
+  WHERE extract(year from s.survey_date) >= 1999 AND
+        is_survey and verified and is_complete
+  GROUP BY year, beach_id ORDER BY year DESC) as surveys_by_year
+GROUP BY year ORDER BY year ASC

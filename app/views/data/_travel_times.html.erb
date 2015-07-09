@@ -1,0 +1,23 @@
+    <p>Travel time:</p>
+      <table>
+        <tr>
+          <td></td>
+          <td><div class="small">90, 1.5 hr, 90 min</div></td>
+        </tr>
+        <tr>
+          <th>Volunteer</th>
+          <th>Time</th>
+        </tr>
+
+      <% for person in @travel_time %>
+        <tr>
+          <td style="padding-right: 15px"><%= person[:name] %></td>
+          <td style="padding-left: 30px;">
+            <%= text_field_tag "travel_time[#{person[:id]}]", person[:travel_time], :size => 4, :maxlength => 8, :id => "travel_time_#{person[:id]}" %>
+            <% if not person[:travel_time].blank? %>
+              <%= units_abbr('min') %>
+            <% end %>
+          </td>
+        </tr>
+      <% end %>
+      </table>

@@ -1,0 +1,20 @@
+  <p><label for="bird_<%= intact %>"><%= intact.capitalize %></label><br/>
+  <% Bird.const_get(intact.capitalize).each do |w|
+     if w.class == TrueClass
+      label = 'Present'
+     elsif w.class == FalseClass
+      label = 'Missing'
+     else
+      label = w
+     end
+   %>
+
+    <%= radio_button "bird", intact, w,
+          :onchange => remote_function(
+          :url => { :action => :update_species_section},
+          :with => "$H({species_id: $F($('bird_species_id')), group_id: $F($('bird_group_id')),
+            foot_type_famiy_id: $F($('bird_foot_type_family_id')), wings: $RF('bird_form', 'bird[wings]'),
+            feet: $RF('bird_form', 'bird[feet]'), head: $RF('bird_form', 'bird[head]')}).toQueryString()") %>
+    <%= label %>
+  <% end %>
+  </p>

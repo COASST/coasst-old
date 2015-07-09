@@ -1,0 +1,40 @@
+<% form_tag :action => "new_friend" do %>
+  <p>
+    <%= hidden_field :volunteer, :volunteer_id%>
+    <label for="volunteer_volunteer_id">As you type, the list below will offer suggestions.</label>
+  </p>
+  <table>
+    <tr>
+    <td>
+      <%= text_field_with_auto_complete :volunteer, :fullname, {:class => "text"},
+            :indicator => 'activity_indicator',
+            :after_update_element => "function(element,value){node = document.getElementById('volunteer_volunteer_id'); node.value = value.id}" %>
+    </td>
+
+    <% if volunteer_has_role(['intern', 'verifier']) %>
+      <td>
+        <div class="buttons">
+          <button class="positive label" type="submit">
+            <%= image_tag "icons/add.png" %>Add volunteer
+          </button>
+        </div>
+      </td>
+    <% end %>
+    <td>
+      <%= indicator_span %>
+    </td>
+    </tr>
+  </table>
+
+  <% if volunteer_has_role(['intern', 'verifier']) %>
+    <p>
+      Volunteer not appearing in suggestion list above? <%= link_to "Add person to the database", :action => 'add_volunteer', :controller=>:volunteer %>
+    </p>
+  <% else %>
+    <p>
+      Are we missing a volunteer? <%= link_to "Add a volunteer", :action => 'add_volunteer', :controller => :volunteer %>
+    </p>
+    <%= button_div(:submit => 'Add Friend', :go_back => {:url=>:back}) %>
+  <% end %>
+
+<% end %>

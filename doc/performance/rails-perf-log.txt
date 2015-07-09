@@ -1,0 +1,158 @@
+Apr 09 11:44:31 coasst rails[2515]: Memory usage: 88388 | PID: 2515
+Apr 09 11:44:50 coasst rails[2515]: Processing AdminController#export (for 128.208.74.197 at 2010-04-09 11:44:50) [POST]
+Apr 09 11:44:50 coasst rails[2515]: Parameters: {"start_date"=>"2009-01-01", "submit"=>"Download CSV", "authenticity_token"=>"gfT0lvQK/zPvlqJ6xow+jvGljpkYLaH6v1gAQ+oIp0Y=", "end_date"=>"2010-04-01"}
+Apr 09 11:44:51 coasst rails[2515]: Survey Load (1648.1ms)    SELECT  EXTRACT(day FROM s.survey_date) AS survey_day, EXTRACT(month FROM s.survey_date) AS survey_day, EXTRACT(year FROM s.survey_date) AS survey_day, s.survey_date, s.id AS survey_id, s.code AS survey_code, b.id AS bird_code, r.name AS region, be.name as beach_name, be.length as beach_length, to_char(s.start_time, 'HH24:MI') AS survey_start_time, to_char(s.end_time, 'HH24:MI') AS survey_end_time, s.duration, s.weather, s.oil_present, s.oil_frequency, s.oil_sheen, s.oil_tarballs, s.oil_goopy, s.oil_mousse, s.oil_comment AS survey_oil_comment, s.wood_present, s.wood_size, s.wood_continuity, s.wood_zone, s.wrack_present, s.wrack_width, s.wrack_continuity,  s.verified, be.substrate, be.orientation, s.comments AS survey_comments, b.verified AS bird_verified, b.refound AS bird_refound, b.where_found as bird_where_found, b.foot_condition, b.eyes, b.intact, b.head AS head_present, b.breast AS breast_present, b.feet, b.wings, b.entangled, b.entangled_comment, b.oil, b.oil_comment, b.sex, b.collected, b.collected_comment, b.photo_count, b.tie_location, b.tie_location_comment, b.tie_number, b.is_bird, b.comment, b.verification_comment, b.identification_level, b.tie_other, sp.name AS species_name, g.name AS group_name, sg.name AS subgroup_name, a.name AS age, pl.name AS plumage, b.bill_length, b.wing_length, b.tarsus_length FROM surveys s  LEFT JOIN birds b ON s.id = b.survey_id  LEFT JOIN plumages pl ON pl.id = b.plumage_id LEFT JOIN ages a ON a.id = b.age_id LEFT JOIN species sp ON sp.id = b.species_id  LEFT JOIN groups g ON g.id = b.group_id  LEFT JOIN subgroups sg ON sg.id = b.subgroup_id  LEFT JOIN beaches be ON s.beach_id = be.id  LEFT JOIN regions r ON be.region_id = r.id  WHERE s.survey_date >= '01-01-2009' AND s.survey_date <= '04-01-2010' ORDER BY s.survey_date; 
+Apr 09 11:45:00 coasst rails[2515]: SurveyTrack Load (476.0ms)   SELECT * FROM "survey_tracks" 
+Apr 09 11:45:09 coasst rails[2515]: SurveyVolunteer Load (724.0ms)   SELECT * FROM "survey_volunteers" 
+Apr 09 11:45:15 coasst rails[2515]: Volunteer Load (444.0ms)   SELECT * FROM "volunteers" 
+Apr 09 11:46:43 coasst rails[2515]: Sending data coasst_01-01-09_04-01-10.csv
+Apr 09 11:46:44 coasst rails[2515]: Memory usage: 336864 | PID: 2515
+
+
+So, this one action increased the memory footprint of the process 248476kB, or 242MB!
+
+
+---- MEMORY THRESHOLD ----
+THRESHOLD: 50 MB
+
+-- SUMMARY --
+Worst Requests:
+1. Jan 15 13:09:46, 362976 KB, AdminController#export
+2. Apr 01 14:27:35, 258744 KB, AdminController#export
+3. Apr 05 13:50:07, 253964 KB, AdminController#export
+4. Jan 28 13:47:09, 251788 KB, AdminController#export
+5. Feb 02 09:06:22, 251584 KB, AdminController#export
+6. Feb 11 08:31:39, 251464 KB, AdminController#export
+7. Feb 22 15:14:24, 250052 KB, AdminController#export
+8. Apr 09 11:46:44, 248476 KB, AdminController#export
+9. Feb 08 10:05:51, 243972 KB, AdminController#export
+10. Feb 23 13:34:35, 243348 KB, AdminController#export
+11. Jan 28 11:29:08, 233668 KB, AdminController#export
+12. Mar 26 13:06:17, 231144 KB, AdminController#export
+13. Feb 23 13:31:27, 216984 KB, AdminController#export
+14. Feb 02 08:59:54, 214124 KB, AdminController#export
+15. Jan 15 11:57:14, 161312 KB, AdminController#export
+16. Feb 09 16:46:47, 126884 KB, DataController#intern_region
+17. Jan 15 13:04:55, 113100 KB, AdminController#export
+18. Mar 01 10:46:16, 110764 KB, DataController#intern_region
+19. Jan 13 16:12:49, 107748 KB, AdminController#export
+20. Jan 04 09:21:37, 106340 KB, AdminController#export
+21. Mar 29 14:57:45, 102868 KB, DataController#intern_region
+22. Apr 05 14:39:06, 101716 KB, DataController#intern_region
+23. Mar 29 16:00:22, 101464 KB, DataController#intern_region
+24. Feb 22 15:44:08, 101176 KB, DataController#intern_region
+25. Mar 17 08:47:47, 100176 KB, DataController#intern_region
+26. Mar 17 09:13:49, 100040 KB, DataController#intern_region
+27. Mar 09 17:21:45, 98936 KB, DataController#intern_region
+28. Mar 09 17:09:56, 98428 KB, DataController#intern_region
+29. Jan 07 10:19:57, 97836 KB, DataController#intern_region
+30. Feb 24 16:11:10, 97756 KB, DataController#intern_region
+31. Feb 24 13:12:47, 96604 KB, AdminController#export
+32. Mar 29 14:45:48, 96020 KB, DataController#intern_region
+33. Apr 01 14:35:52, 95584 KB, AdminController#export
+34. Mar 08 14:36:38, 95552 KB, AdminController#export
+35. Feb 09 17:08:13, 95420 KB, AdminController#export
+36. Feb 22 17:10:47, 95396 KB, DataController#intern_region
+37. Feb 10 10:56:39, 94964 KB, AdminController#export
+38. Apr 02 11:29:48, 94856 KB, AdminController#export
+39. Feb 08 11:07:25, 94528 KB, AdminController#export
+40. Feb 10 13:58:35, 94120 KB, AdminController#export
+41. Mar 17 08:50:23, 93988 KB, DataController#intern_region
+42. Jan 20 16:29:30, 93912 KB, AdminController#export
+43. Feb 03 09:34:35, 93480 KB, AdminController#export
+44. Apr 05 15:32:19, 92636 KB, DataController#intern_region
+45. Jan 14 17:12:48, 91752 KB, DataController#intern_region
+46. Jan 05 16:31:05, 91624 KB, DataController#intern_region
+47. Jan 07 09:47:55, 90592 KB, DataController#intern_region
+48. Feb 16 11:14:23, 90272 KB, DataController#intern_region
+49. Apr 06 16:05:14, 90220 KB, RegionController#show
+50. Mar 29 16:40:33, 90116 KB, DataController#intern_region
+
+Worst Actions:
+102, RegionController#show -- DONE
+58, DataController#intern_region --
+39, AdminController#export -- DONE FOR SMALL SETS, NEEDS DELAYED BATCHING
+7, DataController#verification_beach
+1, DataController#enter_data
+1, BeachController#show
+1, DataController#submit_step_birds
+1, DataController#index
+
+export:
+
+ - break up the queries into 3 month (?) segments, generate as a background task
+ - parse these together for most queries
+
+
+intern_region
+ - what's soaking up the RAM?
+ - query time probably isn't it; likely to be object instantiation
+
+regionController#show
+ - what's soaking up the RAM?
+Apr 09 12:16:54 coasst rails[5604]: Instantiation Breakdown: Total: 5267 | Survey: 5131 | Beach: 124 | County: 10 | Region: 1 | ActiveRecord::SessionStore::Session: 1
+
+so, 5000+ new objects, mmm RAM.
+
+region_id = 3;
+
+SELECT count(*) AS count_all FROM "surveys" WHERE ("surveys".beach_id = 173)  (This many many times)
+
+EXPLAIN ANALYZE SELECT AGE(MAX(survey_date)) <= '6 months'::interval AS active, beach_id FROM surveys WHERE beach_id IN (5,413,51,387,54,64,78,88,94,97,104,133,152,159,160,166,373,177,183,186,193,214,257,272,273,327,367,368,1,105,106,143,229,277,6,18,39,44,55,61,71,72,76,89,101,115,131,150,165,170,171,187,194,197,210,264,265,271,280,284,289,317,100,107,424,429,181,438,189,263,266,421,425,172,323,341,30,31,199,248,394,320,430,392,410,47,48,125,127,190,377,299,357,393,328,29,91,395,390,396,412,261,391,342,275,334,335,21,25,28,45,46,117,169,446,173,174,294,295,296,319,325,324,63) GROUP BY beach_id
+
+EXPLAIN ANALYZE SELECT beach_id, project FROM surveys WHERE beach_id IN (5,413,51,387,54,64,78,88,94,97,104,133,152,159,160,166,373,177,183,186,193,214,257,272,273,327,367,368,1,105,106,143,229,277,6,18,39,44,55,61,71,72,76,89,101,115,131,150,165,170,171,187,194,197,210,264,265,271,280,284,289,317,100,107,424,429,181,438,189,263,266,421,425,172,323,341,30,31,199,248,394,320,430,392,410,47,48,125,127,190,377,299,357,393,328,29,91,395,390,396,412,261,391,342,275,334,335,21,25,28,45,46,117,169,446,173,174,294,295,296,319,325,324,63) GROUP BY beach_id, project
+
+SELECT * FROM regions LEFT OUTER JOIN "beaches" ON beaches.region_id = regions.id LEFT OUTER JOIN "counties" ON "counties".id = "beaches".county_id LEFT OUTER JOIN "surveys" ON surveys.beach_id = beaches.id WHERE ("regions"."id" = 3) ORDER BY counties.name ASC, beaches.name ASC
+
+
+EXPLAIN ANALYZE SELECT * FROM regions 
+LEFT OUTER JOIN "beaches" ON beaches.region_id = regions.id 
+LEFT OUTER JOIN "counties" ON "counties".id = "beaches".county_id 
+LEFT OUTER JOIN "surveys" ON surveys.beach_id = beaches.id 
+WHERE ("regions"."id" = 3) 
+ORDER BY counties.name ASC, beaches.name ASC
+
+## these don't seem to do anything... ##
+CREATE INDEX beaches_region_idx ON beaches (region_id);
+CREATE INDEX beaches_county_idx ON beaches (county_id);
+
+EXPLAIN ANALYZE SELECT * FROM regions 
+LEFT OUTER JOIN "beaches" ON beaches.region_id = regions.id 
+WHERE ("regions"."id" = 3) 
+
+
+Apr 09 12:36:21 coasst rails[7739]: Instantiation Breakdown: Total: 465 | Survey: 319 | Beach: 124 | County: 10 | Subgroup: 1 | Plumage: 1 | Region: 1 | Role: 1 | Group: 1 | SpeciesPlumage: 1 | Volunteer: 1 | FootTypeFamily: 1 | ActiveRecord::SessionStore::Session: 1 | MigrantSpecies: 1 | Species: 1 | SpeciesAge: 1
+
+
+from 88160 to 104728 == 16.5MB of RAM
+
+Apr 09 14:51:26 coasst rails[18898]: Memory usage: 104728 | PID: 18898
+Apr 09 14:51:26 coasst rails[18898]: Instantiation Breakdown: Total: 6172 | Survey: 4812 | Bird: 654 | Beach: 586 | Species: 54 | FootTypeFamily: 39 | Group: 21 | Volunteer: 2 | Subgroup: 1 | Region: 1 | Role: 1 | ActiveRecord::SessionStore::Session: 1
+Apr 09 14:51:26 coasst rails[18898]: Completed in 6476ms (View: 1336, DB: 928) | 200 OK [http://dev.coasst.org/data/intern_region/3]
+
+
+SELECT * FROM "beaches" WHERE ("beaches"."id" = 1) 
+
+SELECT * FROM "foot_type_families" WHERE ("foot_type_families"."name" = E'Unknown')
+
+_bird_name.rb gets rendered _many_ times, 
+
+EXPLAIN ANALYZE select * FROM surveys s
+LEFT JOIN birds b ON b.survey_id = s.id
+LEFT JOIN beaches be ON be.id = s.beach_id
+LEFT JOIN species sp ON sp.id = b.species_id;
+
+EXPLAIN ANALYZE select * FROM surveys s
+LEFT JOIN birds b ON b.survey_id = s.id;
+
+EXPLAIN ANALYZE select * FROM birds b
+LEFT JOIN surveys s ON s.id = b.survey_id;
+
+This is faster...
+
+
+region 1 is:
+Memory usage: 157200 | PID: 5589
+
+
+Cutting out 'birds_list' and @birds entirely, we get 80MB, so its _all_ because of this one object.

@@ -1,0 +1,98 @@
+<h1>Entangled birds</h1>
+
+<p>
+Occasionally, COASST finds dead birds that are entangled in fishing line, hooks, net, or some other
+man-made substance.  Fortunately, these are rare occurrences, but it is important to document these
+incidents of human disturbance.  Data on entangled birds are presented in three ways:
+</p>
+<p>
+First, by the type of entanglement, including the number of birds found entangled in each substance
+and the percent of total entanglement incidents represented by each.  By clicking on a substance (e.g.
+fishing line), you can get information about what species and where bird were found entangled in
+fishing line.
+</p>
+<p>
+Second, by species, including the total number of birds of each species that was found entangled
+and the percent of all entangled birds represented by each species.
+</p>
+<p>
+Third, by beach, including the total number of entangled birds found on each beach and the percent
+of all birds found on that beach that were entangled.
+</p>
+<p>
+  For a breakdown of entanglement data by year, please click the see species by year or see beaches
+  by year links following the species and beach tables.
+</p>
+<p><i>Note: Only verified data used for this report</i></p>
+
+<h3>Entanglement Type</h3>
+<table class="report">
+  <tr>
+     <th class="left">Type</td>
+    <th>Count</th>
+    <th class="summary">Percent</th>
+  </tr>
+  <% @by_entanglement.sort_by_value.each do |entanglement, count| %>
+    <tr>
+      <td class="left">
+          <%= link_to entanglement, :action=>:entangled_list, :id=>entanglement %>
+      </td>
+      <td class="pad-wide"><%= count %></td>
+      <td class="pad-xwide"><%= ((count * 100)/ @total_entangled.to_f).truncate(2)  %></td>
+    </tr>
+  <% end %>
+  <tr class="totals">
+    <td class="left">TOTAL</td>
+    <td class="pad-short"><%=@total_entangled %></td>
+    <td>Representing <%= ((@total_entangled * 100) / @total_birds.to_f).truncate(2) %>%<br /> of all birds found</td>
+  </tr>
+</table>
+
+<h3>Species</h3>
+<table class="report">
+  <tr>
+     <th class="left">Species</td>
+    <th>Count</th>
+    <th class="summary-wide">% of Total Entangled</th>
+  </tr>
+  <% @by_species.sort_by_value.each do |species, count| %>
+      <tr>
+        <td class="left">
+          <%= link_to species.name, :controller=>:species, :action=>:show, :id=>species.id, :entangled=>1 %>
+      </td>
+      <td class="pad-short"><%= count %></td>
+      <td class="pad-xxwide"><%= ((count * 100)/ @total_entangled.to_f).truncate(2)  %></td>
+    </tr>
+  <% end %>
+  <tr class="totals">
+    <td class="left">TOTAL</td>
+    <td class="pad-short"><%=@total_entangled %></td>
+    <td>Representing <%= ((@total_entangled * 100) / @total_birds.to_f).truncate(2) %>%<br /> of all birds found</td>
+  </tr>
+</table>
+<%= link_to "See species by year", :action=>:entangled_birds_by_year, :type=>:species %>
+
+<h3>Beaches with entangled birds</h3>
+<table class="report">
+  <tr>
+    <th class="left">Beach</td>
+    <th>Count</th>
+    <th class="summary-xwide">% of total birds found on each beach</th>
+  </tr>
+  <% @by_beach.sort_by_value.each do |beach, count| %>
+    <tr>
+      <td class="left">
+          <%= link_to beach.name, :controller=>:beach, :action=>:show, :id=>beach.id, :entangled=>1 %>
+      </td>
+      <td class="pad-short"><%= count %></td>
+      <td class="pad-xxxwide"><%= ((count * 100)/ @beach_total[beach.id].to_f).truncate(2)  %></td>
+      <td></td>
+    </tr>
+  <% end %>
+  <tr class="totals">
+    <td class="left">TOTAL</td>
+    <td class="pad-short"><%=@total_entangled %></td>
+    <td colspan="2">Representing <%= ((@total_entangled * 100) / @total_birds.to_f).truncate(2) %>%<br /> of all birds found</td>
+  </tr>
+</table>
+<%= link_to "See beaches by year", :action=>:entangled_birds_by_year, :type=>:beach %>

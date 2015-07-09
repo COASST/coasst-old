@@ -1,0 +1,13 @@
+--- 
+survey_oil_types_001: 
+  name: Sheen
+  column: oil_sheen
+  id: "1"
+survey_oil_types_002: 
+  name: Tarballs
+  column: oil_tarballs
+  id: "2"
+survey_oil_types_003: 
+  name: Goopy
+  column: oil_goopy
+  id: "3"

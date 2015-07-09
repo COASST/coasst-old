@@ -1,0 +1,44 @@
+<h1><%=h('My Surveys') %></h1>
+
+<p>
+Surveys completed: <%= @volunteer_surveys.length %>,
+Birds found: <%= @bird_count %>
+</p>
+
+<%= render :partial => 'add_survey_block' %>
+
+<% if @volunteer_surveys.length > 0 %>
+
+<p>Need to add birds to an existing survey?  Select the bird:</p>
+  <table class="sortable ruled">
+    <tr>
+      <th ><%=h('Date') %></th>
+      <th class="sortable"><%=h('Duration') %> (Min)</th>
+      <th class="sortable"><%=h('Beach') %></th>
+      <th><%=h('Birds Found') %></th>
+    </tr>
+
+  <% for s in @volunteer_surveys %>
+    <tr>
+      <td>
+       <% if s.verified? %>
+         <%= image_tag "icons/accept.png", :alt => "survey is verified" %>
+       <% end %>
+       <%=link_to s.survey_date, :controller => :survey, :action => :show, :id => s.id %>
+      </td>
+      <td align="right"><%=h s.duration %></td>
+      <td class="sidepad right">
+          <%=h s.beach.name %>
+        </td>
+      <td align="right">
+        <% for bird in s.birds %>
+          <%= render :partial => 'data/bird_name', :locals => {:bird => bird, :hide_link => true} %>
+          <%= image_tag "icons/bird_silhouette.png" %><br />
+        <% end %>
+      </td>
+    </tr>
+  <% end %>
+  </table>
+<% end %>
+
+<%= debug_block %>

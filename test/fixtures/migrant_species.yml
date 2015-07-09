@@ -1,0 +1,679 @@
+# == Schema Information
+#
+#  id                :integer       not null, primary key
+#  species_id        :integer       not null
+#  migrant_region_id :integer       not null
+#  status            :text          default("unknown")
+#
+
+--- 
+migrant_species_117: 
+  status: migrant
+  migrant_region_id: "1"
+  id: "120"
+  species_id: "121"
+migrant_species_003: 
+  status: resident
+  migrant_region_id: "1"
+  id: "3"
+  species_id: "3"
+migrant_species_031: 
+  status: migrant
+  migrant_region_id: "1"
+  id: "31"
+  species_id: "31"
+migrant_species_118: 
+  status: migrant
+  migrant_region_id: "1"
+  id: "121"
+  species_id: "122"
+migrant_species_060: 
+  status: migrant
+  migrant_region_id: "1"
+  id: "62"
+  species_id: "62"
+migrant_species_032: 
+  status: migrant
+  migrant_region_id: "1"
+  id: "32"
+  species_id: "32"
+migrant_species_004: 
+  status: migrant
+  migrant_region_id: "1"
+  id: "4"
+  species_id: "4"
+migrant_species_119: 
+  status: migrant
+  migrant_region_id: "1"
+  id: "122"
+  species_id: "123"
+migrant_species_061: 
+  status: migrant
+  migrant_region_id: "1"
+  id: "63"
+  species_id: "63"
+migrant_species_033: 
+  status: resident
+  migrant_region_id: "1"
+  id: "35"
+  species_id: "35"
+migrant_species_005: 
+  status: migrant
+  migrant_region_id: "1"
+  id: "5"
+  species_id: "5"
+migrant_species_062: 
+  status: migrant
+  migrant_region_id: "1"
+  id: "64"
+  species_id: "64"
+migrant_species_034: 
+  status: resident
+  migrant_region_id: "1"
+  id: "36"
+  species_id: "36"
+migrant_species_006: 
+  status: migrant
+  migrant_region_id: "1"
+  id: "6"
+  species_id: "6"
+migrant_species_090: 
+  status: resident
+  migrant_region_id: "1"
+  id: "92"
+  species_id: "92"
+migrant_species_063: 
+  status: migrant
+  migrant_region_id: "1"
+  id: "65"
+  species_id: "65"
+migrant_species_035: 
+  status: migrant
+  migrant_region_id: "1"
+  id: "37"
+  species_id: "37"
+migrant_species_007: 
+  status: resident
+  migrant_region_id: "1"
+  id: "7"
+  species_id: "7"
+migrant_species_091: 
+  status: migrant
+  migrant_region_id: "1"
+  id: "93"
+  species_id: "93"
+migrant_species_064: 
+  status: migrant
+  migrant_region_id: "1"
+  id: "66"
+  species_id: "66"
+migrant_species_036: 
+  status: resident
+  migrant_region_id: "1"
+  id: "38"
+  species_id: "38"
+migrant_species_008: 
+  status: resident
+  migrant_region_id: "1"
+  id: "8"
+  species_id: "8"
+migrant_species_092: 
+  status: migrant
+  migrant_region_id: "1"
+  id: "94"
+  species_id: "94"
+migrant_species_120: 
+  status: resident
+  migrant_region_id: "1"
+  id: "123"
+  species_id: "124"
+migrant_species_065: 
+  status: resident
+  migrant_region_id: "1"
+  id: "67"
+  species_id: "67"
+migrant_species_037: 
+  status: migrant
+  migrant_region_id: "1"
+  id: "39"
+  species_id: "39"
+migrant_species_009: 
+  status: resident
+  migrant_region_id: "1"
+  id: "9"
+  species_id: "9"
+migrant_species_093: 
+  status: migrant
+  migrant_region_id: "1"
+  id: "95"
+  species_id: "95"
+migrant_species_121: 
+  status: migrant
+  migrant_region_id: "1"
+  id: "124"
+  species_id: "125"
+migrant_species_066: 
+  status: migrant
+  migrant_region_id: "1"
+  id: "68"
+  species_id: "68"
+migrant_species_038: 
+  status: migrant
+  migrant_region_id: "1"
+  id: "40"
+  species_id: "40"
+migrant_species_094: 
+  status: migrant
+  migrant_region_id: "1"
+  id: "96"
+  species_id: "96"
+migrant_species_122: 
+  status: migrant
+  migrant_region_id: "1"
+  id: "125"
+  species_id: "127"
+migrant_species_039: 
+  status: migrant
+  migrant_region_id: "1"
+  id: "41"
+  species_id: "41"
+migrant_species_095: 
+  status: resident
+  migrant_region_id: "1"
+  id: "97"
+  species_id: "97"
+migrant_species_067: 
+  status: migrant
+  migrant_region_id: "1"
+  id: "69"
+  species_id: "69"
+migrant_species_123: 
+  status: migrant
+  migrant_region_id: "1"
+  id: "126"
+  species_id: "128"
+migrant_species_096: 
+  status: migrant
+  migrant_region_id: "1"
+  id: "98"
+  species_id: "98"
+migrant_species_068: 
+  status: migrant
+  migrant_region_id: "1"
+  id: "70"
+  species_id: "70"
+migrant_species_124: 
+  status: migrant
+  migrant_region_id: "1"
+  id: "127"
+  species_id: "129"
+migrant_species_097: 
+  status: migrant
+  migrant_region_id: "1"
+  id: "99"
+  species_id: "99"
+migrant_species_010: 
+  status: resident
+  migrant_region_id: "1"
+  id: "10"
+  species_id: "10"
+migrant_species_069: 
+  status: migrant
+  migrant_region_id: "1"
+  id: "71"
+  species_id: "71"
+migrant_species_125: 
+  status: migrant
+  migrant_region_id: "2"
+  id: "128"
+  species_id: "129"
+migrant_species_098: 
+  status: migrant
+  migrant_region_id: "1"
+  id: "100"
+  species_id: "100"
+migrant_species_011: 
+  status: migrant
+  migrant_region_id: "1"
+  id: "11"
+  species_id: "11"
+migrant_species_126: 
+  status: migrant
+  migrant_region_id: "3"
+  id: "129"
+  species_id: "129"
+migrant_species_040: 
+  status: resident
+  migrant_region_id: "1"
+  id: "42"
+  species_id: "42"
+migrant_species_099: 
+  status: migrant
+  migrant_region_id: "1"
+  id: "101"
+  species_id: "102"
+migrant_species_012: 
+  status: migrant
+  migrant_region_id: "1"
+  id: "12"
+  species_id: "12"
+migrant_species_127: 
+  status: resident
+  migrant_region_id: "1"
+  id: "130"
+  species_id: "130"
+migrant_species_041: 
+  status: resident
+  migrant_region_id: "1"
+  id: "43"
+  species_id: "43"
+migrant_species_013: 
+  status: migrant
+  migrant_region_id: "1"
+  id: "13"
+  species_id: "13"
+migrant_species_128: 
+  status: migrant
+  migrant_region_id: "1"
+  id: "131"
+  species_id: "131"
+migrant_species_042: 
+  status: migrant
+  migrant_region_id: "1"
+  id: "44"
+  species_id: "44"
+migrant_species_014: 
+  status: migrant
+  migrant_region_id: "1"
+  id: "14"
+  species_id: "14"
+migrant_species_070: 
+  status: resident
+  migrant_region_id: "1"
+  id: "72"
+  species_id: "72"
+migrant_species_129: 
+  status: migrant
+  migrant_region_id: "1"
+  id: "132"
+  species_id: "131"
+migrant_species_043: 
+  status: resident
+  migrant_region_id: "1"
+  id: "45"
+  species_id: "45"
+migrant_species_015: 
+  status: migrant
+  migrant_region_id: "1"
+  id: "15"
+  species_id: "15"
+migrant_species_071: 
+  status: resident
+  migrant_region_id: "1"
+  id: "73"
+  species_id: "73"
+migrant_species_044: 
+  status: migrant
+  migrant_region_id: "1"
+  id: "46"
+  species_id: "46"
+migrant_species_016: 
+  status: resident
+  migrant_region_id: "1"
+  id: "16"
+  species_id: "16"
+migrant_species_072: 
+  status: migrant
+  migrant_region_id: "1"
+  id: "74"
+  species_id: "74"
+migrant_species_045: 
+  status: resident
+  migrant_region_id: "1"
+  id: "47"
+  species_id: "47"
+migrant_species_100: 
+  status: resident
+  migrant_region_id: "1"
+  id: "102"
+  species_id: "103"
+migrant_species_017: 
+  status: migrant
+  migrant_region_id: "1"
+  id: "17"
+  species_id: "17"
+migrant_species_073: 
+  status: migrant
+  migrant_region_id: "1"
+  id: "75"
+  species_id: "75"
+migrant_species_101: 
+  status: migrant
+  migrant_region_id: "1"
+  id: "103"
+  species_id: "104"
+migrant_species_018: 
+  status: resident
+  migrant_region_id: "1"
+  id: "18"
+  species_id: "18"
+migrant_species_074: 
+  status: migrant
+  migrant_region_id: "1"
+  id: "76"
+  species_id: "76"
+migrant_species_046: 
+  status: migrant
+  migrant_region_id: "1"
+  id: "48"
+  species_id: "48"
+migrant_species_130: 
+  status: migrant
+  migrant_region_id: "1"
+  id: "133"
+  species_id: "131"
+migrant_species_102: 
+  status: migrant
+  migrant_region_id: "1"
+  id: "104"
+  species_id: "105"
+migrant_species_019: 
+  status: migrant
+  migrant_region_id: "1"
+  id: "19"
+  species_id: "19"
+migrant_species_075: 
+  status: resident
+  migrant_region_id: "1"
+  id: "77"
+  species_id: "77"
+migrant_species_047: 
+  status: resident
+  migrant_region_id: "1"
+  id: "49"
+  species_id: "49"
+migrant_species_131: 
+  status: resident
+  migrant_region_id: "1"
+  id: "134"
+  species_id: "132"
+migrant_species_076: 
+  status: resident
+  migrant_region_id: "1"
+  id: "78"
+  species_id: "78"
+migrant_species_048: 
+  status: migrant
+  migrant_region_id: "1"
+  id: "50"
+  species_id: "50"
+migrant_species_103: 
+  status: migrant
+  migrant_region_id: "1"
+  id: "105"
+  species_id: "106"
+migrant_species_132: 
+  status: resident
+  migrant_region_id: "1"
+  id: "135"
+  species_id: "133"
+migrant_species_077: 
+  status: resident
+  migrant_region_id: "1"
+  id: "79"
+  species_id: "79"
+migrant_species_049: 
+  status: migrant
+  migrant_region_id: "1"
+  id: "51"
+  species_id: "51"
+migrant_species_104: 
+  status: resident
+  migrant_region_id: "1"
+  id: "106"
+  species_id: "107"
+migrant_species_133: 
+  status: resident
+  migrant_region_id: "3"
+  id: "136"
+  species_id: "132"
+migrant_species_078: 
+  status: migrant
+  migrant_region_id: "1"
+  id: "80"
+  species_id: "80"
+migrant_species_105: 
+  status: migrant
+  migrant_region_id: "1"
+  id: "107"
+  species_id: "108"
+migrant_species_134: 
+  status: resident
+  migrant_region_id: "3"
+  id: "137"
+  species_id: "133"
+migrant_species_020: 
+  status: migrant
+  migrant_region_id: "1"
+  id: "20"
+  species_id: "20"
+migrant_species_079: 
+  status: migrant
+  migrant_region_id: "1"
+  id: "81"
+  species_id: "81"
+migrant_species_106: 
+  status: migrant
+  migrant_region_id: "1"
+  id: "108"
+  species_id: "109"
+migrant_species_021: 
+  status: migrant
+  migrant_region_id: "1"
+  id: "21"
+  species_id: "21"
+migrant_species_107: 
+  status: migrant
+  migrant_region_id: "1"
+  id: "109"
+  species_id: "110"
+migrant_species_022: 
+  status: migrant
+  migrant_region_id: "1"
+  id: "22"
+  species_id: "22"
+migrant_species_108: 
+  status: migrant
+  migrant_region_id: "1"
+  id: "110"
+  species_id: "111"
+migrant_species_050: 
+  status: migrant
+  migrant_region_id: "1"
+  id: "52"
+  species_id: "52"
+migrant_species_023: 
+  status: resident
+  migrant_region_id: "1"
+  id: "23"
+  species_id: "23"
+migrant_species_109: 
+  status: migrant
+  migrant_region_id: "1"
+  id: "111"
+  species_id: "112"
+migrant_species_051: 
+  status: migrant
+  migrant_region_id: "1"
+  id: "53"
+  species_id: "53"
+migrant_species_024: 
+  status: migrant
+  migrant_region_id: "1"
+  id: "24"
+  species_id: "24"
+migrant_species_080: 
+  status: migrant
+  migrant_region_id: "1"
+  id: "82"
+  species_id: "82"
+migrant_species_052: 
+  status: migrant
+  migrant_region_id: "1"
+  id: "54"
+  species_id: "54"
+migrant_species_081: 
+  status: migrant
+  migrant_region_id: "1"
+  id: "83"
+  species_id: "83"
+migrant_species_053: 
+  status: migrant
+  migrant_region_id: "1"
+  id: "55"
+  species_id: "55"
+migrant_species_025: 
+  status: resident
+  migrant_region_id: "1"
+  id: "25"
+  species_id: "25"
+migrant_species_082: 
+  status: migrant
+  migrant_region_id: "1"
+  id: "84"
+  species_id: "84"
+migrant_species_054: 
+  status: migrant
+  migrant_region_id: "1"
+  id: "56"
+  species_id: "56"
+migrant_species_026: 
+  status: resident
+  migrant_region_id: "1"
+  id: "26"
+  species_id: "26"
+migrant_species_083: 
+  status: migrant
+  migrant_region_id: "1"
+  id: "85"
+  species_id: "85"
+migrant_species_055: 
+  status: migrant
+  migrant_region_id: "1"
+  id: "57"
+  species_id: "57"
+migrant_species_110: 
+  status: resident
+  migrant_region_id: "1"
+  id: "112"
+  species_id: "113"
+migrant_species_027: 
+  status: migrant
+  migrant_region_id: "1"
+  id: "27"
+  species_id: "27"
+migrant_species_084: 
+  status: migrant
+  migrant_region_id: "1"
+  id: "86"
+  species_id: "86"
+migrant_species_056: 
+  status: migrant
+  migrant_region_id: "1"
+  id: "58"
+  species_id: "58"
+migrant_species_111: 
+  status: migrant
+  migrant_region_id: "1"
+  id: "114"
+  species_id: "115"
+migrant_species_028: 
+  status: migrant
+  migrant_region_id: "1"
+  id: "28"
+  species_id: "28"
+migrant_species_085: 
+  status: migrant
+  migrant_region_id: "1"
+  id: "87"
+  species_id: "87"
+migrant_species_057: 
+  status: resident
+  migrant_region_id: "1"
+  id: "59"
+  species_id: "59"
+migrant_species_112: 
+  status: migrant
+  migrant_region_id: "1"
+  id: "115"
+  species_id: "116"
+migrant_species_029: 
+  status: migrant
+  migrant_region_id: "1"
+  id: "29"
+  species_id: "29"
+migrant_species_086: 
+  status: migrant
+  migrant_region_id: "1"
+  id: "88"
+  species_id: "88"
+migrant_species_058: 
+  status: migrant
+  migrant_region_id: "1"
+  id: "60"
+  species_id: "60"
+migrant_species_113: 
+  status: resident
+  migrant_region_id: "1"
+  id: "116"
+  species_id: "117"
+migrant_species_087: 
+  status: resident
+  migrant_region_id: "1"
+  id: "89"
+  species_id: "89"
+migrant_species_059: 
+  status: resident
+  migrant_region_id: "1"
+  id: "61"
+  species_id: "61"
+migrant_species_114: 
+  status: migrant
+  migrant_region_id: "1"
+  id: "117"
+  species_id: "118"
+migrant_species_115: 
+  status: resident
+  migrant_region_id: "1"
+  id: "118"
+  species_id: "119"
+migrant_species_001: 
+  status: migrant
+  migrant_region_id: "1"
+  id: "1"
+  species_id: "1"
+migrant_species_088: 
+  status: resident
+  migrant_region_id: "1"
+  id: "90"
+  species_id: "90"
+migrant_species_116: 
+  status: migrant
+  migrant_region_id: "1"
+  id: "119"
+  species_id: "120"
+migrant_species_002: 
+  status: resident
+  migrant_region_id: "1"
+  id: "2"
+  species_id: "2"
+migrant_species_030: 
+  status: migrant
+  migrant_region_id: "1"
+  id: "30"
+  species_id: "30"
+migrant_species_089: 
+  status: resident
+  migrant_region_id: "1"
+  id: "91"
+  species_id: "91"

@@ -1,0 +1,88 @@
+# == Schema Information
+#
+#  id                :integer       not null, primary key
+#  state_id          :integer       
+#  code              :string(5)     
+#  name              :string(255)   not null
+#  migrant_region_id :integer       
+#
+
+--- 
+regions_013: 
+  migrant_region_id: "4"
+  name: Hawaii
+  code: H
+  id: "15"
+  state_id: "15"
+regions_002: 
+  migrant_region_id: 
+  name: Oregon South
+  code: ORS
+  id: "8"
+  state_id: "43"
+regions_003: 
+  migrant_region_id: "1"
+  name: North Coast
+  code: NC
+  id: "1"
+  state_id: "56"
+regions_004: 
+  migrant_region_id: "1"
+  name: Puget Sound
+  code: PS
+  id: "3"
+  state_id: "56"
+regions_005: 
+  migrant_region_id: "1"
+  name: South Coast
+  code: SC
+  id: "4"
+  state_id: "56"
+regions_006: 
+  migrant_region_id: "1"
+  name: San Juan
+  code: SJ
+  id: "5"
+  state_id: "56"
+regions_007: 
+  migrant_region_id: "1"
+  name: Strait
+  code: STR
+  id: "6"
+  state_id: "56"
+regions_008: 
+  migrant_region_id: "1"
+  name: Humboldt
+  code: Humb
+  id: "12"
+  state_id: "6"
+regions_009: 
+  migrant_region_id: "2"
+  name: Aleutian Islands
+  code: AI
+  id: "10"
+  state_id: "2"
+regions_010: 
+  migrant_region_id: "2"
+  name: Bering Sea
+  code: BS
+  id: "11"
+  state_id: "2"
+regions_011: 
+  migrant_region_id: "3"
+  name: Gulf of Alaska
+  code: GAK
+  id: "9"
+  state_id: "2"
+regions_012: 
+  migrant_region_id: "3"
+  name: Southeast Alaska
+  code: SEAK
+  id: "14"
+  state_id: "2"
+regions_001: 
+  migrant_region_id: 
+  name: Oregon North
+  code: ORN
+  id: "2"
+  state_id: "43"

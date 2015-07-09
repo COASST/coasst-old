@@ -1,0 +1,46 @@
+<% form_for :survey, @survey, :url => { :action => "submit_step_when" } do |s| %>
+  <p><label for="survey_survey_date">Survey Date</label><br />
+  <%= s.calendar_date_select :survey_date, :month_year => "label",
+      :onchange => remote_function(:url => { :action => :poll_date}, :with => "'date='+value"),
+      :year_range => [1999, Time.now.year]
+   %>
+  </p>
+  <p>
+    <span class="xlarge" id="selected_date"><i><%=@selected_date%></i></span>
+  </p>
+
+  <p>Please check that the date is correct.  It's important to us.</p>
+
+  <p>
+    <label for="survey_start_time">Start Time</label><br />
+    <%= s.text_field :start_time, :size => 10, :value=>@start_time, :class => "large" %>
+  </p>
+  <div class="small">11:00, 11am, 1100</div>
+
+  <p>
+    <label for="survey_end_time">End Time</label><br />
+    <%= s.text_field :end_time, :size => 10, :value=>@end_time, :class => "large" %>
+  </p>
+
+  <div class="small">2:00, 2pm, 1400</div>
+
+  <p>
+    <span class="xlarge" id="selected_time"><i><%=@selected_time%></i></span>
+  </p>
+
+  <div class="clear">
+    <br /><br />
+  </div>
+
+  <%= button_div(:submit => @submit[:text], :go_back => {:url => @submit[:url]})%>
+
+<% end %>
+
+<script type="text/javascript">
+  sendRequest =  function () {
+    new Ajax.Request('/data/poll_time', {asynchronous:true, evalScripts:true, parameters:{start_time: $F($('survey_start_time')),end_time: $F($('survey_end_time'))}});
+  }
+  new Form.Element.DelayedObserver ("survey_end_time", 0.25, sendRequest);
+  new Form.Element.DelayedObserver ("survey_start_time", 0.25, sendRequest);
+</script>
+

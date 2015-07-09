@@ -1,0 +1,79 @@
+# == Schema Information
+#
+#  id         :integer       not null, primary key
+#  name       :string(255)   not null
+#  code       :string(2)     not null
+#  admin_only :boolean       not null
+#
+
+--- 
+plumages_004: 
+  name: transitional
+  code: T
+  id: "4"
+  admin_only: t
+plumages_005: 
+  name: light morph
+  code: LM
+  id: "5"
+  admin_only: f
+plumages_006: 
+  name: dark morph
+  code: DM
+  id: "6"
+  admin_only: f
+plumages_007: 
+  name: brown
+  code: BR
+  id: "7"
+  admin_only: f
+plumages_008: 
+  name: pied
+  code: PI
+  id: "8"
+  admin_only: f
+plumages_010: 
+  name: winter
+  code: WI
+  id: "10"
+  admin_only: f
+plumages_009: 
+  name: checkered
+  code: CK
+  id: "9"
+  admin_only: f
+plumages_011: 
+  name: summer
+  code: SU
+  id: "11"
+  admin_only: f
+plumages_012: 
+  name: dark
+  code: D
+  id: "12"
+  admin_only: f
+plumages_001: 
+  name: unknown
+  code: U
+  id: "1"
+  admin_only: f
+plumages_013: 
+  name: juvenile
+  code: J
+  id: "13"
+  admin_only: t
+plumages_002: 
+  name: breeding
+  code: B
+  id: "2"
+  admin_only: f
+plumages_014: 
+  name: intermediate
+  code: IM
+  id: "14"
+  admin_only: t
+plumages_003: 
+  name: non-breeding
+  code: NB
+  id: "3"
+  admin_only: f

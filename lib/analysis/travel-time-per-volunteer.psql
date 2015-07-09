@@ -1,0 +1,1 @@
+SELECT fullname, id, travel_minutes FROM volunteers LEFT JOIN (select volunteer_id, SUM(travel_time) as travel_minutes FROM survey_volunteers where role = 'data collector' GROUP BY volunteer_id) AS times ON times.volunteer_id = volunteers.id WHERE travel_minutes IS NOT NULL ORDER BY travel_minutes DESC;

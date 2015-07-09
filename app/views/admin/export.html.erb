@@ -1,0 +1,17 @@
+<h1>Export Data</h1>
+<p>Export data as a downloadable CSV file.</p>
+
+<% form_tag :action => "export"  do %>
+  <p>
+    <label for="start_date">Start Date</label><br />
+    <%= calendar_date_select_tag :start_date, '', :month_year => "label" %>
+  </p>
+
+  <p>
+    <label for="start_date">End Date</label><br />
+    <%= calendar_date_select_tag :end_date, '', :month_year => "label" %>
+  </p>
+
+  <%= button_div(:submit => 'Download CSV', :go_back => :back)%>
+
+<% end %>

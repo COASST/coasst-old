@@ -1,0 +1,26 @@
+<div style="padding-bottom: 45px;">
+<% if @survey.is_complete? == false %>
+  <% if @survey.step == 1 and @survey.all_volunteers.length == 0 %>
+      <div class="buttons sidepad">
+        <%= link_to "#{image_tag 'icons/add.png'} Add New Survey",
+              {:action => 'enter_data'}, :class =>"positive" %>
+      </div>
+    <% else %>
+    <p>You're currently working on step <%= number_to_word(@survey.step) %> of a survey.  Would you like to:</p>
+    <div class="buttons sidepad">
+      <%= link_to "#{image_tag 'icons/add.png'}Finish Survey",
+            {:action => 'enter_data', :s => @survey.step},
+            {:class => "label positive", :style => "font-size: 1em"}%>
+      <br />
+       <%= link_to "#{image_tag 'icons/cross.png'}Delete Incomplete Survey",
+            {:action => 'confirm_remove_survey'},
+            {:class => "label negative", :style => "margin-top: -5px; font-size: 1em"} %>
+    </div>
+  <% end %>
+<% else %>
+  <div class="buttons sidepad">
+      <%= link_to "#{image_tag 'icons/add.png'} Add New Survey",
+            {:action => 'start_survey'}, :class =>"positive" %>
+  </div>
+<% end %>
+</div>

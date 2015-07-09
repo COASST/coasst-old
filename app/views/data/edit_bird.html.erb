@@ -1,0 +1,28 @@
+<h1>Edit Bird #<%= @index %></h1>
+
+<br />
+<div class="buttons" id="cancel">
+  <%= link_to "#{image_tag 'icons/cross.png'}Delete this bird",
+      {:action => 'confirm_remove_bird', :id => @bird.id},
+      :class => "label negative" %>
+</div>
+
+<%= error_messages_for 'bird' %>
+
+<% form_for :bird, @bird, :url => { :action => "update_bird" }, :html => {:id => 'bird_form'} do |f| %>
+  <%= f.hidden_field :id %>
+  <%= render :partial => 'bird_form', :locals => {:f=>f} %>
+
+  <% if @submitter.has_role?('verifier') %>
+    <% button_div do%>
+      <%= button_elem(:go_back, 'Go back', "/data/verification_beach/#{@bird.survey.beach_id}") %>
+      <%= button_submit(:submit, "Verify bird") %>
+      <%= button_submit(:cancel, "Not a bird") %>
+    <% end %>
+  <% else %>
+    <%= button_div(:submit => 'Save bird', :go_back => {:url => '4'}) %>
+  <% end %>
+
+<% end %>
+
+<%= debug_block %>

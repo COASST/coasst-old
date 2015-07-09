@@ -1,0 +1,14 @@
+<div class="form">
+  <fieldset id="thin-form">
+    <legend>Enter your email address</legend>
+    <% form_tag :action => 'upgrade_account' do %>
+      <p>
+        <label for="email">Email address:<label>
+      </p>
+      <%= text_field_tag :email, params[:email], :size => 30 %>
+
+      <%= button_div(:submit => 'create my account') %>  
+
+    <% end %>
+  </fieldset>
+</div>

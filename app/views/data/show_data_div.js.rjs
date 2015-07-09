@@ -1,0 +1,13 @@
+
+#link_to_remote "...", :url => 
+#              {:action => 'show_data_div', :div_id => 'oil-data', :s => 'on'} %>
+#    </p>
+@div = params[:div_id]
+@status = params[:s]
+if @status == 'on'
+  page.visual_effect(:slide_down, @div, :duration => 0.5)
+#  page.visual_effect :highlight, @div, :duration => 1
+else
+  page.visual_effect(:slide_up, @div)
+end
+#page.insert_html(:top, "multiple-select", :partial => 'oil_select')

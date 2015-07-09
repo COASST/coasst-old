@@ -1,0 +1,78 @@
+<h1 class="snug"><%= @species.name %></h1>
+<span class="small">Code: <%= @species.code %></span><br />
+2000 <%= image_tag graphs_url(:action => 'species', :id => @species.id), :width => 246, :height => 25, :alt => "graph of #{@species.name} finds" %> 2007
+
+<p>
+  <% if not @species.foot_type_family.nil? %>
+    <b>Foot Type: </b> <%= @species.foot_type_family.name   %> <br />
+  <% end %>
+  <% if not @species.group.nil? %>
+    <b>Group: </b> <%= @species.group.name %> <br />
+  <% end %>
+  <% if not @species.subgroup.nil? %>
+    <b>Subgroup: </b> <%= @species.subgroup.name %> <br />
+  <% end %>
+  <br />
+  <b>Measurements:</b>
+
+  <table>
+    <%= render :partial => 'measurements' %>
+  </table>
+</p>
+<p>
+  <% if !@species.concerns.blank? %>
+    <b><%= @species.name %> is a species of concern:</b>
+    <ul class="snug">
+      <% for c in @species.concerns %>
+        <li><%= h c.name %></li>
+      <% end %>
+    </ul>
+    <br />
+  <% end %>
+
+  <% if !@species.active? %>
+    <i>species not currently monitored</i>
+  <% end %>
+</p>
+
+<%#@sql%>
+<h3> Surveys
+<% if not @year.nil? %>
+  in <%=@year%>
+<% end %>
+<% if params[:oiled] == "1" %>
+ - oiled birds
+<% end %>
+<% if params[:entangled] == "1" %>
+ - entangled birds
+<% end %>
+
+(<%=@surveys.length %> total) </h3>
+
+<table class="sortable-onload-2">
+  <tr>
+    <th class="sortable"><%=h('Beach') %></th>
+    <th class="sortable"><%=h('Survey date') %></th>
+    <th class="sortable"><%=h('Number found') %></th>
+  </tr>
+
+  <% for s in @surveys %>
+    <tr>
+      <td><%= s.beach_name %><%#= link_to s.beach_name, :controller=>:beach, :action=>:show, :id=>s.beach_id %></td>
+      <td><%= s.survey_date %><%#= link_to s.survey_date, :controller=>:survey, :action=>:show, :id=>s.id %></td>
+        <td><%= h s.cnt %></td>
+    </tr>
+  <% end %>
+</table>
+Total
+<% if params[:oiled] == "1" %>
+oiled
+<% end %>
+<% if params[:entangled] == "1" %>
+entangled
+<% end %>
+birds: <%=@bird_count%>
+
+
+<%#= link_to 'Edit', :action => 'edit', :id => @species %>
+<%#= link_to 'Back', :action => 'list' %>

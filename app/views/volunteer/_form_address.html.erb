@@ -1,0 +1,21 @@
+
+    <table class="wide">
+      <tr>
+        <td><label for="street_address">Street Address</label></td>
+      </tr>
+      <tr>
+        <td colspan="3"><%= text_field :volunteer, :street_address, :size => 40%></td>
+      </tr>
+      <tr>
+        <td><label for="city">City</label></td>
+        <td>State</td>
+        <td>Zipcode</td>
+      </tr>
+      <tr>
+        <td><%= text_field :volunteer, :city, :size => 20 %></td>
+        <td><%= @states = State.current_states
+        collection_select(:volunteer, :state_id, @states, :id, :name, {:include_blank => true}) %>
+        </td>
+        <td><%= text_field :volunteer, :zip, :size => 6 %></td>
+      </tr>
+    </table>

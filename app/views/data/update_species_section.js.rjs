@@ -1,0 +1,6 @@
+page.replace_html "species-attributes-div", :partial => "species_attributes"
+if not @species_id.nil? and @species_id > 0
+  page.visual_effect :blind_down, 'species-attributes-div', :queue => 'end'
+else
+  page.visual_effect :blind_up, 'species-attributes-div', :queue => 'end'
+end

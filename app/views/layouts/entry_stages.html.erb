@@ -1,0 +1,65 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>COASST: Volunteer Data Entry</title>
+  <meta http-equiv='content-type' content='text/html;charset=utf-8' />
+  <%= stylesheet_link_tag "habitual", :media => "all" %>
+  <%= stylesheet_link_tag "steps", :media => "all" %>
+  <%= javascript_include_tag :defaults %>
+  <%= calendar_date_select_includes %>
+</head>
+<body id="admin">
+  <div id="logo">
+    <%= image_tag("logo.gif") %>
+  </div>
+
+  <div id="container">
+    <h2 id="header"><%= @page_title || "Data Entry" %></h2>
+    <div id="sidebar">
+      <ul id="nav">
+        <% if session[:volunteer_id] and Volunteer.find(session[:volunteer_id]).has_role?('verifier') %>
+        <li>
+          <%= link_to "Verify data", :controller => 'data', :action => 'index' %>
+        <li>
+          <%= link_to "Administer", :controller => 'admin', :action => 'index' %>
+        </li>
+        <% else %>
+        <li>
+          <%= link_to "My data", :controller => 'data', :action => 'index' %>
+        </li>
+        <% end %>
+        <li>
+          <%= link_to "My info", :controller => 'volunteer', :action => 'edit_volunteer' %>
+        </li>
+        <li>
+          <%= link_to "Logout",     :controller => 'volunteer', :action => 'logout' %>
+        </li>
+      </ul>
+    </div>
+    <div id="main">
+  <ul id="mainNav" class="fourStep">
+    <li class="<%= @step_tags[1] %>"><a <%= @step_urls[1]%>><em>Step 1: Who?</em><span>volunteers</span></a></li>
+    <li class="<%= @step_tags[2] %>"><a <%= @step_urls[2]%>><em>Step 2: When?</em><span>timing</span></a></li>
+    <li class="<%= @step_tags[3] %>"><a <%= @step_urls[3]%>><em>Step 3: Beach</em><span>conditions</span></a></li>
+    <li class="<%= @step_tags[4] %>"><a <%= @step_urls[4]%>><em>Step 4: Birds</em><span>characteristics</span></a></li>
+  </ul>
+
+    <div class="cancelButton buttons">
+      <a class="negative label" href="/data/confirm_remove_survey">
+        <%= image_tag "icons/cross.png" %>Cancel Survey</a>
+    </div>
+  <div class="clearfloat">&nbsp;</div>
+
+    <% if flash[:error] -%>
+      <div id="error"><%= flash[:error] %></div>
+    <% end -%>
+    <% if flash[:notice] -%>
+      <div id="notice"><%= flash[:notice] %></div>
+    <% end -%>
+    <%= yield :layout %>
+  </div>
+
+  </div>
+</body>
+</html>
+

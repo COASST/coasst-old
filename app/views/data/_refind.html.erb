@@ -1,0 +1,25 @@
+<div style="font-size: small; width: 200px; margin-left: 20px; margin-top: 5px; padding: 0px 5px 5px 5px; border: 1px solid #D3D3D3;">
+  <p><b>Refind Information</b></p>
+      
+  <p>
+    <%= render :partial => 'bird_name', :locals => {:bird => refind[:bird]} %><br />
+    
+    <%#= timeago(@refind.survey.survey_date.to_time) %>
+    <%= refind[:age] %> days earlier
+    (<%= refind[:bird].survey.survey_date.to_s %>)<br />
+
+    <%=h refind[:asp] %><br />
+
+    <% if refind[:parts].include? 'bill' %>
+      Bill: <%= refind[:bird].bill_length %> mm<br />
+    <% end %>
+
+    <% if refind[:parts].include? 'wing' %>
+      Wing: <%= refind[:bird].wing_length %> cm<br />
+    <% end %>
+
+    <% if refind[:parts].include? 'tarsus' %>
+      Tarsus: <%= refind[:bird].tarsus_length %> cm<br />
+    <% end %>
+  </p>
+</div>

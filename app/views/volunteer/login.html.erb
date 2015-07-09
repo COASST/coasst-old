@@ -1,0 +1,31 @@
+<div class="form">
+  <p style="font-size: 100%; padding: 12px; background-color:#E6EFC2; border:1px solid #C6D880; width: 500px; margin-bottom: 30px;">
+      First time at the COASST data entry site? <span style="font-size: 110%;"> <%= link_to 'If so, please register', :action => 'upgrade' %> </span>
+  </p>
+
+  <fieldset id="thin-form">
+    <legend>Please Log in:</legend>
+    <% form_tag do %>
+      <p><label for="email">Email address:</label><br />
+        <%= text_field_tag :email, params[:email], :size => 25 %>
+      </p>
+
+      <p><label for="password">Password:</label><br />
+        <%= password_field_tag :password, params[:password], :size => 25 %>
+        <p class="small snug"><%= link_to 'Forgot your password?', :action => 'forgot' %></p>
+      </p>
+      <%= button_div :submit => 'Login' %>
+    <% end %>
+  </fieldset>
+
+</div>
+
+<div style="width: 500px; font-size: 110%; padding-top: 15px;">
+
+  Feel free to give us a call (<%= StaticData::INFO_PHONE %>) or send us an e-mail (<a href="mailto:<%= StaticData::INFO_EMAIL %>"><%= StaticData::INFO_EMAIL %></a>) if you experience data entry problems, or have trouble logging in.
+  </p> 
+  <p>
+    Thanks!
+  </p>
+
+</div>

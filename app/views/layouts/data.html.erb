@@ -1,0 +1,57 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>COASST: Volunteer Data Entry</title>
+  <meta http-equiv='content-type' content='text/html;charset=utf-8' />
+  <%= stylesheet_link_tag "habitual", :media => "all" %>
+  <%= stylesheet_link_tag "steps", :media => "all" %>
+  <%= javascript_include_tag 'tablesort_v2' %>  
+  <%= javascript_include_tag 'prototype' %>
+  <%= javascript_include_tag "effects" %>
+  <%= javascript_include_tag "controls" %>
+</head>
+<body id="admin">
+  <div id="logo">
+    <%= image_tag("logo.gif") %>
+  </div>
+
+  <div id="container">
+    <h1 id="header"><%= @page_title || "Data Entry" %></h1>
+    <div id="sidebar">
+      <ul id="nav">
+      <% if session[:volunteer_id] and Volunteer.find(session[:volunteer_id]).has_role?('verifier') %>
+        <li>
+          <%= link_to "Verify data", :controller => 'data', :action => 'index' %>
+        </li>
+        <li>
+          <%= link_to "Administer", :controller => 'admin', :action => 'index' %>
+        </li>
+      <% elsif session[:volunteer_id] and Volunteer.find(session[:volunteer_id]).has_role?('intern') %>
+        <li>
+          <%= link_to "My data", :controller => 'data', :action => 'index' %>
+        </li>
+        <li>
+          <%= link_to "Volunteers", :controller => 'volunteer_data', :action => 'index' %>
+        </li>
+      <% else %>
+        <li>
+          <%= link_to "My data", :controller => 'data', :action => 'index' %>
+        </li>
+      <% end %>
+        <li>
+          <%= link_to "My info", :controller => 'volunteer', :action => 'edit_volunteer' %>
+        </li>
+        <li>
+          <%= link_to "Logout", :controller => 'volunteer', :action => 'logout' %>
+        </li>
+      </ul>
+    </div>  
+    <div id="main">
+    <% if flash[:notice] -%>
+      <div id="notice"><%= flash[:notice] %></div>
+    <% end -%>
+      <%= yield :layout %>
+    </div>
+  </div>
+</body>
+</html>

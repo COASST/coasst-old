@@ -1,0 +1,426 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" dir="ltr" lang="en-US">
+
+<head profile="http://gmpg.org/xfn/11">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+<title>How to Monitor Your Rails/Passenger App with Munin &#45; Alfa Jango Blog &raquo; Blog Archive </title>
+
+<link rel="stylesheet" href="http://www.alfajango.com/blog/wp-content/themes/aj/style.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="http://www.alfajango.com/blog/wp-content/themes/aj/app_style.css" type="text/css" media="screen" />
+<link rel="alternate" type="application/rss+xml" title="Alfa Jango Blog RSS Feed" href="http://www.alfajango.com/blog/feed/" />
+<link rel="pingback" href="http://www.alfajango.com/blog/xmlrpc.php" />
+
+<style type="text/css" media="screen">
+
+	#page { background: url("http://www.alfajango.com/blog/wp-content/themes/aj/images/kubrickbgwide.jpg") repeat-y top; border: none; }
+
+</style>
+
+<link rel="alternate" type="application/rss+xml" title="Alfa Jango Blog &raquo; How to Monitor Your Rails/Passenger App with Munin Comments Feed" href="http://www.alfajango.com/blog/how-to-monitor-your-railspassenger-app-with-munin/feed/" />
+<link rel='stylesheet' id='codecolorer-css'  href='http://www.alfajango.com/blog/wp-content/plugins/codecolorer/codecolorer.css?ver=0.9.7' type='text/css' media='screen' />
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://www.alfajango.com/blog/xmlrpc.php?rsd" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://www.alfajango.com/blog/wp-includes/wlwmanifest.xml" /> 
+<link rel='index' title='Alfa Jango Blog' href='http://www.alfajango.com/blog' />
+<link rel='start' title='If You&#8217;re Nervous About Quitting Your Boring Job, You&#8217;re Sane' href='http://www.alfajango.com/blog/if-youre-nervous-about-quitting-your-boring-job-youre-sane/' />
+<link rel='prev' title='Google One-letter Suggestions' href='http://www.alfajango.com/blog/google-one-letter-suggestions/' />
+<link rel='next' title='How to Include Your Rails App Layout in Your Wordpress Theme (or any PHP application)' href='http://www.alfajango.com/blog/how-to-include-your-rails-app-layout-in-your-wordpress-theme-or-any-php-application/' />
+<meta name="generator" content="WordPress 2.9" />
+<link rel='canonical' href='http://www.alfajango.com/blog/how-to-monitor-your-railspassenger-app-with-munin/' />
+</head>
+<body>
+	<div id="header">
+	<div class="constrained">
+	<a href="/" alt="Alfa Jango Software and Automation" id="banner"><img alt="Alfa_jango_logo_ruby" src="/images/layout/alfa_jango_logo_ruby.png?1267410560" /></a>
+	<div id="login-badge">
+		<span>Client Portal: </span>
+		<a href="/login" id="login-badge">Login</a>
+	</div>
+	<div id="call-us">
+		<span id="call-to-action"><img alt="Mobile-phone" src="/images/mobile-phone.png?1267410560" />
+			<span id="phone-number">888.64.JANGO <span>(888.645.2646)</span>
+		</span>
+		<span id="live-chat">
+			<a href="#" id="live-chat-link" onclick="$('#live-chat-loader').show(); wc_init('2772-5074612-10-9348'); return false;">LIVE CHAT SUPPORT</a>
+			<img alt="Ajax-loader" id="live-chat-loader" src="/images/ajax-loader.gif?1267410560" style="display: none;" />
+		</span>
+	</div>
+	<div id="menu">
+		<ul>
+			<li>
+				<a href="/products_and_services">Products &amp; Services <span>How we can help you</span></a>
+			</li>
+			<li>
+				<a href="/clients">Clients <span>Team up with us</span></a>
+			</li>
+			<li>
+				<a href="/blog" class="active">Blog <span>Our thoughts</span></a>
+			</li>
+			<li>
+				<a href="/about">About <span>Who we are</span></a>
+			</li>
+			<li>
+				<a href="/contact" id="right-edge">Contact <span>Navigate to us</span></a>
+			</li>
+		</ul>
+	</div>
+	</div>
+</div>
+	<div class="hr tile"><hr /></div>
+	<div id="content">
+		<div class="constrained">
+		<h1><a href="http://www.alfajango.com/blog/">Alfa Jango Blog</a>
+			<span class="description">Engineering, Software, and Entrepreneurship</span></h1>
+		</div>
+
+
+	<div class="constrained">
+		<div class="narrowcolumn">
+	
+		<div class="navigation">
+			<div class="alignleft">&laquo; <a href="http://www.alfajango.com/blog/google-one-letter-suggestions/" rel="prev">Google One-letter Suggestions</a></div>
+			<div class="alignright"><a href="http://www.alfajango.com/blog/how-to-include-your-rails-app-layout-in-your-wordpress-theme-or-any-php-application/" rel="next">How to Include Your Rails App Layout in Your Wordpress Theme (or any PHP application)</a> &raquo;</div>
+		</div>
+
+		<div class="post" id="post-65">
+			<h2>How to Monitor Your Rails/Passenger App with Munin</h2>
+
+			<div class="entry">
+				<div id="attachment_70" class="wp-caption alignleft" style="width: 310px"><a href="http://www.alfajango.com/blog/wp-content/uploads/2010/02/Picture-10.png"><img class="size-medium wp-image-70 " title="Munin Passenger Plugin Graphs" src="http://www.alfajango.com/blog/wp-content/uploads/2010/02/Picture-10-300x189.png" alt="" width="300" height="189" /></a><p class="wp-caption-text"> </p></div>
+<p><a href="http://munin.projects.linpro.no/">Munin</a> is a great tool to monitor resources on your server, showing graphs over time, so that you can analyze resource trends to find what&#8217;s killing your server before it causes major problems. It is also very configurable and can be made to profile and graph just about anything via plugins. And with a couple tricks, you can get it to monitor your <a href="http://www.modrails.com/">Phusion Passenger</a> application with ease.</p>
+<p>If you already have Munin installed and working, and just want to know how to get the Passenger Plugins working, you can skip directly to Install <a href="http://www.alfajango.com/blog/how-to-monitor-your-railspassenger-app-with-munin#install-munin-passenger-plugins">Munin Passenger Plugins</a>, <a href="http://www.alfajango.com/blog/how-to-monitor-your-railspassenger-app-with-munin#configure-munin-for-passenger-stats">Configure Munin for Passenger Stats</a>, and be sure to read the <a href="http://www.alfajango.com/blog/how-to-monitor-your-railspassenger-app-with-munin#gotcha">Gotcha</a>.</p>
+<p><span id="more-65"></span></p>
+<h3>Install Munin and Munin-node</h3>
+<p>The first step is to install Munin. If you have your server running Ubuntu, this is pretty easy. One you&#8217;ve SSH&#8217;d into your server, enter:</p>
+<div class="codecolorer-container text twitlight" style="overflow:auto;white-space:nowrap;width:545px;"><div class="text codecolorer" style="white-space:nowrap">sudo apt-get install munin munin-node -y</div></div>
+<p>If you&#8217;re running another flavor of Linux, see the <a href="http://munin.projects.linpro.no/wiki/LinuxInstallation">Munin&#8217;s Linux install instructions</a>. For Mac OSX, see <a href="http://munin.projects.linpro.no/wiki/DarwinInstallation">Mac install instructions</a>.<br />
+<a name="install-munin-passenger-plugins"></a></p>
+<h3>Install Munin Passenger Plugins</h3>
+<p>The next step is to install the Passenger plugins. The first is passenger_status:</p>
+<div class="codecolorer-container text twitlight" style="overflow:auto;white-space:nowrap;width:545px;"><div class="text codecolorer" style="white-space:nowrap">wget http://gist.github.com/20319.txt<br />
+sudo mv 20319.txt /usr/share/munin/plugins/passenger_status<br />
+sudo chmod a+x /usr/share/munin/plugins/passenger_status<br />
+sudo ln -s /usr/share/munin/plugins/passenger_status /etc/munin/plugins/passenger_status</div></div>
+<p>The second plugin is passenger_memory_stats:</p>
+<div class="codecolorer-container text twitlight" style="overflow:auto;white-space:nowrap;width:545px;"><div class="text codecolorer" style="white-space:nowrap">wget http://gist.github.com/21391.txt<br />
+sudo mv 21391.txt /usr/share/munin/plugins/passenger_memory_stats<br />
+sudo chmod a+x /usr/share/munin/plugins/passenger_memory_stats<br />
+sudo ln -s /usr/share/munin/plugins/passenger_memory_stats /etc/munin/plugins/passenger_memory_stats</div></div>
+<p>No go ahead and restart Munin-node (this is the process that runs Munin at regular intervals):</p>
+<div class="codecolorer-container text twitlight" style="overflow:auto;white-space:nowrap;width:545px;"><div class="text codecolorer" style="white-space:nowrap">sudo /etc/init.d/munin-node restart</div></div>
+<h3>Configure Munin</h3>
+<p>Now here are where those couple of tricks come in to get Munin playing nicely with your Rails application. First we want to tell Munin where to store the html and graph images that you can access through the browser.</p>
+<div class="codecolorer-container text twitlight" style="overflow:auto;white-space:nowrap;width:545px;"><div class="text codecolorer" style="white-space:nowrap">sudo nano /etc/munin/munin.conf</div></div>
+<p>And change the following lines:</p>
+<div class="codecolorer-container text twitlight" style="overflow:auto;white-space:nowrap;width:545px;"><div class="text codecolorer" style="white-space:nowrap">htmldir /path/to/your/rails/shared/directory/munin<br />
+[yoursite.com]</div></div>
+<p>Note that the htmldir can really be any directory, but make sure it&#8217;s persistent (i.e. if you&#8217;re using Capistrano to keep revisions of your app on the server, make sure the munin directory is in the shared directory outside of your rails app root directory).</p>
+<p>Also note that the <code class="codecolorer text default"><span class="text">[yoursite.com]</span></code> part is only a descriptive name, so it really doesn&#8217;t matter what you call it. If you have a more complex application that runs from multiple directories or multiple servers, you can group Munin stats, and in this case, you actually have to put some thought into this line. But that&#8217;s outside the scope of this article, so you can read up on <a href="http://munin.projects.linpro.no/wiki/munin.conf">customizing Munin Master</a> on your own time if you&#8217;d like.</p>
+<p>Now if you haven&#8217;t already, you need to actually create that directory you just told Munin about:</p>
+<div class="codecolorer-container text twitlight" style="overflow:auto;white-space:nowrap;width:545px;"><div class="text codecolorer" style="white-space:nowrap">cd /path/to/your/rails/shared/directory<br />
+mkdir -p munin<br />
+sudo chown munin:munin munin</div></div>
+<p><a name="configure-munin-for-passenger-stats"></a></p>
+<h3>Configure Munin For Passenger Stats</h3>
+<p>And finally, you need to allow the munin user to run the <code class="codecolorer text default"><span class="text">passenger-status</span></code> and <code class="codecolorer text default"><span class="text">passenger-memory-stats</span></code> commands without a password, since they both require sudo powers to run properly.</p>
+<div class="codecolorer-container text twitlight" style="overflow:auto;white-space:nowrap;width:545px;"><div class="text codecolorer" style="white-space:nowrap">sudo visudo</div></div>
+<p>And at the bottom of the file add:</p>
+<div class="codecolorer-container text twitlight" style="overflow:auto;white-space:nowrap;width:545px;"><div class="text codecolorer" style="white-space:nowrap">munin   ALL=(ALL) NOPASSWD:/usr/bin/passenger-status, /usr/bin/passenger-memory-stats</div></div>
+<p><a name="gotcha"></a></p>
+<h3>Gotcha</h3>
+<p>At this point, Munin is suppose to start doing it&#8217;s stuff and all is happy in the ruby-munin marriage. For me, however, this was not the case. After combing the Munin error logs and digging through the Munin documentation and code more than I care to admit, I realized that Munin-node needs to preface the passenger stat commands with <code class="codecolorer text default"><span class="text">ruby</span></code>. So, here&#8217;s how we fix that:</p>
+<div class="codecolorer-container text twitlight" style="overflow:auto;white-space:nowrap;width:545px;"><div class="text codecolorer" style="white-space:nowrap">sudo nano /etc/munin/plugin-conf.d/munin-node</div></div>
+<p>And then add this to the bottom of that file:</p>
+<div class="codecolorer-container text twitlight" style="overflow:auto;white-space:nowrap;width:545px;"><div class="text codecolorer" style="white-space:nowrap">[passenger_*]<br />
+user munin<br />
+command ruby %c</div></div>
+<h3>Final Munin Restart</h3>
+<p>Now we&#8217;ll give Munin-node one more restart and we&#8217;re in business.</p>
+<div class="codecolorer-container text twitlight" style="overflow:auto;white-space:nowrap;width:545px;"><div class="text codecolorer" style="white-space:nowrap">sudo /etc/init.d/munin-node restart</div></div>
+<p>After waiting a few minutes, you should start to see .html files and graphs and whatnot in the <code class="codecolorer text default"><span class="text">/path/to/your/rails/shared/directory/munin</span></code> directory. If not, you want to check out the Munin-node error logs to see what&#8217;s going on. On Ubuntu, this is found at <code class="codecolorer text default"><span class="text">/var/log/munin/munin-node.log</span></code>.</p>
+<h3>View Munin From Your Browser</h3>
+<p>So now, Munin is running, but what good is it if you can&#8217;t view the pretty output? Typically the best way to do this is through a sub-domain. If you have yoursite.com, let&#8217;s set up Munin to be viewable from munin.yoursite.com. All you need to do is point to the <code class="codecolorer text default"><span class="text">/path/to/your/rails/shared/directory/munin</span></code> directory for munin.yoursite.com in your site&#8217;s server conf file. For example, if you&#8217;re on Apache, you&#8217;d just do this in your <code class="codecolorer text default"><span class="text">sites-available/yoursite.conf</span></code></p>
+<div class="codecolorer-container text twitlight" style="overflow:auto;white-space:nowrap;width:545px;"><div class="text codecolorer" style="white-space:nowrap">&lt;VirtualHost *:80&gt;<br />
+ServerName munin.yoursite.com<br />
+DocumentRoot /path/to/your/rails/shared/directory/munin<br />
+&lt;/VirtualHost&gt;</div></div>
+<p>And make sure you have the proper A-name record setup for munin.yoursite.com with your NameServers.</p>
+<p>Once domain propogation magic happens, you should now be able to see this when you navigate to munin.yoursite.com</p>
+<div id="attachment_75" class="wp-caption aligncenter" style="width: 310px"><a href="http://www.alfajango.com/blog/wp-content/uploads/2010/02/Picture-12.png"><img class="size-medium wp-image-75" title="Munin main page" src="http://www.alfajango.com/blog/wp-content/uploads/2010/02/Picture-12-300x75.png" alt="" width="300" height="75" /></a><p class="wp-caption-text">Munin main page</p></div>
+<p>The Passenger stats will be in the &#8220;App&#8221; section.</p>
+<p>Have fun now monitoring your Passenger Rails application with passenger usage trending. Remember to use your newfound power for good.</p>
+<h4><em>(irqstats patch)</em></h4>
+<p>If you find that the irqstats graph doesn&#8217;t work, you may need to <a href="http://munin.projects.linpro.no/attachment/ticket/598/munin_plugin_irqstats.patch">patch the irqstats plugin</a>. Basically you just need to <code class="codecolorer text default"><span class="text">sudo nano /etc/munin/plugins/irqstats</span></code> and change</p>
+<div class="codecolorer-container text twitlight" style="overflow:auto;white-space:nowrap;width:545px;"><div class="text codecolorer" style="white-space:nowrap">if ($irq =~ /^\d+$/) {</div></div>
+<p>to</p>
+<div class="codecolorer-container text twitlight" style="overflow:auto;white-space:nowrap;width:545px;"><div class="text codecolorer" style="white-space:nowrap"># numeric values or something like NMI/RES/CAL are accepted<br />
+if (($irq =~ /^\d+$/) || ($irq =~/^[A-Z]{3}$/)) {</div></div>
+
+								<p>Tags: <a href="http://www.alfajango.com/blog/tag/monitoring/" rel="tag">monitoring</a>, <a href="http://www.alfajango.com/blog/tag/munin/" rel="tag">Munin</a>, <a href="http://www.alfajango.com/blog/tag/performance/" rel="tag">performance</a>, <a href="http://www.alfajango.com/blog/tag/rails/" rel="tag">Rails</a>, <a href="http://www.alfajango.com/blog/tag/ruby/" rel="tag">Ruby</a></p>
+				<p class="postmetadata alt">
+					<small>
+						This entry was posted
+												on Thursday, February 11th, 2010 at 10:35 am						and is filed under <a href="http://www.alfajango.com/blog/category/ruby/rails/" title="View all posts in Rails" rel="category tag">Rails</a>,  <a href="http://www.alfajango.com/blog/category/ruby/" title="View all posts in Ruby" rel="category tag">Ruby</a>.
+						You can follow any responses to this entry through the <a href='http://www.alfajango.com/blog/how-to-monitor-your-railspassenger-app-with-munin/feed/'>RSS 2.0</a> feed.
+
+													You can <a href="#respond">leave a response</a>, or <a href="http://www.alfajango.com/blog/how-to-monitor-your-railspassenger-app-with-munin/trackback/" rel="trackback">trackback</a> from your own site.
+
+						
+					</small>
+				</p>
+
+			</div>
+		</div>
+
+	
+<!-- You can start editing here. -->
+
+	<h3 id="comments">One Response to &#8220;How to Monitor Your Rails/Passenger App with Munin&#8221;</h3>
+
+	<ol class="commentlist">
+
+	
+		<li class="alt" id="comment-1823">
+						<cite><a href='http://www.alfajango.com/blog/performance-tuning-for-phusion-passenger-an-introduction/' rel='external nofollow' class='url'>Performance Tuning for Phusion Passenger (an Introduction) &#45; Alfa Jango Blog &raquo; Blog Archive</a></cite> Says:
+						<br />
+
+			<small class="commentmetadata"><a href="#comment-1823" title="">March 1st, 2010 at 9:03 pm</a> </small>
+
+			<p>[...] getting started, we highly recommend employing Munin (instructions for Munin with Passenger here) and NewRelic Performance Monitoring for your Passenger/Rails application, so that you can [...]</p>
+
+		</li>
+
+	
+	
+	</ol>
+
+ 
+
+
+<h3 id="respond">Leave a Reply</h3>
+
+
+<form action="http://www.alfajango.com/blog/wp-comments-post.php" method="post" id="commentform">
+
+
+<p><input type="text" name="author" id="author" value="" size="22" tabindex="1" aria-required='true' />
+<label for="author"><small>Name (required)</small></label></p>
+
+<p><input type="text" name="email" id="email" value="" size="22" tabindex="2" aria-required='true' />
+<label for="email"><small>Mail (will not be published) (required)</small></label></p>
+
+<p><input type="text" name="url" id="url" value="" size="22" tabindex="3" />
+<label for="url"><small>Website</small></label></p>
+
+
+<!--<p><small><strong>XHTML:</strong> You can use these tags: <code>&lt;a href=&quot;&quot; title=&quot;&quot;&gt; &lt;abbr title=&quot;&quot;&gt; &lt;acronym title=&quot;&quot;&gt; &lt;b&gt; &lt;blockquote cite=&quot;&quot;&gt; &lt;cite&gt; &lt;code&gt; &lt;del datetime=&quot;&quot;&gt; &lt;em&gt; &lt;i&gt; &lt;q cite=&quot;&quot;&gt; &lt;strike&gt; &lt;strong&gt; </code></small></p>-->
+
+<p><textarea name="comment" id="comment" cols="100%" rows="10" tabindex="4"></textarea></p>
+
+<p><input name="submit" type="submit" id="submit" tabindex="5" value="Submit Comment" />
+<input type="hidden" name="comment_post_ID" value="65" />
+</p>
+
+</form>
+
+
+
+			</div>
+			<div id="sidebar">
+		<ul>
+			<li>
+				<img id="rss-footer-icon" src='/images/layout/rss_icon.png' />
+				<a href="http://www.alfajango.com/blog/feed/">Subscribe to the feed</a>
+			</li>
+			<li id="search-3" class="widget widget_search"><h2 class="widgettitle">Search Blog</h2><form method="get" id="searchform" action="http://www.alfajango.com/blog/">
+<label class="hidden" for="s">Search for:</label>
+<div><input type="text" value="" name="s" id="s" />
+<input type="submit" id="searchsubmit" value="Search" />
+</div>
+</form>
+</li>		<li id="recent-posts-4" class="widget widget_recent_entries">		<h2 class="widgettitle">Recent Posts</h2>		<ul>
+				<li><a href="http://www.alfajango.com/blog/performance-tuning-for-phusion-passenger-an-introduction/" title="Performance Tuning for Phusion Passenger (an Introduction)">Performance Tuning for Phusion Passenger (an Introduction) </a></li>
+				<li><a href="http://www.alfajango.com/blog/how-to-include-your-rails-app-layout-in-your-wordpress-theme-or-any-php-application/" title="How to Include Your Rails App Layout in Your Wordpress Theme (or any PHP application)">How to Include Your Rails App Layout in Your Wordpress Theme (or any PHP application) </a></li>
+				<li><a href="http://www.alfajango.com/blog/how-to-monitor-your-railspassenger-app-with-munin/" title="How to Monitor Your Rails/Passenger App with Munin">How to Monitor Your Rails/Passenger App with Munin </a></li>
+				<li><a href="http://www.alfajango.com/blog/google-one-letter-suggestions/" title="Google One-letter Suggestions">Google One-letter Suggestions </a></li>
+				<li><a href="http://www.alfajango.com/blog/cool-libraries-for-ruby/" title="Cool Libraries for Ruby">Cool Libraries for Ruby </a></li>
+				</ul>
+		</li><li id="categories-3" class="widget widget_categories"><h2 class="widgettitle">Categories</h2>		<ul>
+	<li class="cat-item cat-item-28"><a href="http://www.alfajango.com/blog/category/apache/" title="View all posts filed under Apache">Apache</a>
+</li>
+	<li class="cat-item cat-item-11"><a href="http://www.alfajango.com/blog/category/business/" title="View all posts filed under Business">Business</a>
+</li>
+	<li class="cat-item cat-item-15"><a href="http://www.alfajango.com/blog/category/entrepreneurship/" title="View all posts filed under Entrepreneurship">Entrepreneurship</a>
+</li>
+	<li class="cat-item cat-item-9"><a href="http://www.alfajango.com/blog/category/marketing/" title="View all posts filed under Marketing">Marketing</a>
+</li>
+	<li class="cat-item cat-item-26"><a href="http://www.alfajango.com/blog/category/php/" title="View all posts filed under PHP">PHP</a>
+</li>
+	<li class="cat-item cat-item-17"><a href="http://www.alfajango.com/blog/category/ruby/rails/" title="View all posts filed under Rails">Rails</a>
+</li>
+	<li class="cat-item cat-item-16"><a href="http://www.alfajango.com/blog/category/ruby/" title="View all posts filed under Ruby">Ruby</a>
+</li>
+	<li class="cat-item cat-item-10"><a href="http://www.alfajango.com/blog/category/web/" title="View all posts filed under Web">Web</a>
+</li>
+	<li class="cat-item cat-item-27"><a href="http://www.alfajango.com/blog/category/php/wordpress/" title="View all posts filed under Wordpress">Wordpress</a>
+</li>
+		</ul>
+</li><li id="text-3" class="widget widget_text"><h2 class="widgettitle">About Alfa Jango</h2>			<div class="textwidget"><p>Alfa Jango is a software and automation consultancy from Ann Arbor, MI, which specializes in Ruby on Rails development and web-based business strategy.</p>
+<p>We have a passion for engineering, the web, and entrepreneurship. See our <a href="/about">About page</a> for more.</p>
+</div>
+		</li><li id="linkcat-2" class="widget widget_links"><h2 class="widgettitle">Blogroll</h2>
+	<ul class='xoxo blogroll'>
+<li><a href="http://www.facebook.com/pages/ann-arbor-MI/Alfa-Jango/24216861486" title="Alfa Jango&#8217;s facebook fan page">Alfa Jango&#039;s Facebook Page</a></li>
+<li><a href="http://twitter.com/alfajango" title="Alfa Jango&#8217;s corporate twitter">Alfa Jango&#039;s Twitter</a></li>
+<li><a href="http://jangosteve.com" title="Steve Schwartz&#8217;s personal tumble blog">JangoSteve&#039;s Personal Blog</a></li>
+<li><a href="http://twitter.com/jangosteve" title="Steve Schwartz&#8217;s personal twitter">JangoSteve&#039;s Twitter</a></li>
+
+	</ul>
+</li>
+<li id="tag_cloud-3" class="widget widget_tag_cloud"><h2 class="widgettitle">Tag Cloud</h2><div><a href='http://www.alfajango.com/blog/tag/apache/' class='tag-link-28' title='1 topic' style='font-size: 8pt;'>Apache</a>
+<a href='http://www.alfajango.com/blog/tag/entrepreneurship/' class='tag-link-15' title='1 topic' style='font-size: 8pt;'>Entrepreneurship</a>
+<a href='http://www.alfajango.com/blog/tag/gems/' class='tag-link-19' title='1 topic' style='font-size: 8pt;'>gems</a>
+<a href='http://www.alfajango.com/blog/tag/google/' class='tag-link-24' title='1 topic' style='font-size: 8pt;'>Google</a>
+<a href='http://www.alfajango.com/blog/tag/integration/' class='tag-link-35' title='1 topic' style='font-size: 8pt;'>integration</a>
+<a href='http://www.alfajango.com/blog/tag/libraries/' class='tag-link-18' title='1 topic' style='font-size: 8pt;'>libraries</a>
+<a href='http://www.alfajango.com/blog/tag/memory/' class='tag-link-34' title='1 topic' style='font-size: 8pt;'>memory</a>
+<a href='http://www.alfajango.com/blog/tag/mod_rails/' class='tag-link-30' title='1 topic' style='font-size: 8pt;'>mod_rails</a>
+<a href='http://www.alfajango.com/blog/tag/monitoring/' class='tag-link-38' title='1 topic' style='font-size: 8pt;'>monitoring</a>
+<a href='http://www.alfajango.com/blog/tag/munin/' class='tag-link-36' title='1 topic' style='font-size: 8pt;'>Munin</a>
+<a href='http://www.alfajango.com/blog/tag/open-source/' class='tag-link-20' title='1 topic' style='font-size: 8pt;'>open-source</a>
+<a href='http://www.alfajango.com/blog/tag/passenger/' class='tag-link-29' title='1 topic' style='font-size: 8pt;'>passenger</a>
+<a href='http://www.alfajango.com/blog/tag/performance/' class='tag-link-37' title='1 topic' style='font-size: 8pt;'>performance</a>
+<a href='http://www.alfajango.com/blog/tag/performance-tuning/' class='tag-link-31' title='1 topic' style='font-size: 8pt;'>performance tuning</a>
+<a href='http://www.alfajango.com/blog/tag/php/' class='tag-link-26' title='1 topic' style='font-size: 8pt;'>PHP</a>
+<a href='http://www.alfajango.com/blog/tag/planning/' class='tag-link-22' title='1 topic' style='font-size: 8pt;'>planning</a>
+<a href='http://www.alfajango.com/blog/tag/quitting/' class='tag-link-21' title='1 topic' style='font-size: 8pt;'>quitting</a>
+<a href='http://www.alfajango.com/blog/tag/rails/' class='tag-link-17' title='2 topics' style='font-size: 16.4pt;'>Rails</a>
+<a href='http://www.alfajango.com/blog/tag/ruby/' class='tag-link-16' title='3 topics' style='font-size: 22pt;'>Ruby</a>
+<a href='http://www.alfajango.com/blog/tag/search/' class='tag-link-25' title='1 topic' style='font-size: 8pt;'>search</a>
+<a href='http://www.alfajango.com/blog/tag/seo/' class='tag-link-23' title='1 topic' style='font-size: 8pt;'>SEO</a>
+<a href='http://www.alfajango.com/blog/tag/server/' class='tag-link-32' title='1 topic' style='font-size: 8pt;'>server</a>
+<a href='http://www.alfajango.com/blog/tag/swap/' class='tag-link-33' title='1 topic' style='font-size: 8pt;'>swap</a>
+<a href='http://www.alfajango.com/blog/tag/wordpress/' class='tag-link-27' title='1 topic' style='font-size: 8pt;'>Wordpress</a></div>
+</li>		</ul>
+	</div>
+
+	</div>
+
+		
+	<div class="push"></div>
+</div>
+<br class="clear" />
+
+<div class="black">
+	<div class="hr tile"><hr /></div>
+	<div class="constrained center">
+		<br />
+		<img id="rss-footer-icon" src='/images/layout/rss_icon.png' />
+		<a href="http://www.alfajango.com/blog/feed/">Entries (RSS)</a>
+		and <a href="http://www.alfajango.com/blog/comments/feed/">Comments (RSS)</a>
+	</div>
+</div>
+
+<div id="footer">
+	<div class="constrained">
+	<div id="footer-bar">
+		<span>
+			Drink the social media punch. Join the crowd.
+		</span>
+		Follow us on <img alt="Twitter_follow_icon" src="/images/layout/twitter_follow_icon.png?1267410560" /> <a href="http://twitter.com/alfajango">Twitter</a>, and become a fan on <img alt="Facebook_icon" src="/images/layout/facebook_icon.png?1267410560" /> <a href="http://www.facebook.com/pages/ann-arbor-MI/Alfa-Jango/24216861486">Facebook</a>
+	</div>
+	<div id="footer-widgets">
+		<div class="column half-width" id="blog-headlines">
+			<h3><a href="/blog/feed/"><img alt="Rss_icon" src="/images/layout/rss_icon.png?1267410560" /></a> <a href="/blog">Alfa Jango Updates</a>
+				<span><a href="/blog/feed/">(subscribe to feed)</a></span></h3>
+			<dl id="recent-posts">
+	
+		<dt><a href="http://www.alfajango.com/blog/?p=142">Performance Tuning for Phusion Passenger (an Introduction)</a><span>about 17 hours ago</span></dt>
+		
+		<dd><p>Once you've launched your application and people start actually using it, you may find server experiencing excessive swapping once the<a href="http://www.alfajango.com/blog/?p=142">... [read more]</a></p></dd>
+		
+	
+		<dt><a href="http://www.alfajango.com/blog/?p=68">How to Include Your Rails App Layout in Your Wordpress Theme (or any PHP application)</a><span>6 days ago</span></dt>
+		
+		<dd><p>Here's the problem: You have a Ruby on Rails application and its Wordpress blog. For the sake of consistency and branding, you'd like t<a href="http://www.alfajango.com/blog/?p=68">... [read more]</a></p></dd>
+		
+	
+		<dt><a href="http://www.alfajango.com/blog/?p=65">How to Monitor Your Rails/Passenger App with Munin</a><span>19 days ago</span></dt>
+		
+		<dd><p>Munin is a great tool to monitor resources on your server, showing graphs over time, so that you can analyze resource trends to find wh<a href="http://www.alfajango.com/blog/?p=65">... [read more]</a></p></dd>
+		
+	
+</dl>
+		</div>
+		<div class="column quarter-width">
+			<h3><a href="http://twitter.com/alfajango"><img alt="Twitter_icon" src="/images/layout/twitter_icon.png?1267410560" /></a> <a href="http://twitter.com/alfajango">On Twitter</a></h3>
+			<div id="twtr-widget">
+				loading alfajango's Tweets...
+			</div>
+		</div>
+		<div class="column quarter-width">
+			<h3><a href="/contact"><img alt="Contact_icon" src="/images/layout/contact_icon.png?1267410560" /></a> <a href="/contact">Contact us</a></h3>
+			<dl>
+	<dt>Address</dt>
+	<dd>1327 Jones Dr, Ann Arbor, MI 48105</dd>
+	<dt>Phone</dt>
+	<dd>888.64.JANGO (888.645.2646)</dd>
+	<dt>Email</dt>
+	<dd>support@alfajango.com</dd>
+	<dt>Twitter</dt>
+	<dd><a href="http://twitter.com/alfajango">@alfajango</a></dd>
+</dl>
+		</div>
+	</div>
+	<div id="bottom-bar">
+		&copy; 2010 Alfa Jango , LLC | 
+		support@alfajango.com | Ann Arbor, MI
+	</div>
+	</div>
+</div><script src="http://widgets.twimg.com/j/2/widget.js"></script>
+<script>
+new TWTR.Widget({
+  version: 2,
+  type: 'profile',
+  id: 'twtr-widget',
+  rpp: 3,
+  interval: 6000,
+  width: '100%',
+  height: 270,
+  theme: {
+    shell: {
+      background: 'transparent',
+      color: '#cccccc'
+    },
+    tweets: {
+      background: 'transparent',
+      color: '#cccccc',
+      links: '#73b058'
+    }
+  },
+  features: {
+    scrollbar: true,
+    loop: false,
+    live: false,
+    hashtags: true,
+    timestamp: true,
+    avatars: false,
+    behavior: 'all'
+  }
+}).render().setUser('alfajango').start();
+</script>
+
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+var pageTracker = _gat._getTracker("UA-2467935-4");
+pageTracker._initData();
+pageTracker._trackPageview();
+</script></body>
+</html>
+
+<!-- Dynamic page generated in 3.588 seconds. -->
+<!-- Cached page generated by WP-Super-Cache on 2010-03-01 21:03:26 -->
+<!-- super cache -->

@@ -1,0 +1,13 @@
+# == Schema Information
+#
+#  id   :integer       not null, primary key
+#  name :string(255)   
+#
+
+--- 
+roles_001: 
+  name: registered
+  id: "1"
+roles_002: 
+  name: intern
+  id: "2"

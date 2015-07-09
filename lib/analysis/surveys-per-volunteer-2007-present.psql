@@ -1,0 +1,10 @@
+SELECT survey_count_by_volunteer.*,
+       v.fullname 
+FROM ( SELECT COUNT(*), 
+        volunteer_id 
+        FROM surveys s 
+        LEFT JOIN survey_volunteers sv ON sv.survey_id = s.id 
+        WHERE role = 'data collector' AND 
+          extract(year from s.survey_date) >= 2007 
+        GROUP BY volunteer_id ORDER BY count DESC)
+AS survey_count_by_volunteer LEFT JOIN volunteers v ON v.id = volunteer_id;

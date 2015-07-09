@@ -1,0 +1,24 @@
+<div class="form">
+  <fieldset id="thin-form">
+    <legend>Please Choose A Volunteer</legend>
+    <p>
+      The email address you used has multiple users associated with it. 
+      Which would you like to use?
+    </p>
+
+    <% form_tag do %>
+    <div id="multiple-select">
+    <ul>
+      <% @volunteers.each do |v| 
+           default = false %>
+        <% if v.primary_user?
+             default = true %>
+        <% end %>
+         <li><%= radio_button "volunteer", :primary, v.id, :checked => default %> <%= v.name %></li>
+      <% end %>
+    </ul>
+    </div>
+    <%= button_div :submit => 'Choose Volunteer' %>
+    <% end %>
+  </fieldset>
+</div>

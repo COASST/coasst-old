@@ -1,0 +1,69 @@
+<h1><%=h("Verification: #{@region.name}") %></h1>
+
+<p>Total of <%= @surveys_length %> surveys for this region.</p>
+
+<h3>Unreviewed</h3>
+<% if @unreviewed_surveys.length > 0 %>
+  <table class="sortable ruled">
+    <tr>
+      <th class="sortable"><%=h('Date') %></th>
+      <th class="sortable">Beach</th>
+      <th class="sortable"><%=h('Cable Tie') %></th>
+      <th class="sortable" width="225"><%=h('Birds Found') %></th>
+      <th class="sortable"><%=h('Verified?') %></th>
+    </tr>
+
+  <% for s in @unreviewed_surveys %>
+    <tr>
+      <td><%= link_to s.survey_date, :controller => :survey, :action => :show, :id => s.id %></td>
+      <td><%=h @beach_names[s.beach_id] %></td>
+      <% if @birds[s.id].length > 0 %>
+        <td class="right tie">
+          <% for id in @birds[s.id] %>
+            <%= @birds_list[@birds_index[id]]['tie_number'] %><br />
+          <% end%>
+        </td>
+        <td align="right">
+          <% for id in @birds[s.id] %>
+            <%
+=begin
+              Was using 'bird_name' partial here, but it soaks up a _ton_ of memory when listings
+              have 2000+ birds (~70MB just for the bird ActiveRecord data). Instead, just display
+              name if we know it.
+=end
+%>
+            <% spid = @birds_list[@birds_index[id]]['species_id'].to_i
+               if not @species[spid].nil? and spid != Bird::TAXON_UNKNOWNS['species'].id %>
+                <%=h @species[spid] %>
+            <% else %>
+                (Unknown)
+            <% end %>
+
+            <%= image_tag "icons/bird_silhouette.png" %><br />
+          <% end %>
+        </td>
+        <td class="sidepad center">
+          <% for id in @birds[s.id] %>
+            <% if @birds_list[@birds_index[id]]['verified'] == 't' %>
+              <%= image_tag "icons/accept.png", :alt => "bird is verified" %>
+            <% else %>
+              <%= image_tag "icons/bullet_red.png", :alt => "bird is NOT verified" %>
+            <% end %>
+            <br />
+          <% end %>
+        </td>
+      <% else %>
+        <td colspan="2" class="right"><i>None found</i></td>
+        <td></td>
+      <% end %>
+    </tr>
+  <% end %>
+  </table>
+<% else %>
+  <p class="sidepad">No unreviewed surveys, whew!</p>
+<% end %>
+
+<% button_div do %>
+  <%= button_elem(:go_back, "Go Back to Regions", "/data/") %>
+<% end %>
+<%= debug_block %>

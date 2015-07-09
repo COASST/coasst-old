@@ -1,0 +1,10 @@
+<h1>Reports</h1>
+
+<ul>
+  <li>Birds found: <%= link_to "by species", :action => :species_by_count %>, <%= link_to "by family", :action => :families_by_count %></li>
+  <li><%= link_to "Top 10 species by year", :action => :species_by_count_by_year %></li>
+  <li><%= link_to "Oiled birds", :action => :oiled_birds %></li>
+  <li><%= link_to "Entangled birds", :action => :entangled_birds %></li>
+  <li><%= link_to "Species of concern", :action => :species_of_concern %></li>
+  <!--<li><%= link_to "Deposition indices TBD", :action=> :deposition_indices %></li>-->
+</ul>

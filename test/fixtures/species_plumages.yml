@@ -1,0 +1,1013 @@
+--- 
+species_plumages_005: 
+  id: "5"
+  plumage_id: "1"
+  species_id: "5"
+species_plumages_032: 
+  id: "32"
+  plumage_id: "1"
+  species_id: "32"
+species_plumages_113: 
+  id: "115"
+  plumage_id: "1"
+  species_id: "116"
+species_plumages_220: 
+  id: "226"
+  plumage_id: "3"
+  species_id: "76"
+species_plumages_006: 
+  id: "6"
+  plumage_id: "1"
+  species_id: "6"
+species_plumages_033: 
+  id: "35"
+  plumage_id: "1"
+  species_id: "35"
+species_plumages_140: 
+  id: "142"
+  plumage_id: "2"
+  species_id: "106"
+species_plumages_221: 
+  id: "227"
+  plumage_id: "3"
+  species_id: "74"
+species_plumages_007: 
+  id: "7"
+  plumage_id: "1"
+  species_id: "7"
+species_plumages_034: 
+  id: "36"
+  plumage_id: "1"
+  species_id: "36"
+species_plumages_060: 
+  id: "62"
+  plumage_id: "1"
+  species_id: "62"
+species_plumages_114: 
+  id: "116"
+  plumage_id: "1"
+  species_id: "117"
+species_plumages_141: 
+  id: "143"
+  plumage_id: "2"
+  species_id: "108"
+species_plumages_222: 
+  id: "228"
+  plumage_id: "3"
+  species_id: "75"
+species_plumages_223: 
+  id: "229"
+  plumage_id: "3"
+  species_id: "25"
+species_plumages_008: 
+  id: "8"
+  plumage_id: "1"
+  species_id: "8"
+species_plumages_035: 
+  id: "37"
+  plumage_id: "1"
+  species_id: "37"
+species_plumages_061: 
+  id: "63"
+  plumage_id: "1"
+  species_id: "63"
+species_plumages_115: 
+  id: "117"
+  plumage_id: "1"
+  species_id: "118"
+species_plumages_142: 
+  id: "144"
+  plumage_id: "2"
+  species_id: "121"
+species_plumages_250: 
+  id: "256"
+  plumage_id: "1"
+  species_id: "130"
+species_plumages_009: 
+  id: "9"
+  plumage_id: "1"
+  species_id: "9"
+species_plumages_036: 
+  id: "38"
+  plumage_id: "1"
+  species_id: "38"
+species_plumages_062: 
+  id: "64"
+  plumage_id: "1"
+  species_id: "64"
+species_plumages_116: 
+  id: "118"
+  plumage_id: "1"
+  species_id: "119"
+species_plumages_143: 
+  id: "145"
+  plumage_id: "2"
+  species_id: "125"
+species_plumages_251: 
+  id: "257"
+  plumage_id: "1"
+  species_id: "131"
+species_plumages_224: 
+  id: "230"
+  plumage_id: "3"
+  species_id: "90"
+species_plumages_063: 
+  id: "65"
+  plumage_id: "1"
+  species_id: "65"
+species_plumages_117: 
+  id: "119"
+  plumage_id: "1"
+  species_id: "120"
+species_plumages_144: 
+  id: "146"
+  plumage_id: "2"
+  species_id: "113"
+species_plumages_170: 
+  id: "172"
+  plumage_id: "2"
+  species_id: "64"
+species_plumages_252: 
+  id: "258"
+  plumage_id: "1"
+  species_id: "132"
+species_plumages_225: 
+  id: "231"
+  plumage_id: "3"
+  species_id: "89"
+species_plumages_037: 
+  id: "39"
+  plumage_id: "1"
+  species_id: "39"
+species_plumages_064: 
+  id: "66"
+  plumage_id: "1"
+  species_id: "66"
+species_plumages_090: 
+  id: "92"
+  plumage_id: "1"
+  species_id: "92"
+species_plumages_118: 
+  id: "120"
+  plumage_id: "1"
+  species_id: "121"
+species_plumages_145: 
+  id: "147"
+  plumage_id: "2"
+  species_id: "6"
+species_plumages_171: 
+  id: "173"
+  plumage_id: "2"
+  species_id: "47"
+species_plumages_253: 
+  id: "259"
+  plumage_id: "1"
+  species_id: "133"
+species_plumages_226: 
+  id: "232"
+  plumage_id: "3"
+  species_id: "47"
+species_plumages_038: 
+  id: "40"
+  plumage_id: "1"
+  species_id: "40"
+species_plumages_065: 
+  id: "67"
+  plumage_id: "1"
+  species_id: "67"
+species_plumages_091: 
+  id: "93"
+  plumage_id: "1"
+  species_id: "93"
+species_plumages_119: 
+  id: "121"
+  plumage_id: "1"
+  species_id: "122"
+species_plumages_146: 
+  id: "148"
+  plumage_id: "2"
+  species_id: "118"
+species_plumages_172: 
+  id: "175"
+  plumage_id: "2"
+  species_id: "31"
+species_plumages_227: 
+  id: "233"
+  plumage_id: "3"
+  species_id: "93"
+species_plumages_039: 
+  id: "41"
+  plumage_id: "1"
+  species_id: "41"
+species_plumages_066: 
+  id: "68"
+  plumage_id: "1"
+  species_id: "68"
+species_plumages_092: 
+  id: "94"
+  plumage_id: "1"
+  species_id: "94"
+species_plumages_173: 
+  id: "176"
+  plumage_id: "2"
+  species_id: "29"
+species_plumages_228: 
+  id: "234"
+  plumage_id: "3"
+  species_id: "15"
+species_plumages_067: 
+  id: "69"
+  plumage_id: "1"
+  species_id: "69"
+species_plumages_093: 
+  id: "95"
+  plumage_id: "1"
+  species_id: "95"
+species_plumages_147: 
+  id: "149"
+  plumage_id: "2"
+  species_id: "90"
+species_plumages_174: 
+  id: "178"
+  plumage_id: "2"
+  species_id: "54"
+species_plumages_229: 
+  id: "235"
+  plumage_id: "3"
+  species_id: "54"
+species_plumages_068: 
+  id: "70"
+  plumage_id: "1"
+  species_id: "70"
+species_plumages_094: 
+  id: "96"
+  plumage_id: "1"
+  species_id: "96"
+species_plumages_148: 
+  id: "150"
+  plumage_id: "2"
+  species_id: "15"
+species_plumages_175: 
+  id: "179"
+  plumage_id: "2"
+  species_id: "62"
+species_plumages_069: 
+  id: "71"
+  plumage_id: "1"
+  species_id: "71"
+species_plumages_095: 
+  id: "97"
+  plumage_id: "1"
+  species_id: "97"
+species_plumages_149: 
+  id: "151"
+  plumage_id: "2"
+  species_id: "86"
+species_plumages_176: 
+  id: "180"
+  plumage_id: "2"
+  species_id: "35"
+species_plumages_096: 
+  id: "98"
+  plumage_id: "1"
+  species_id: "98"
+species_plumages_177: 
+  id: "181"
+  plumage_id: "2"
+  species_id: "39"
+species_plumages_097: 
+  id: "99"
+  plumage_id: "1"
+  species_id: "99"
+species_plumages_178: 
+  id: "182"
+  plumage_id: "2"
+  species_id: "63"
+species_plumages_098: 
+  id: "100"
+  plumage_id: "1"
+  species_id: "100"
+species_plumages_179: 
+  id: "183"
+  plumage_id: "3"
+  species_id: "108"
+species_plumages_099: 
+  id: "101"
+  plumage_id: "1"
+  species_id: "102"
+species_plumages_100: 
+  id: "102"
+  plumage_id: "1"
+  species_id: "103"
+species_plumages_101: 
+  id: "103"
+  plumage_id: "1"
+  species_id: "104"
+species_plumages_020: 
+  id: "20"
+  plumage_id: "1"
+  species_id: "20"
+species_plumages_021: 
+  id: "21"
+  plumage_id: "1"
+  species_id: "21"
+species_plumages_102: 
+  id: "104"
+  plumage_id: "1"
+  species_id: "105"
+species_plumages_210: 
+  id: "216"
+  plumage_id: "3"
+  species_id: "16"
+species_plumages_022: 
+  id: "22"
+  plumage_id: "1"
+  species_id: "22"
+species_plumages_211: 
+  id: "217"
+  plumage_id: "3"
+  species_id: "82"
+species_plumages_023: 
+  id: "23"
+  plumage_id: "1"
+  species_id: "23"
+species_plumages_103: 
+  id: "105"
+  plumage_id: "1"
+  species_id: "106"
+species_plumages_130: 
+  id: "132"
+  plumage_id: "2"
+  species_id: "75"
+species_plumages_212: 
+  id: "218"
+  plumage_id: "3"
+  species_id: "55"
+species_plumages_024: 
+  id: "24"
+  plumage_id: "1"
+  species_id: "24"
+species_plumages_050: 
+  id: "52"
+  plumage_id: "1"
+  species_id: "52"
+species_plumages_104: 
+  id: "106"
+  plumage_id: "1"
+  species_id: "107"
+species_plumages_131: 
+  id: "133"
+  plumage_id: "2"
+  species_id: "68"
+species_plumages_025: 
+  id: "25"
+  plumage_id: "1"
+  species_id: "25"
+species_plumages_051: 
+  id: "53"
+  plumage_id: "1"
+  species_id: "53"
+species_plumages_105: 
+  id: "107"
+  plumage_id: "1"
+  species_id: "108"
+species_plumages_132: 
+  id: "134"
+  plumage_id: "2"
+  species_id: "21"
+species_plumages_240: 
+  id: "246"
+  plumage_id: "8"
+  species_id: "92"
+species_plumages_213: 
+  id: "219"
+  plumage_id: "3"
+  species_id: "67"
+species_plumages_052: 
+  id: "54"
+  plumage_id: "1"
+  species_id: "54"
+species_plumages_106: 
+  id: "108"
+  plumage_id: "1"
+  species_id: "109"
+species_plumages_133: 
+  id: "135"
+  plumage_id: "2"
+  species_id: "79"
+species_plumages_241: 
+  id: "247"
+  plumage_id: "9"
+  species_id: "92"
+species_plumages_214: 
+  id: "220"
+  plumage_id: "3"
+  species_id: "21"
+species_plumages_026: 
+  id: "26"
+  plumage_id: "1"
+  species_id: "26"
+species_plumages_053: 
+  id: "55"
+  plumage_id: "1"
+  species_id: "55"
+species_plumages_107: 
+  id: "109"
+  plumage_id: "1"
+  species_id: "110"
+species_plumages_134: 
+  id: "136"
+  plumage_id: "2"
+  species_id: "16"
+species_plumages_160: 
+  id: "162"
+  plumage_id: "2"
+  species_id: "44"
+species_plumages_242: 
+  id: "248"
+  plumage_id: "10"
+  species_id: "96"
+species_plumages_027: 
+  id: "27"
+  plumage_id: "1"
+  species_id: "27"
+species_plumages_054: 
+  id: "56"
+  plumage_id: "1"
+  species_id: "56"
+species_plumages_080: 
+  id: "82"
+  plumage_id: "1"
+  species_id: "82"
+species_plumages_108: 
+  id: "110"
+  plumage_id: "1"
+  species_id: "111"
+species_plumages_135: 
+  id: "137"
+  plumage_id: "2"
+  species_id: "76"
+species_plumages_161: 
+  id: "163"
+  plumage_id: "2"
+  species_id: "25"
+species_plumages_215: 
+  id: "221"
+  plumage_id: "3"
+  species_id: "64"
+species_plumages_243: 
+  id: "249"
+  plumage_id: "11"
+  species_id: "96"
+species_plumages_028: 
+  id: "28"
+  plumage_id: "1"
+  species_id: "28"
+species_plumages_055: 
+  id: "57"
+  plumage_id: "1"
+  species_id: "57"
+species_plumages_081: 
+  id: "83"
+  plumage_id: "1"
+  species_id: "83"
+species_plumages_109: 
+  id: "111"
+  plumage_id: "1"
+  species_id: "112"
+species_plumages_162: 
+  id: "164"
+  plumage_id: "2"
+  species_id: "40"
+species_plumages_216: 
+  id: "222"
+  plumage_id: "3"
+  species_id: "66"
+species_plumages_244: 
+  id: "250"
+  plumage_id: "12"
+  species_id: "92"
+species_plumages_029: 
+  id: "29"
+  plumage_id: "1"
+  species_id: "29"
+species_plumages_056: 
+  id: "58"
+  plumage_id: "1"
+  species_id: "58"
+species_plumages_082: 
+  id: "84"
+  plumage_id: "1"
+  species_id: "84"
+species_plumages_136: 
+  id: "138"
+  plumage_id: "2"
+  species_id: "77"
+species_plumages_163: 
+  id: "165"
+  plumage_id: "2"
+  species_id: "53"
+species_plumages_217: 
+  id: "223"
+  plumage_id: "3"
+  species_id: "68"
+species_plumages_245: 
+  id: "251"
+  plumage_id: "1"
+  species_id: "126"
+species_plumages_057: 
+  id: "59"
+  plumage_id: "1"
+  species_id: "59"
+species_plumages_083: 
+  id: "85"
+  plumage_id: "1"
+  species_id: "85"
+species_plumages_137: 
+  id: "139"
+  plumage_id: "2"
+  species_id: "111"
+species_plumages_164: 
+  id: "166"
+  plumage_id: "2"
+  species_id: "58"
+species_plumages_190: 
+  id: "194"
+  plumage_id: "3"
+  species_id: "35"
+species_plumages_218: 
+  id: "224"
+  plumage_id: "3"
+  species_id: "63"
+species_plumages_058: 
+  id: "60"
+  plumage_id: "1"
+  species_id: "60"
+species_plumages_084: 
+  id: "86"
+  plumage_id: "1"
+  species_id: "86"
+species_plumages_138: 
+  id: "140"
+  plumage_id: "2"
+  species_id: "5"
+species_plumages_165: 
+  id: "167"
+  plumage_id: "2"
+  species_id: "56"
+species_plumages_191: 
+  id: "195"
+  plumage_id: "3"
+  species_id: "5"
+species_plumages_219: 
+  id: "225"
+  plumage_id: "3"
+  species_id: "62"
+species_plumages_246: 
+  id: "252"
+  plumage_id: "1"
+  species_id: "127"
+species_plumages_085: 
+  id: "87"
+  plumage_id: "1"
+  species_id: "87"
+species_plumages_139: 
+  id: "141"
+  plumage_id: "2"
+  species_id: "89"
+species_plumages_166: 
+  id: "168"
+  plumage_id: "2"
+  species_id: "42"
+species_plumages_192: 
+  id: "196"
+  plumage_id: "3"
+  species_id: "31"
+species_plumages_247: 
+  id: "253"
+  plumage_id: "1"
+  species_id: "128"
+species_plumages_059: 
+  id: "61"
+  plumage_id: "1"
+  species_id: "61"
+species_plumages_086: 
+  id: "88"
+  plumage_id: "1"
+  species_id: "88"
+species_plumages_167: 
+  id: "169"
+  plumage_id: "2"
+  species_id: "55"
+species_plumages_193: 
+  id: "198"
+  plumage_id: "3"
+  species_id: "125"
+species_plumages_248: 
+  id: "254"
+  plumage_id: "2"
+  species_id: "129"
+species_plumages_087: 
+  id: "89"
+  plumage_id: "1"
+  species_id: "89"
+species_plumages_168: 
+  id: "170"
+  plumage_id: "2"
+  species_id: "57"
+species_plumages_194: 
+  id: "199"
+  plumage_id: "3"
+  species_id: "121"
+species_plumages_249: 
+  id: "255"
+  plumage_id: "3"
+  species_id: "129"
+species_plumages_088: 
+  id: "90"
+  plumage_id: "1"
+  species_id: "90"
+species_plumages_195: 
+  id: "201"
+  plumage_id: "3"
+  species_id: "39"
+species_plumages_089: 
+  id: "91"
+  plumage_id: "1"
+  species_id: "91"
+species_plumages_169: 
+  id: "171"
+  plumage_id: "2"
+  species_id: "38"
+species_plumages_196: 
+  id: "202"
+  plumage_id: "3"
+  species_id: "111"
+species_plumages_197: 
+  id: "203"
+  plumage_id: "3"
+  species_id: "40"
+species_plumages_198: 
+  id: "204"
+  plumage_id: "3"
+  species_id: "110"
+species_plumages_199: 
+  id: "205"
+  plumage_id: "3"
+  species_id: "37"
+species_plumages_010: 
+  id: "10"
+  plumage_id: "1"
+  species_id: "10"
+species_plumages_011: 
+  id: "11"
+  plumage_id: "1"
+  species_id: "11"
+species_plumages_012: 
+  id: "12"
+  plumage_id: "1"
+  species_id: "12"
+species_plumages_200: 
+  id: "206"
+  plumage_id: "3"
+  species_id: "6"
+species_plumages_013: 
+  id: "13"
+  plumage_id: "1"
+  species_id: "13"
+species_plumages_120: 
+  id: "122"
+  plumage_id: "1"
+  species_id: "123"
+species_plumages_201: 
+  id: "207"
+  plumage_id: "3"
+  species_id: "38"
+species_plumages_014: 
+  id: "14"
+  plumage_id: "1"
+  species_id: "14"
+species_plumages_040: 
+  id: "42"
+  plumage_id: "1"
+  species_id: "42"
+species_plumages_121: 
+  id: "123"
+  plumage_id: "1"
+  species_id: "124"
+species_plumages_041: 
+  id: "43"
+  plumage_id: "1"
+  species_id: "43"
+species_plumages_122: 
+  id: "124"
+  plumage_id: "1"
+  species_id: "125"
+species_plumages_202: 
+  id: "208"
+  plumage_id: "3"
+  species_id: "113"
+species_plumages_230: 
+  id: "236"
+  plumage_id: "3"
+  species_id: "86"
+species_plumages_015: 
+  id: "15"
+  plumage_id: "1"
+  species_id: "15"
+species_plumages_042: 
+  id: "44"
+  plumage_id: "1"
+  species_id: "44"
+species_plumages_123: 
+  id: "125"
+  plumage_id: "2"
+  species_id: "67"
+species_plumages_203: 
+  id: "209"
+  plumage_id: "3"
+  species_id: "77"
+species_plumages_231: 
+  id: "237"
+  plumage_id: "3"
+  species_id: "85"
+species_plumages_016: 
+  id: "16"
+  plumage_id: "1"
+  species_id: "16"
+species_plumages_043: 
+  id: "45"
+  plumage_id: "1"
+  species_id: "45"
+species_plumages_124: 
+  id: "126"
+  plumage_id: "2"
+  species_id: "81"
+species_plumages_150: 
+  id: "152"
+  plumage_id: "2"
+  species_id: "87"
+species_plumages_204: 
+  id: "210"
+  plumage_id: "3"
+  species_id: "79"
+species_plumages_232: 
+  id: "238"
+  plumage_id: "3"
+  species_id: "53"
+species_plumages_017: 
+  id: "17"
+  plumage_id: "1"
+  species_id: "17"
+species_plumages_044: 
+  id: "46"
+  plumage_id: "1"
+  species_id: "46"
+species_plumages_070: 
+  id: "72"
+  plumage_id: "1"
+  species_id: "72"
+species_plumages_151: 
+  id: "153"
+  plumage_id: "2"
+  species_id: "88"
+species_plumages_205: 
+  id: "211"
+  plumage_id: "3"
+  species_id: "56"
+species_plumages_233: 
+  id: "239"
+  plumage_id: "3"
+  species_id: "88"
+species_plumages_045: 
+  id: "47"
+  plumage_id: "1"
+  species_id: "47"
+species_plumages_071: 
+  id: "73"
+  plumage_id: "1"
+  species_id: "73"
+species_plumages_125: 
+  id: "127"
+  plumage_id: "2"
+  species_id: "85"
+species_plumages_152: 
+  id: "154"
+  plumage_id: "2"
+  species_id: "14"
+species_plumages_206: 
+  id: "212"
+  plumage_id: "3"
+  species_id: "58"
+species_plumages_018: 
+  id: "18"
+  plumage_id: "1"
+  species_id: "18"
+species_plumages_234: 
+  id: "240"
+  plumage_id: "3"
+  species_id: "87"
+species_plumages_046: 
+  id: "48"
+  plumage_id: "1"
+  species_id: "48"
+species_plumages_072: 
+  id: "74"
+  plumage_id: "1"
+  species_id: "74"
+species_plumages_126: 
+  id: "128"
+  plumage_id: "2"
+  species_id: "110"
+species_plumages_153: 
+  id: "155"
+  plumage_id: "2"
+  species_id: "12"
+species_plumages_207: 
+  id: "213"
+  plumage_id: "3"
+  species_id: "57"
+species_plumages_019: 
+  id: "19"
+  plumage_id: "1"
+  species_id: "19"
+species_plumages_073: 
+  id: "75"
+  plumage_id: "1"
+  species_id: "75"
+species_plumages_127: 
+  id: "129"
+  plumage_id: "2"
+  species_id: "82"
+species_plumages_154: 
+  id: "156"
+  plumage_id: "2"
+  species_id: "93"
+species_plumages_180: 
+  id: "184"
+  plumage_id: "3"
+  species_id: "42"
+species_plumages_208: 
+  id: "214"
+  plumage_id: "3"
+  species_id: "81"
+species_plumages_047: 
+  id: "49"
+  plumage_id: "1"
+  species_id: "49"
+species_plumages_235: 
+  id: "241"
+  plumage_id: "5"
+  species_id: "102"
+species_plumages_074: 
+  id: "76"
+  plumage_id: "1"
+  species_id: "76"
+species_plumages_128: 
+  id: "130"
+  plumage_id: "2"
+  species_id: "83"
+species_plumages_155: 
+  id: "157"
+  plumage_id: "2"
+  species_id: "94"
+species_plumages_181: 
+  id: "185"
+  plumage_id: "3"
+  species_id: "106"
+species_plumages_209: 
+  id: "215"
+  plumage_id: "3"
+  species_id: "83"
+species_plumages_236: 
+  id: "242"
+  plumage_id: "5"
+  species_id: "70"
+species_plumages_129: 
+  id: "131"
+  plumage_id: "2"
+  species_id: "74"
+species_plumages_156: 
+  id: "158"
+  plumage_id: "2"
+  species_id: "95"
+species_plumages_182: 
+  id: "186"
+  plumage_id: "3"
+  species_id: "29"
+species_plumages_048: 
+  id: "50"
+  plumage_id: "1"
+  species_id: "50"
+species_plumages_075: 
+  id: "77"
+  plumage_id: "1"
+  species_id: "77"
+species_plumages_237: 
+  id: "243"
+  plumage_id: "6"
+  species_id: "70"
+species_plumages_157: 
+  id: "159"
+  plumage_id: "2"
+  species_id: "66"
+species_plumages_183: 
+  id: "187"
+  plumage_id: "3"
+  species_id: "45"
+species_plumages_049: 
+  id: "51"
+  plumage_id: "1"
+  species_id: "51"
+species_plumages_076: 
+  id: "78"
+  plumage_id: "1"
+  species_id: "78"
+species_plumages_238: 
+  id: "244"
+  plumage_id: "6"
+  species_id: "102"
+species_plumages_184: 
+  id: "188"
+  plumage_id: "3"
+  species_id: "95"
+species_plumages_077: 
+  id: "79"
+  plumage_id: "1"
+  species_id: "79"
+species_plumages_239: 
+  id: "245"
+  plumage_id: "7"
+  species_id: "92"
+species_plumages_158: 
+  id: "160"
+  plumage_id: "2"
+  species_id: "45"
+species_plumages_185: 
+  id: "189"
+  plumage_id: "3"
+  species_id: "94"
+species_plumages_078: 
+  id: "80"
+  plumage_id: "1"
+  species_id: "80"
+species_plumages_159: 
+  id: "161"
+  plumage_id: "2"
+  species_id: "37"
+species_plumages_186: 
+  id: "190"
+  plumage_id: "3"
+  species_id: "12"
+species_plumages_079: 
+  id: "81"
+  plumage_id: "1"
+  species_id: "81"
+species_plumages_187: 
+  id: "191"
+  plumage_id: "3"
+  species_id: "44"
+species_plumages_188: 
+  id: "192"
+  plumage_id: "3"
+  species_id: "14"
+species_plumages_189: 
+  id: "193"
+  plumage_id: "3"
+  species_id: "118"
+species_plumages_001: 
+  id: "1"
+  plumage_id: "1"
+  species_id: "1"
+species_plumages_002: 
+  id: "2"
+  plumage_id: "1"
+  species_id: "2"
+species_plumages_003: 
+  id: "3"
+  plumage_id: "1"
+  species_id: "3"
+species_plumages_110: 
+  id: "112"
+  plumage_id: "1"
+  species_id: "113"
+species_plumages_030: 
+  id: "30"
+  plumage_id: "1"
+  species_id: "30"
+species_plumages_111: 
+  id: "113"
+  plumage_id: "1"
+  species_id: "114"
+species_plumages_004: 
+  id: "4"
+  plumage_id: "1"
+  species_id: "4"
+species_plumages_031: 
+  id: "31"
+  plumage_id: "1"
+  species_id: "31"
+species_plumages_112: 
+  id: "114"
+  plumage_id: "1"
+  species_id: "115"

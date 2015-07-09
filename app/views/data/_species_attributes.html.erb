@@ -1,0 +1,137 @@
+
+<% if @groups and @groups.length > 1 %>
+  <div id="group-div" class="slideout-container">
+<% else %>
+  <div id="group-div" class="slideout-container" style="display: none;">
+<% end %>
+
+    <p><label for="bird_group">Group</label><br/>
+    <%= select_tag "bird[group_id]", options_for_select(@groups,@subgroup_id), :id=>"bird_group_id" %>
+    </p>
+  </div>
+
+<div class="slideout spacetop">
+
+<table id="bird_attributes">
+  <tr>
+    <th>
+    <% if @ages.length > 1 %>
+    Age
+    <% end %>
+    </th>
+    <th>
+    <% if @plumages.length > 1 %>
+    Plumage
+    <% end %>
+    </th>
+    <th>
+    <% if @sex.length > 1 %>
+    Sex
+    <% end %>
+    </th>
+  </tr>
+  <tr>
+    <td>
+<% if @ages.nil? %>
+<% elsif @ages.length == 1 %>
+  <%= hidden_field_tag "bird[age_id]", @ages[0].id %>
+<% else %>
+  <% @ages.each do |w| %>
+   <% @onclick = []
+      if @role != 'admin' %>
+     <%
+        status = (w.name == 'adult') ? 'Down' : 'Up'
+         @spp_attributes.each {|s| @onclick << "Effect.Blind#{status}('#{s}-data', {queue: 'end'});"}
+         if @onclick.length > 1
+           @onclick << "return false;"
+         end
+     %>
+    <% end %>
+
+    <%= radio_button "bird", :age_id, w.id, :onclick => @onclick.join(" ") %>
+    <%= w.title %><br />
+  <% end %>
+<% end %>
+    </td>
+    <td>
+<% if @plumages.nil? %>
+<% elsif @plumages.length == 1 %>
+  <%= hidden_field_tag "bird[plumage_id]", @plumages[0].id %>
+<% else %>
+  <% if @ages.nil? or @ages.length == 1 or @age_id == 1 or @role == 'admin' %>
+    <div id="plumage-data" class="slideout-container">
+  <% else %>
+    <div id="plumage-data" class="slideout-container" style="display: none;">
+  <% end %>
+      <% @plumages.each do |w| %>
+        <%=radio_button "bird", :plumage_id, w.id %> <%= w.name.capitalize %><br />
+      <% end %>
+    </div>
+<% end %>
+    </td>
+    <td>
+<% if @sex.nil? %>
+<% elsif @sex.length == 1 %>
+  <%= hidden_field_tag "bird[sex]", @sex[0] %></td>
+<% else %>
+  <% if @ages.nil? or @ages.length == 1 or @age_id == 1 or @role == 'admin' %>
+    <div id="sex-data" class="slideout-container">
+  <% else %>
+    <div id="sex-data" class="slideout-container" style="display: none;">
+  <% end %>
+      <% @sex.each do |w| %>
+        <%= radio_button "bird",:sex, w %> <%= w %><br />
+      <% end %>
+    </div>
+<% end %>
+    </td>
+  </tr>
+
+</table>
+
+<table>
+  <tr>
+    <td>
+<% if @parts_attributes.include? 'bill' %>
+<p><label for="bird_bill_length">
+<span id="bill-range-div">Bill length<%=@bill_range%></span></label> <br/>
+<%= text_field 'bird', 'bill_length', :size => 7, :onblur => remote_function(
+      :url => {:action => :check_length}, :with => "$H({length_type: 'bill_length',
+      length_value: $F(this), species_id: $F($('bird_species_id'))}).toQueryString()") %> <%= units_abbr('mm') %>
+</p>
+<div id="bill-length-warning-div"></div>
+
+<% end %>
+    </td>
+    <td rowspan="3">
+    </td>
+  </tr>
+  <tr>
+    <td>
+<% if @parts_attributes.include? 'wing' %>
+<p><label for="bird_wing_length">
+<span id="wing-range-div">Wing length<%=@wing_range%></span></label><br/>
+<%= text_field 'bird', 'wing_length', :size => 7, :onblur => remote_function(
+      :url => {:action => :check_length}, :with => "$H({length_type: 'wing_length',
+      length_value: $F(this), species_id: $F($('bird_species_id'))}).toQueryString()") %> <%= units_abbr('cm') %>
+</p>
+<div id="wing-length-warning-div"></div>
+<% end %>
+    </td>
+  </tr>
+  <tr>
+    <td>
+<% if @parts_attributes.include? 'tarsus' %>
+<p><label for="bird_tarsus_length">
+<span id="tarsus-range-div">Tarsus length<%=@tarsus_range%></span></label><br/>
+<%= text_field 'bird', 'tarsus_length', :size => 7, :onblur => remote_function(
+      :url => {:action => :check_length}, :with => "$H({length_type: 'tarsus_length',
+      length_value: $F(this), species_id: $F($('bird_species_id'))}).toQueryString()") %> <%= units_abbr('mm') %>
+</p>
+<div id="tarsus-length-warning-div"></div>
+<% end %>
+    </td>
+  </tr>
+</table>
+
+</div>

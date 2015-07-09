@@ -1,0 +1,72 @@
+<h1>Search results</h1>
+
+<table>
+  <tr>
+    <% for c in @columns %>
+      <% if c !~ /_id$/ %>
+        <th><%= c.sub("_name","").humanize %></th>
+      <% end %>
+    <% end %>
+  </tr>
+
+<% for row in @data  %>
+  <tr>
+    <% row.each_with_index do |c,i|  %>
+      <% if @columns[i] =~ /_id$/ %>
+        <% @id_for_next = c %>
+        <% @controller_for_next = @columns[i][0 .. -4]%>
+      <% else %>
+        <% if @id_for_next.nil? %>
+          <% if c.class == Fixnum %>
+            <td align="right"><%=c%></td>
+          <% else %>
+            <td><%=c%></td>
+          <% end %>
+        <% else %>
+          <% if @controller_for_next =~ /species|beach|region/ %>
+            <td><%= link_to c,:action=>:show,:controller=>@controller_for_next,:id=>@id_for_next %></td>
+          <% else %>
+            <td><%=c%></td>
+          <% end %>
+        <% end %>
+        <% @id_for_next = nil%>
+      <% end %>
+    <% end %>
+  </tr>
+<% end %>
+  <tr>
+    <% for i in 1 .. @columns.select {|c| c !~ /_id$/}.length - 3 %>
+      <td></td>
+    <% end %>
+    <td align="right">TOTAL</td>
+    <td align="right"><%=@bird_count%></td>
+    <td align="right"><%=@survey_count%></td>
+  </tr>
+</table>
+
+<br />
+
+<h3><a href="#" onClick="Effect.toggle('search-form-div','blind')">Search again</a></h3>
+<div id="search-form-div" style="display: none;">
+<%= render :partial => "search_form" %>
+</div>
+
+
+
+<% if ENV['RAILS_ENV'] == 'development' %>
+
+<div id="debug" style="margin: 40px 5px 5px 5px;">
+<a href="#" onclick="Element.toggle('debug_info');return false" style="text-decoration: none; color: #ccc;">Show Debug Info &#10162;</a>
+<div id="debug_info" style="display : none;">
+<%= @sql + "<br />"%>
+<%# "where_group_by: "+@where_group_by + "<br />"%>
+<%# "bird_group_by: "+@bird_group_by + "<br />"%>
+<%= "when_group_by: "+@when_group_by.join(",") + "<br />"%>
+<%=@row_by_hash.keys.join(", ")%>
+<%= debug session %>
+<%= debug params %>
+<%= @bird_counter.keys.join(",")%>
+<%= @survey_counter.keys.join(",")%>
+</div>
+</div>
+<% end %>

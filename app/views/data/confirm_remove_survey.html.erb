@@ -1,0 +1,19 @@
+Are you sure you want to delete this survey?
+
+<% if @submitter.has_role?(['intern', 'verifier']) %>
+  <p>
+    <i>The survey will be permanently removed from the system.</i>
+  </p>
+<% end %>
+
+<% form_tag :action => "remove_survey" do %>
+
+  <%= hidden_field :survey, :id, :value => @survey.id %>
+
+  <% button_div do %>
+    <%= button_elem(:go_back, "Go Back", "enter_data") %>
+    <%= button_submit(:submit, "Remove Survey") %>
+  <% end %>
+
+<% end %>
+

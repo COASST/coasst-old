@@ -1,0 +1,48 @@
+.active-scaffold li.form-element dt {
+  float: left;
+  padding:3px 0;
+}
+.active-scaffold li.form-element dd {
+  float: left;
+  padding-top: 6px;
+}
+
+.active-scaffold .checkbox-list {
+  padding-left: 2px;
+  margin-left: 0px;
+}
+
+.active-scaffold .checkbox-list li {
+  display: block;
+  list-style-type: none;
+}
+
+.active-scaffold .sub-form table td {
+  padding-right: 20px;
+}
+
+.active-scaffold .sub-form label {
+  display: inline;
+}
+
+.active-scaffold .sub-form {
+  clear: both;
+  padding: 2px 0 0 0;
+  float: none;
+}
+
+#roles-box {
+  float: left;
+  padding-left: 155px;
+  margin: 0;
+}
+
+th p {
+    width: auto;
+}
+
+.active-scaffold .description {
+  margin-left: 0px;
+}
+
+

@@ -1,0 +1,2 @@
+# scw dump full production COASST database
+cd /home/scw/coasst/data_entry/db/migrate/data && pg_dump -f ./data_entry_production.sql -U rails --column-inserts data_entry_production --exclude-table=sessions && svn commit -m "Updating DB backup"

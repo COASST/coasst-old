@@ -1,0 +1,11 @@
+<ul class="friends">
+<% for friend in @friends do -%>
+  <li id="<%= friend.id %>"><span class="informal">
+    <img src="/images/icons/user.png"/> </span><%=h friend.fullname %><% if friend.state -%><span class="informal">(<%=h friend.state.prefix %>)</span><% end -%></li>
+<% end -%>
+<% if @friends.blank? %>
+  <li>
+    No volunteers found.
+  </li>
+<% end %>
+</ul>

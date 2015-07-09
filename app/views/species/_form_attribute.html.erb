@@ -1,0 +1,9 @@
+<% scope ||= nil %>
+<dl class="">
+  <dt>
+    <label for="<%= active_scaffold_input_options(column, scope)[:id] %>"><%= column.label %></label>
+  </dt>
+  <dd>
+    <%= active_scaffold_input_for column, scope %>
+  </dd>
+</dl>

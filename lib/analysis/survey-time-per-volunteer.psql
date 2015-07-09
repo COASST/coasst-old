@@ -1,0 +1,1 @@
+SELECT fullname, id, duration FROM volunteers v LEFT JOIN (select volunteer_id, SUM(duration) AS duration FROM survey_volunteers sv LEFT JOIN surveys s ON s.id = sv.survey_id WHERE sv.role = 'data collector' GROUP BY sv.volunteer_id) AS times ON times.volunteer_id = v.id WHERE duration IS NOT NULL ORDER BY duration DESC;

@@ -1,0 +1,10 @@
+# == Schema Information
+#
+#  id         :integer       not null, primary key
+#  name       :string(255)   
+#  controller :string(255)   
+#  action     :string(255)   
+#
+
+--- {}
+

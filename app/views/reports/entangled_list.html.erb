@@ -1,0 +1,28 @@
+<h1>Entangled birds: <%=params[:id]%></h1>
+
+<table>
+  <tr>
+    <th>Species</td>
+    <th>Beach</th>
+    <th>Survey Date</th>
+  </tr>
+
+  <% for b in @birds %>
+    <tr>
+      <td>
+          <% if not b.species.nil? %>
+            <%= link_to b.species.name, :controller=>:species, :action=>:show, :id=>b.species.id, :entangled=>1 %>
+          <% else %>
+            Unknown
+          <% end %>
+      </td>
+      <td>
+        <%= link_to b.survey.beach.name, :controller=>:beach, :action=>:show, :id=>b.survey.beach.id, :entangled=>1 %>
+      <td>
+        <%= link_to b.survey.survey_date, :controller=>:survey, :action=>:show, :id=>b.survey.id %>
+      </td>
+    </tr>
+  <% end %>
+
+</table>
+<p><i>Note: Only verified data used for this report</i></p>

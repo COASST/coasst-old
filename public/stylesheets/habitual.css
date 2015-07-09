@@ -1,0 +1,598 @@
+/* COASST CSS */
+body {
+  background-image: url('../images/top-border.png');
+  background-repeat: repeat-x;
+  height: 100%;
+  font-family: Cambria,Georgia,Palatino,Palatino Linotype,Myriad Pro,Serif;
+}
+
+#container {
+  padding-top: 50px;
+}
+
+#container.admin {
+  padding-top: 15px;
+}
+
+#thin-layout {
+  width: 500px;
+  font-size: 80%;
+}
+
+#thin-form {
+  width: 500px;
+  font-size: 100%;
+}
+
+/* give fieldsets rounded corners in FF */
+fieldset { 
+  -moz-border-radius: 7px;
+  border-radius: px;
+  font-size: 100%;
+}
+
+h1 {
+  font-size:      2.4em;
+  font-weight:    normal;
+  letter-spacing: -1px;
+  margin:         4px 0px;
+  padding-top:    4px;
+}
+
+h1 header {
+  text-align: right;
+  border-bottom: 1px solid #aaa; 
+  padding: 1px; 
+  display: block;
+}
+
+h1 small {
+  display: block;
+  font-size: 0.55em;
+  letter-spacing: -1px;
+}
+
+h3 {
+  margin-bottom: 10px;
+}
+
+#main p {
+  line-height: 1.5;
+  margin: .8em 0px 0px; 
+}
+
+#sidebar {
+  float: left;   
+  padding: 0 20px 0 10px;
+}
+
+#sidebar.admin {
+  float: none;
+  padding: 0 0 20px 0;
+}
+
+#sidebar li a {
+  background:       #fff none repeat scroll 0%;
+  border-color:     #ccc rgb(204, 204, 204) -moz-use-text-color;
+  border-style:     solid;
+  border-width:     1px 1px 0pt;
+  color:            #333;
+  display:          block;
+  margin:           0pt;
+  padding:          4px;
+  text-decoration:  none;
+}
+
+#sidebar li a.admin {
+  background: #f2efe6;
+}
+
+#sidebar li a:hover {
+  background: #34bc6d none repeat scroll 0%;
+  color:      white;
+  margin:     0px;
+}
+
+#sidebar ul {
+  border-bottom:1px solid #CCCCCC;
+  list-style-image:none;
+  list-style-position:outside;
+  list-style-type:none;
+  margin:  0px;
+  padding: 0px;
+  width: 100px;
+
+}
+
+#sidebar ul.admin {
+  width: 150px;
+}
+
+#main {
+    margin-left: 150px;
+}
+
+/* Google Maps elements */
+
+#map {
+  float: left;
+  background: #e3e0d7;
+  margin: 35px 0px 0px 20px;
+}
+
+p.map {
+    width: 200px;
+}
+
+#map-text {
+  float: left;
+  width: 200px;
+}
+
+.beach {
+  margin-left: 10px;
+}
+
+#caption {
+  float: right;
+  margin-right: 100px;
+  width: 400px;
+  height: 30px;
+  position: relative;
+  text-align: right;
+}
+
+#logo {
+  position: relative;
+  width: 135px;
+  text-align: left;
+  float: left;
+  margin-top: 10px;
+  margin-right: 25px;
+}
+
+#code {
+  padding: 2px 10px 4px 10px;
+  font-size: 120%;
+}
+
+neutral-border {
+  border: 1px solid #3e7bb7;  
+}
+
+hr {
+  border: 0px;
+  background-color: #999;
+  height: 1px;
+  margin: -1px;
+}
+
+/* over-riding rails default classes */
+#notice {
+  border: 1px solid #ffb900;
+  padding: 10px;
+  margin-bottom: 2em;
+  background-color: #fdfce9;
+  font-weight: bold;
+  width: 500px;
+}
+
+#errorExplanation {
+  border: 1px solid #fbc2c4;
+  padding: 10px;
+  margin-bottom: 2em;
+  background-color: #fbe3e4;
+  font-size: smaller;
+  font-weight: bold;
+  width: 500px;
+}
+
+.smallWarningExplanation {
+  border: 1px solid #ffb900;
+  background-color: #fdfce9;
+  font-size: smaller;
+}
+
+.fieldWithErrors {
+  background: #fdd;
+  padding: 2px 2px 0px 2px;
+  border-bottom: 4px solid #f54545;
+  display: inline;
+}
+
+form div {
+  border: 0px;
+}
+
+form p {
+  margin-bottom: -1px;
+}
+
+form span.req {
+  background-image: url('/images/icons/bullet_red.png');
+  color: #e11;
+  padding-left: 2px;
+  padding-right: 4px;
+  margin-right: 2px;
+  width: 16px;
+  height: 16px;
+}
+
+form span b {
+  visibility: hidden;
+}
+
+form div.left2 {
+  float: left;
+  display: inline;
+  width: 48%;
+}
+
+form div.right2 {
+  float: right;
+  display: inline;
+  width: 48%;
+}
+
+form div.left {
+  float: left;
+  display: inline;
+  width: 180px;
+  margin-top: -12px;
+}
+
+form div.center {
+  width: 100%;
+  margin-top: 0px;
+  margin-left: 200px;
+  margin-right: 180px;
+  padding: 0px;
+}
+
+form div.right {
+  float: right;
+  display: inline;
+  width: 170px;
+  margin-top: -50px;
+  padding: 0px;
+}
+
+input.text, textarea {
+  font-family: Cambria,Georgia,Palatino,Palatino Linotype,Myriad Pro,Serif;
+  background: #fff url(/images/icons/fieldbg.png) repeat-x scroll center top;
+  border: 1px solid #7C7C7C;
+}
+
+.large {
+  font-size: 100%;
+}
+
+.xlarge {
+  font-size: 120%;
+}
+
+.clear {
+  clear: both;
+}
+
+
+#multiple-select ul li {
+  list-style: none;
+}
+
+img {
+  border:   0;
+}
+
+table#ruled td {
+  border-bottom: 1px solid #8fb5ff;
+  vertical-align: top;
+  padding-right: 4px;
+}
+
+table#ruled {
+  border-collapse: collapse; 
+  border-top: hidden;
+}
+
+table#ruled td p{
+  margin-top: 0; 
+}
+
+table.ruled td {
+  border-bottom: 1px solid #d9d9d9;
+  vertical-align: top;
+  padding: 2px 4px 3px;
+}
+table.ruled {
+  border-collapse: collapse; 
+  border-top: hidden;
+}
+table.ruled td p{
+  margin-top: 0; 
+}
+
+table.grid td {
+  border: 1px solid #8c8c8c;
+}
+
+table.grid th {
+  padding-bottom: 3px;
+}
+
+/* AJAXy elements need some special care */
+#bird_attributes td {
+  vertical-align: top;
+}
+
+#species-attributes-div {
+  margin-bottom: -8px;
+  overflow: auto;
+  left: 150px;
+}
+
+.slideout-container {
+  overflow: auto;
+  left: 150px;
+}
+
+.slideout {
+  padding-left: 10px;
+  background-image:url(../images/new-div-gradient.png);
+  background-repeat:repeat-y;
+}
+
+/* search page look and feel */
+
+.float-left {
+  float: left;
+}
+
+.search-form {
+  border: 1px #dedede solid;
+  width: 700px;
+  font-size: 80%;
+}
+
+.search-group {
+  float: none;
+}
+
+.search-subgroup {
+  padding-right: 5px;
+}
+
+h2.search-header {
+  margin-top: 1em;
+  margin-bottom: 0em;
+}
+
+h3.search-header {
+  margin-top: .5em;
+  margin-bottom: 5px;
+  font-size: .9em;
+}
+
+h3.h-checkbox {
+  margin-bottom: -10px;
+  padding: 2px 0 0 12px;
+}
+
+#weather li{
+  height: 20px;
+  list-style:none;
+  float: left;
+  width: 70px;
+  text-align: center;
+}
+
+#weather {
+  margin-top: 5px;
+  padding-left: 15px;
+}
+
+
+/* button layout from Particletree: */
+/* http://particletree.com/features/rediscovering-the-button-element/ */
+div.buttons {
+  margin-top: 25px;
+}
+.buttons a, .buttons button{
+    display:block;
+    float:left;
+    margin:0 7px 0 0;
+    background-color:#f5f5f5;
+    border:1px solid #dedede;
+    border-top:1px solid #eee;
+    border-left:1px solid #eee;
+
+    font-family:"Lucida Grande", Tahoma, Arial, Verdana, sans-serif;
+    font-size:9pt;
+    line-height:130%;
+    text-decoration:none;
+    font-weight:bold;
+    color:#565656;
+    cursor:pointer;
+    padding:5px 10px 6px 7px; /* Links */
+}
+.buttons button{
+    width:auto;
+    overflow:visible;
+    padding:4px 10px 3px 7px; /* IE6 */
+
+}
+.buttons button[type]{
+    padding:5px 10px 5px 7px; /* Firefox */
+    line-height:17px; /* Safari */
+}
+*:first-child+html button[type]{
+    padding:4px 10px 3px 7px; /* IE7 */
+}
+.buttons button img, .buttons a img{
+    margin:0 3px -3px 0 !important;
+    padding:0;
+    border:none;
+    width:16px;
+    height:16px;
+}
+
+/* STANDARD */
+
+button:hover, .buttons a:hover{
+    background-color:#dff4ff;
+    border:1px solid #c2e1ef;
+    color:#336699;
+}
+.buttons a:active{
+    background-color:#6299c5;
+    border:1px solid #6299c5;
+    color:#fff;
+}
+
+/* POSITIVE */
+
+button.positive, .buttons a.positive{
+    color:#529214;
+}
+.buttons a.positive:hover, button.positive:hover{
+    background-color:#E6EFC2;
+    border:1px solid #C6D880;
+    color:#529214;
+}
+.buttons a.positive:active{
+    background-color:#529214;
+    border:1px solid #529214;
+    color:#fff;
+}
+
+/* NEGATIVE */
+
+.buttons a.negative, button.negative{
+    color:#d12f19;
+}
+.buttons a.negative:hover, button.negative:hover{
+    background:#fbe3e4;
+    border:1px solid #fbc2c4;
+    color:#d12f19;
+}
+.buttons a.negative:active{
+    background-color:#d12f19;
+    border:1px solid #d12f19;
+    color:#fff;
+}
+
+/* DELETE */
+
+.buttons a.delete, button.delete{
+    color:#d12f19;
+    width: 75px;
+}
+
+.buttons a.delete:hover, button.delete:hover{
+    background:#fbe3e4;
+    color:#d12f19;
+}
+
+/* Neutral */
+.buttons a.neutral, button.neutral{
+  color: #2D4385;
+}
+.buttons a.neutral:hover, button.neutral:hover{
+    background:#C9D8EB;
+    border:1px solid #6D74A1;
+    color:#2D4385;
+}
+.buttons a.neutral:active{
+    background-color:#7B87D4;
+    border:1px solid #7B87D4;
+    color:#fff;
+}
+
+/* label only buttons with icon */
+.buttons a.label, button.label{
+    background: none;
+    border: none;
+    padding: 0px;
+    margin-top: -20px;
+}
+
+.buttons a.label:active {
+    background-color:#529214;
+    border: none;
+    color:#fff;
+}
+
+button.label:hover {
+    border: none;
+}
+
+/* multiple select input elements */
+.multiple_select {
+  border: 1px solid #aaa;
+/*  height: 100px;
+  width: 200px;*/
+  padding: 0 2px 2px 2px;
+  margin: 1em;
+  overflow: auto;
+}
+
+.oil_types {
+  height: 90px;
+  width: 90px;
+  padding: 4px;
+  margin: 0px;
+}
+
+.role_types {
+  border: 1px solid #3a694c;/*#1f7f00;*/
+}
+
+.role_types li label {
+  color: #2f343b;
+  padding: 0 5px 0 2px;
+}
+
+
+.multiple_select, .multiple_select ul {
+  list-style-type: none;
+}
+
+.multiple_select li {
+  padding-top: 1px;
+  padding-bottom: 1px;
+}
+
+.multiple_select li label {
+  padding-left: 3px;
+}
+
+.multiple_select_checkbox {
+  background: #fff;
+}
+
+.alt {
+  background: #eef;
+}
+
+#region_div {
+  width: 160px;
+  height: 135px;
+}
+
+/* simple mapped name classes, useful for precise layout */
+.wide    { width:       100%; }
+.thin    { width:       500px; }
+.tall    { line-height: 150%; }
+.bird    { width:       250px; }
+.small   { font-size:   .85em; }
+.middle  { font-size:   1em; }
+.snugtop { margin-top:  -20px; }
+.spacetop{ margin-top:  10px; }
+.snug    { margin:      -2px 0px; }
+.req     { margin-top:  1px; }
+.sidepad { padding:     3px 3px; }
+.vertpad { padding-top: 60px; }
+.right   { text-align:  right; }
+.left    { text-align:  left; }
+.center  { text-align:  center; }
+.hide    { display:     none; }

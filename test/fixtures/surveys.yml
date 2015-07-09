@@ -1,0 +1,173 @@
+# == Schema Information
+#
+#  id               :integer       not null, primary key
+#  beach_id         :integer       not null
+#  code             :string(17)    not null
+#  survey_date      :date          not null
+#  start_time       :time          not null
+#  end_time         :time          not null
+#  duration         :integer       
+#  weather          :string(255)   
+#  oil_present      :boolean       
+#  oil_size         :string(255)   
+#  oil_sheen        :boolean       
+#  oil_tarballs     :boolean       
+#  oil_goopy        :boolean       
+#  oil_mousse       :boolean       
+#  wood_present     :boolean       
+#  wood_size        :string(255)   
+#  wood_continuity  :string(255)   
+#  wood_zone        :string(255)   
+#  wrack_present    :boolean       
+#  wrack_width      :string(255)   
+#  wrack_continuity :string(255)   
+#  tracks_present   :boolean       
+#  comments         :text          
+#  created_on       :datetime      
+#  updated_on       :datetime      
+#  verified         :boolean       
+#  is_survey        :boolean       default(TRUE)
+#  is_complete      :boolean       
+#
+
+--- 
+no_birds_beckett: 
+  created_on: 2008-03-12 18:30:00
+  wood_zone: high
+  wood_size: Medium
+  survey_date: "2008-02-26"
+  comments: "0"
+  wood_continuity: Continuous
+  wood_present: t
+  code: 123GrndmCv022608
+  updated_on: 
+  wrack_present: t
+  oil_size: 
+  oil_present: f
+  is_survey: t
+  wrack_continuity: Patchy
+  oil_sheen: f
+  beach_id: "120"
+  id: "11517"
+  is_complete: t
+  oil_goopy: f
+  verified: f
+  oil_mousse: 
+  weather: clouds
+  duration: "12"
+  wrack_width: Thin
+  oil_tarballs: f
+  end_time: "13:37:00"
+  start_time: "13:25:00"
+surveys_10330: 
+  created_on: 2007-11-19 15:20:00
+  wood_zone: high
+  wood_size: Medium
+  survey_date: "2007-08-25"
+  comments: "0"
+  wood_continuity: Patchy
+  wood_present: t
+  code: 602PntVshnS082507
+  updated_on: 
+  wrack_present: t
+  oil_size: 
+  oil_present: f
+  is_survey: t
+  wrack_continuity: Patchy
+  oil_sheen: f
+  beach_id: "265"
+  id: "10324"
+  is_complete: t
+  oil_goopy: f
+  verified: t
+  oil_mousse: 
+  weather: sun
+  duration: "31"
+  wrack_width: Thin
+  oil_tarballs: f
+  end_time: "09:51:00"
+  start_time: "09:20:00"
+surveys_6011: 
+  created_on: 2006-01-24 00:42:00
+  wood_zone: high
+  wood_size: Medium
+  survey_date: "2006-01-23"
+  comments: Low S to SW wind,rather cold. No real high tides, tracks are preserved.
+  wood_continuity: Patchy
+  wood_present: t
+  code: 021CplsRcks012306
+  updated_on: 
+  wrack_present: t
+  oil_size: 
+  oil_present: f
+  is_survey: t
+  wrack_continuity: Patchy
+  oil_sheen: f
+  beach_id: "50"
+  id: "5972"
+  is_complete: t
+  oil_goopy: f
+  verified: t
+  oil_mousse: 
+  weather: clouds
+  duration: "105"
+  wrack_width: Thin
+  oil_tarballs: f
+  end_time: "11:45:00"
+  start_time: "10:00:00"
+surveys_1377: 
+  created_on: 2002-10-13 19:36:00
+  wood_zone: high
+  wood_size: Lage
+  survey_date: "2002-10-11"
+  comments: "0"
+  wood_continuity: Patchy
+  wood_present: t
+  code: 086BgleyBch101102
+  updated_on: 
+  wrack_present: t
+  oil_size: 
+  oil_present: f
+  is_survey: t
+  wrack_continuity: Patchy
+  oil_sheen: f
+  beach_id: "10"
+  id: "1295"
+  is_complete: t
+  oil_goopy: f
+  verified: t
+  oil_mousse: 
+  weather: sun
+  duration: "40"
+  wrack_width: Thin
+  oil_tarballs: f
+  end_time: "13:45:00"
+  start_time: "13:05:00"
+surveys_3975: 
+  created_on: 2004-11-15 18:47:00
+  wood_zone: high
+  wood_size: Medium
+  survey_date: "2004-10-31"
+  comments: "0"
+  wood_continuity: Continuous
+  wood_present: t
+  code: 108SthObstr103104
+  updated_on: 
+  wrack_present: t
+  oil_size: 
+  oil_present: f
+  is_survey: t
+  wrack_continuity: Patchy
+  oil_sheen: f
+  beach_id: "312"
+  id: "3922"
+  is_complete: t
+  oil_goopy: f
+  verified: t
+  oil_mousse: 
+  weather: sun
+  duration: "15"
+  wrack_width: Thin
+  oil_tarballs: f
+  end_time: "12:30:00"
+  start_time: "12:15:00"

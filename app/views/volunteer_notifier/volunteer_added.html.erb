@@ -1,0 +1,10 @@
+<%= pluralize(@updates.length, 'new volunteer') %> added:
+
+ <% for update in @updates -%>
+   - <%= update -%>
+ <% end %> 
+
+The volunteers are part of this survey:
+  <%= @url %>
+
+Thanks for your time, Shaun

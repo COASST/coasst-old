@@ -1,0 +1,13 @@
+<ul class="beaches">
+<% for beach in @beaches do -%>
+  <li id="<%= beach.id %>"><span class="informal">
+    <img src="/images/icons/flag_blue.png"/> </span><%=h beach.name %>
+    <span class="informal">(<%=h beach.state.prefix %>)</span>
+  </li>
+<% end -%>
+<% if @beaches.blank? %>
+  <li>
+    No beach found.
+  </li>
+<% end %>
+</ul>

@@ -1,0 +1,214 @@
+
+<div class="search-form" id="search-form-div2">
+<% form_tag :action => :submit do  %>
+  <div class="search-group">
+    <h2 class="search-header">Where</h2>
+  <div class="search-subgroup" style="float: left">
+    <h3 class="search-header">States</h3>
+      <%= select_tag("states[]",
+            options_for_select(@states, params["states"]),
+            {:multiple=>true, :size=>6,:id=>"states",:onChange=>"restrict_choices('states','states','regions'); restrict_choices('regions','regions','beaches',1); "}) %>
+   </div>
+   <div class="search-subgroup" style="float: left">
+     <h3 class="search-header">Regions</h3>
+       <%= select_tag("regions[]",
+            options_for_select(@regions, params["regions"]),
+            {:multiple=>true, :size=>6,:id=>"regions",:onChange=>"restrict_choices('regions','regions','beaches'); "}) %>
+   </div>
+   <div class="search-subgroup" style="float: left">
+     <h3 class="search-header">Beaches</h3>
+       <%= select_tag("beaches[]",
+            options_for_select(@beaches, params["beaches"]),
+            {:multiple=>true, :size=>6,:id=>"beaches"}) %>
+   </div>
+  </div>
+  <br clear="all" />
+
+  <div class="search-group">
+    <h2 class="search-header">When</h2>
+    <div class="search-subgroup sidepad" style="float: left">
+      <h3 class="search-header">From</h3>
+      <%= select_month(@start_month,:include_blank=>true,:prefix=>"start") %> <%= select_year(@start_year, :start_year=>Date.today.year, :end_year=>1999, :include_blank=>true, :prefix=>"start")%>
+
+    </div>
+    <div class="search-subgroup sidepad" style="float: left">
+      <h3 class="search-header">To</h3>
+      <%= select_month(@end_month,:include_blank=>true, :prefix=>"end") %> <%= select_year(@end_year, :start_year=>Date.today.year, :end_year=>1999, :include_blank=>true, :prefix=>"end")%>
+    </div>
+    <div class="search-subgroup sidepad" style="float: left">
+      <h3 class="search-header">Grouping</h3>
+      <%= select_tag("when_group_by",options_for_select(["all time","yearly","monthly","by season"],params["when_group_by"])) %>
+    </div>
+  </div>
+  <br clear="all" />
+
+  <div class="search-group">
+    <h2 class="search-header">Bird attributes</h2>
+    <div class="search-subgroup" style="float: left">
+    <h3 class="search-header">Foot Type</h3>
+    <%= select_tag("foot_type_families[]",
+          options_for_select(@foot_type_families, params["foot_type_families"]),
+          {:multiple=>true, :size=>6,:id=>"foot_type_families",:onChange=>"restrict_choices('foot_type_families','foot_type_families','groups'); restrict_choices('groups','groups','subgroups',1);restrict_choices('groups_sp','groups','species',1);"}) %>
+    </div>
+    <div class="search-subgroup" style="float: left">
+    <h3 class="search-header">Group</h3>
+    <%= select_tag("groups[]",
+          options_for_select(@groups, params["groups"]),
+          {:multiple=>true, :size=>6,:id=>"groups",:onChange=>"restrict_choices('groups','groups','subgroups'); restrict_choices('groups_sp','groups','species');"}) %>
+    </div>
+    <div class="search-subgroup" style="float: left">
+     <h3 class="search-header">Subgroup</h3>
+      <%= select_tag("subgroups[]",
+          options_for_select(@subgroups, params["subgroups"]),
+          {:multiple=>true, :size=>6,:id=>"subgroups",:onChange=>"restrict_choices('subgroups','subgroups','species'); "}) %>
+    </div>
+    <div class="search-subgroup" style="float: left">
+      <h3 class="search-header">Species</h3>
+      <%= select_tag("species[]",
+          options_for_select(@species, params["species"]),
+          {:multiple=>true, :size=>6,:id=>"species"}) %>
+    </div>
+  </div>
+
+  <br clear="all" />
+  <div class="search-group">
+    <h2 class="search-header">Report display options</h2>
+    <div class="search-subgroup" style="float: left">
+    <h3 class="search-header">Aggregate by</h3>
+    <%= check_box_tag "aggregate_when", true, @aggregate_when %> When (month/year)
+    <%= check_box_tag "aggregate_where", true, @aggregate_where %> Location (state/region/beach)
+    <%= check_box_tag "aggregate_bird", true, @aggregate_bird %> Bird type (group/species)
+    </div>
+  </div>
+  <br clear="all" />
+  <% button_div do %>
+      <%=button_submit(:submit,"Search")%>
+      <%=button_submit(:submit,"Download as CSV")%>
+  <% end %>
+
+<% end %>
+<br clear="all" />
+</div>
+
+<script type="text/javascript">
+
+  // global objects
+  var lists = new Object();
+  var orig_lists = new Object();
+
+  // initlists must be called at end of page load
+  Event.observe(window, 'load', function() { init_lists(); });
+
+
+  function save_list(source_select) {
+    src = $(source_select);
+    var orig_list = new Array();
+    for(i = 0;i < src.options.length; i++){
+      orig_list.push(src.options[i]);
+    }
+    orig_lists[source_select] = orig_list;
+  }
+
+  function getAllValues(src) {
+    var src_values = new Array();
+    for (i = 0; i < src.options.length;i++) {
+      if (!(src.options[i].value == "")) {
+        src_values.push(src.options[i].value);
+      }
+    }
+    return src_values;
+  }
+
+  function restrict_choices(list_src, src_select, tgt_select, use_all_tgt_values) {
+    use_all_tgt_values = use_all_tgt_values || 0;
+
+    var src = $(src_select);
+
+    var src_values;
+    if (use_all_tgt_values) {
+      src_values = getAllValues(src);
+    } else {
+      src_values = $F(src);
+    }
+
+    var restore_all = 0;
+    if (src_values.length < 1 ||
+        (src_values.length == 1 && src_values[0] == "")) {
+      //restore_all = 1;
+      src_values = getAllValues(src);
+    }
+
+    var seen_tgt_value = new Object();
+
+    for (i = 0; i < src_values.length; i++) {
+      var src_list = lists[list_src];
+      var src_value = src_values[i];
+      var tgt_values = src_list[src_value];
+      if (tgt_values) {
+        for (j = 0; j < tgt_values.length; j++) {
+          var value = tgt_values[j];
+          if (!seen_tgt_value[value]) {
+            seen_tgt_value[value] = true;
+          }
+        }
+      }
+    }
+
+    var tgt = $(tgt_select);
+    var new_list = tgt;
+    new_list.options.length = 0;
+    var tgt_values = orig_lists[tgt_select];
+    for (i = 0; i < tgt_values.length; i++) {
+      var tgt_option = tgt_values[i];
+      // i == 0 is "all" option
+      if (seen_tgt_value[tgt_option.value] || restore_all || i == 0) {
+        new_list.options[new_list.options.length] = tgt_option;
+        if (i == 0) {
+          tgt_option.selected = true;
+        } else {
+          tgt_option.selected = false;
+        }
+      }
+    }
+
+  }
+
+  function init_lists() {
+    lists['states'] = new Object();
+    <% @regions_by_state.each do |state,regions| -%>
+      lists["states"]['<%=state%>'] = [<%=regions.map{|a| "'"+a.to_s+"'"}.join ","%>];
+    <% end -%>
+
+    lists['regions'] = new Object();
+    <% @beaches_by_region.each do |region, beaches| -%>
+      lists["regions"]['<%=region%>'] = [<%=beaches.map{|a| "'"+a.to_s+"'"}.join ","%>];
+    <% end -%>
+
+    lists['foot_type_families'] = new Object();
+    <% @groups_by_ftf.each do |ftf,groups| -%>
+      lists["foot_type_families"]['<%=ftf%>'] = [<%=groups.map{|a| "'"+a.to_s+"'"}.join ","%>];
+    <% end -%>
+
+    lists['groups'] = new Object();
+    <% @subgroups_by_group.each do |group,subgroups| -%>
+      lists["groups"]['<%=group%>'] = [<%=subgroups.map{|a| "'"+a.to_s+"'"}.join ","%>];
+    <% end -%>
+
+    lists['subgroups'] = new Object();
+    <% @species_by_subgroup.each do |subgroup,species| -%>
+      lists["subgroups"]['<%=subgroup%>'] = [<%=species.map{|a| "'"+a.to_s+"'"}.join ","%>];
+    <% end -%>
+
+    lists['groups_sp'] = new Object();
+    <% @species_by_group.each do |group,species| -%>
+      lists["groups_sp"]['<%=group%>'] = [<%=species.map{|a| "'"+a.to_s+"'"}.join ","%>];
+    <% end -%>
+
+    save_list('groups');
+    save_list('species');
+    save_list('subgroups');
+    save_list('regions');
+    save_list('beaches');
+  }
+
+</script>

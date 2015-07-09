@@ -1,0 +1,185 @@
+
+<!--[form:bird]-->
+<p><label for="bird_where_found">Where was the bird found?</label><br/>
+<% Bird::WhereFound.each do |show, db| %>
+  <%=f.radio_button :where_found, db %> <%= show %>
+<% end %>
+</p>
+
+<p><label for="bird_refound">Is this a refind?</label><br/>
+<%=f.radio_button :refound, true %> Yes
+<%=f.radio_button :refound, false %> No
+</p>
+
+<p><label for="bird_collected">Collected</label><br/>
+<%=f.radio_button :collected, true, :onclick => "Effect.BlindDown('collected-data', {duration: 0.2, queue: 'end'})" %> Yes
+<%=f.radio_button :collected, false, :onclick => "Effect.BlindUp('collected-data', {duration: 0.2, queue: 'end'})" %> No
+</p>
+
+<% if @bird.collected %>
+  <div id="collected-data" class="slideout-container">
+<% else %>
+  <div id="collected-data" class="slideout-container" style="display: none;">
+<% end %>
+  <div class="slideout">
+    <p><label for="collected_comment">Collected comment. It&rsquo;s important to us.</label><br/>
+    <%= f.text_area :collected_comment, :cols=>60, :rows=>4  %></p>
+  </div>
+</div>
+
+<p><label for="bird_foot_condition">Foot condition</label><br/>
+<% Bird::FootCondition.each do |show, db| %>
+  <%=f.radio_button :foot_condition, db %> <%= show %>
+<% end %>
+</p>
+
+<p><label for="bird_eyes">Eyes</label><br/>
+<% Bird::Eyes.each do |show, db| %>
+  <%=f.radio_button :eyes, db %> <%= show %>
+<% end %>
+</p>
+
+<p><label for="bird_intact">Bird is Intact?</label><br/>
+<%=f.radio_button :intact, true, :onclick=>"Effect.BlindUp('body-data', {queue: 'end'})" %> Yes
+<%=f.radio_button :intact, false, :onclick=>"Effect.BlindDown('body-data', {queue: 'end'})" %> No (scavenged or otherwise disfigured)
+</p>
+
+<% if @bird.intact or @bird.intact.nil? %>
+  <div id="body-data" class="slideout-container" style="display: none;">
+<% else %>
+  <div id="body-data" class="slideout-container">
+<% end %>
+  <div class="slideout">
+
+<%= render :partial => 'intact_select', :locals => {:intact => 'head'} %>
+
+<p><label for="bird_breast">Breast</label><br/>
+<%=f.radio_button :breast, true %> Present
+<%=f.radio_button :breast, false %> Missing
+</p>
+
+<% for intact in ['feet', 'wings'] %>
+  <%= render :partial => 'intact_select', :locals => {:intact => intact}%>
+<% end %>
+
+</div>
+</div>
+
+<p><label for="bird_entangled">Entangled</label><br/>
+<% Bird::Entangled.each do |name, db| %>
+  <% status = (db == 'Not') ? 'Up' : 'Down' %>
+  <%=f.radio_button :entangled, db, :onclick => "Effect.Blind#{status}('entangled-data', {queue: 'end'})" %> <%= name %>
+<% end %>
+</p>
+
+<% if @bird.entangled != 'Not' and not @bird.entangled.nil?%>
+  <div id="entangled-data" class="slideout-container">
+<% else %>
+  <div id="entangled-data" class="slideout-container" style="display: none;">
+<% end %>
+    <div class="slideout">
+      <p><label for="bird_entangled_comment">Entangled comment. It&rsquo;s important to us.</label><br/>
+      <%= f.text_area 'entangled_comment', :cols=>60, :rows=>4  %></p>
+    </div>
+  </div>
+
+<p><label for="bird_oil">Oil on body?</label><br/>
+<%= f.radio_button :oil, true, :onclick => "Effect.BlindDown('oil-data', {duration: 0.2, queue: 'end'})"  %> Yes
+<%= f.radio_button :oil, false, :onclick => "Effect.BlindUp('oil-data', {duration: 0.2, queue: 'end'})"  %> No
+</p>
+
+<% if @bird.oil %>
+  <div id="oil-data" class="slideout-container">
+<% else %>
+  <div id="oil-data" class="slideout-container" style="display: none;">
+<% end %>
+  <div class="slideout">
+    <p><label for="bird_oil_comment">Oil comment. It&rsquo;s important to us.</label><br/>
+    <%= f.text_area :oil_comment, :cols=>60, :rows=>4  %></p>
+  </div>
+</div>
+
+
+<p><label for="foot_type">Foot Type Family</label><br/>
+<%# :include_blank => true? %>
+<%= select_tag "bird[foot_type_family_id]",
+      options_for_select(@families_options,@foot_type_family_id),
+      :onchange=>remote_function(:url => { :action => :update_species_select}, :with => "'foot_type_family_id='+value"),
+      :id=>"bird_foot_type_family_id" %>
+</p>
+
+<p><label for="species">Species</label></p>
+<div id="species-div" class="slideout-container">
+<%= render :partial=>"species_select" %>
+</div>
+
+<% if @bird.species.nil? %>
+  <div id="species-attributes-div" class="slideout-container" style="display: none;">
+<% else %>
+  <div id="species-attributes-div" class="slideout-container">
+<% end %>
+
+    <%= render :partial => "species_attributes" %>
+  </div>
+
+<% if volunteer_has_role('verifier') and not @refind.nil? %>
+  <%= render :partial => "refind", :locals => {:refind => @refind_data} %>
+<% end %>
+<p>
+  <label for="bird_photo_count">Number of Photos</label>:
+  <%= f.text_field :photo_count, :size => 3 %>
+</p>
+
+<%= render :partial => "cable_tie", :locals => {:f => f, :role => @role} %>
+
+<p><label for="bird_comment">Bird Comments</label><br />
+<%= f.text_area :comment, :cols => 60, :rows => 4 %>
+</p>
+
+<% if @role == 'admin' %>
+<!-- verification only block -->
+  <p>
+    <label for="bird_comment">Verifier Bird Comments</label><br />
+    <%= f.text_area  :verification_comment, :cols => 60, :rows => 4 %></p>
+  </p>
+
+  <p>
+    <label for="verification_method">Verification Methods</label><br />
+    <% Bird::VerificationMethods.each do |vm| %>
+      <%= f.radio_button(:verification_method, vm) %> <%=h vm %><br />
+    <% end %>
+  </p>
+
+  <p>
+    <label for="identification_level_family">Family Identification Level</label><br />
+    <% Bird::VerificationLevel.each do |vm| %>
+      <%= f.radio_button(:identification_level_family, vm) %> <%=h vm %><br />
+    <% end %>
+  </p>
+
+  <p>
+    <label for="identification_level_species">Group/Subgroup Identification Level</label><br />
+    <% Bird::VerificationLevel.each do |vm| %>
+      <%= f.radio_button(:identification_level_group, vm) %> <%=h vm %><br />
+    <% end %>
+  </p>
+
+  <p>
+    <label for="identification_level_group">Species Identification Level</label><br />
+    <% Bird::VerificationLevel.each do |vm| %>
+      <%= f.radio_button(:identification_level_species, vm) %> <%=h vm %><br />
+    <% end %>
+  </p>
+
+  <p>
+    <label for="identification_trump">Species Trump: the true species listed on the datasheet</label><br />
+
+    <%= f.text_field :identification_trump, :size => 20 %>
+  </p>
+
+
+<!-- end verification block -->
+<% end %>
+
+<!--[eoform:bird]-->
+

@@ -1,0 +1,13 @@
+  <%= error_messages_for 'volunteer' %>
+
+  <fieldset id="thin-form">
+    <legend>Enter Volunteer Details</legend>
+
+    <% form_for :volunteer, :url => {:action => :add_volunteer_submit} do |form| %>
+      <%= render :partial => 'form_name', :locals => {:require_email => false} %>
+      <%= render :partial => 'form_address' %>
+
+      <%= button_div(:submit => 'add volunteer') %>
+    <% end %>  
+  </fieldset>
+</div>

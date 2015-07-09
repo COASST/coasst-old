@@ -1,0 +1,211 @@
+tables
+------
+
+survey s
+ *
+
+beaches b
+ *
+
+regions r
+ name
+
+beaches be
+  be.name as beach_name
+  be.length as beach_length
+  be.substrate
+  be.orientation
+
+species sp
+  sp.name AS species_name
+
+groups g
+  g.name as group_name
+
+subgroups sg
+  sg.name as subgroup_name
+
+ages a
+  a.name as age_name
+
+plumage pl
+  pl.name as plumage
+
+optimize:
+
+get all:
+  ages
+  plumages
+
+  beaches
+    -- regions
+  species
+   -- groups
+   -- subgroups
+
+LEFT JOIN birds b ON s.id = b.survey_id 
+      LEFT JOIN plumages pl ON pl.id = b.plumage_id
+      LEFT JOIN ages a ON a.id = b.age_id
+      LEFT JOIN species sp ON sp.id = b.species_id 
+      LEFT JOIN groups g ON g.id = b.group_id 
+      LEFT JOIN subgroups sg ON sg.id = b.subgroup_id 
+      LEFT JOIN beaches be ON s.beach_id = be.id 
+      LEFT JOIN regions r ON be.region_id = r.id 
+
+
+original query
+
+ Total runtime: 1484.085 ms
+ Total runtime: 780.044 ms
+ Total runtime: 772.044 ms
+ Total runtime: 1212.069 ms 
+ Total runtime: 832.048 ms
+
+steps:
+
+CREATE INDEX "survey_date_idx" ON surveys (survey_date);
+
+ Total runtime: 920.052 ms
+ Total runtime: 804.045 ms
+ Total runtime: 728.041 ms
+ Total runtime: 936.053 ms
+ Total runtime: 848.048 ms
+
+
+EXPLAIN ANALYZE SELECT * FROM surveys s
+    LEFT JOIN birds b ON s.id = b.survey_id 
+    WHERE s.survey_date >= '01-01-2008' AND
+          s.survey_date <= '01-01-2008'
+    ORDER BY s.survey_date;
+
+sequential scan on birds is killing us here...
+
+CREATE INDEX "bird_survey_id_idx" ON birds (survey_id);
+
+boom! runtime down to 4.0 ms
+
+Try for 10 days:
+
+EXPLAIN ANALYZE SELECT * FROM surveys s
+    LEFT JOIN birds b ON s.id = b.survey_id 
+    LEFT JOIN plumages pl ON pl.id = b.plumage_id
+    LEFT JOIN ages a ON a.id = b.age_id
+    LEFT JOIN species sp ON sp.id = b.species_id 
+    LEFT JOIN groups g ON g.id = b.group_id 
+    LEFT JOIN subgroups sg ON sg.id = b.subgroup_id 
+    LEFT JOIN beaches be ON s.beach_id = be.id 
+    LEFT JOIN regions r ON be.region_id = r.id 
+    WHERE s.survey_date >= '01-01-2008' AND
+          s.survey_date <= '01-10-2008'
+    ORDER BY s.survey_date;
+
+cost=3581.33..3581.75 rows=168 width=2500
+
+... but still returns very quickly...
+
+EXPLAIN ANALYZE SELECT * FROM surveys s
+    LEFT JOIN birds b ON s.id = b.survey_id 
+    LEFT JOIN plumages pl ON pl.id = b.plumage_id
+    LEFT JOIN ages a ON a.id = b.age_id
+    LEFT JOIN species sp ON sp.id = b.species_id 
+    LEFT JOIN groups g ON g.id = b.group_id 
+    LEFT JOIN subgroups sg ON sg.id = b.subgroup_id 
+    LEFT JOIN beaches be ON s.beach_id = be.id 
+    LEFT JOIN regions r ON be.region_id = r.id 
+    WHERE s.survey_date >= '01-01-2008' AND
+          s.survey_date <= '01-31-2008'
+    ORDER BY s.survey_date;
+
+Sort  (cost=9968.44..9969.84 rows=560 width=2500) (actual time=48.003..48.003 rows=604 loops=1)
+ Total runtime: 56.003 ms
+ Total runtime: 32.002 ms
+ Total runtime: 28.001 ms
+ 
+
+
+One year:
+EXPLAIN ANALYZE SELECT * FROM surveys s
+    LEFT JOIN birds b ON s.id = b.survey_id 
+    LEFT JOIN plumages pl ON pl.id = b.plumage_id
+    LEFT JOIN ages a ON a.id = b.age_id
+    LEFT JOIN species sp ON sp.id = b.species_id 
+    LEFT JOIN groups g ON g.id = b.group_id 
+    LEFT JOIN subgroups sg ON sg.id = b.subgroup_id 
+    LEFT JOIN beaches be ON s.beach_id = be.id 
+    LEFT JOIN regions r ON be.region_id = r.id 
+    WHERE s.survey_date >= '01-01-2008' AND
+          s.survey_date <= '12-31-2008'
+    ORDER BY s.survey_date;
+
+
+ Total runtime: 2876.164 ms
+
+
+Ordering costs dominate here, add explictly ordered index:
+
+CREATE INDEX survey_date_idx ON surveys (survey_date ASC);
+
+
+skipping the ORDER BY:
+ Total runtime: 660.037 ms
+ Total runtime: 740.042 ms
+ Total runtime: 572.033 ms
+ Total runtime: 532.031 ms
+ Total runtime: 624.036 ms
+
+
+
+ALL DATA:
+EXPLAIN ANALYZE SELECT * FROM surveys s
+    LEFT JOIN birds b ON s.id = b.survey_id
+    LEFT JOIN plumages pl ON pl.id = b.plumage_id
+    LEFT JOIN ages a ON a.id = b.age_id
+    LEFT JOIN species sp ON sp.id = b.species_id 
+    LEFT JOIN groups g ON g.id = b.group_id
+    LEFT JOIN subgroups sg ON sg.id = b.subgroup_id 
+    LEFT JOIN beaches be ON s.beach_id = be.id
+    LEFT JOIN regions r ON be.region_id = r.id;
+
+ Total runtime: 2304.131 ms
+ Total runtime: 1932.110 ms
+ Total runtime: 2488.142 ms
+ Total runtime: 1984.113 ms
+ Total runtime: 2624.149 ms
+ Total runtime: 1828.104 ms
+
+Upped the working_mem property in postgres to allow sorts to be performed in memory, up to 16MB.
+
+This allows the final sort step to be done in memory instead of on disk, resulting in:
+
+ Total runtime: 2008.115 ms
+ Total runtime: 1900.108 ms
+ Total runtime: 2104.120 ms
+ Total runtime: 2588.147 ms
+ Total runtime: 1892.108 ms
+ Total runtime: 2036.116 ms
+
+the other data used:
+ - survey_tracks
+ - survey_volunteers
+
+CREATE INDEX survey_tracks_survey_id_idx ON survey_tracks (survey_id);
+CREATE INDEX survey_volunteers_survey_id_idx ON survey_volunteers (survey_id);
+
+
+
+
+
+
+
+EXPLAIN ANALYZE SELECT * FROM "surveys"
+LEFT OUTER JOIN "birds" ON birds.survey_id = surveys.id
+LEFT OUTER JOIN "species" ON "species".id = "birds".species_id
+WHERE (beach_id = 227 AND (birds.refound IS FALSE OR birds.refound IS NULL))
+
+CREATE INDEX survey_beach_idx ON surveys (beach_id);
+CREATE INDEX birds_refound_idx ON birds (refound);
+
+CREATE INDEX survey_volunteers_survey_id_idx ON survey_volunteers (survey_id);
+
+
+

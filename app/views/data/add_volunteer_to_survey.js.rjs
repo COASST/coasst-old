@@ -1,0 +1,2 @@
+#page.replace_html("notetaker", :partial => "survey_volunteer", :object => @collection)
+page.replace_html("data_collector", :partial => "survey_volunteer", :object => @collection)

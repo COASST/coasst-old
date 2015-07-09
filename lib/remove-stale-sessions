@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+
+/opt/ree/bin/ruby /home/scw/coasst/data_entry/script/runner -e production SessionCleanup.remove_stale_sessions

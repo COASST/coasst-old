@@ -1,0 +1,11 @@
+COPY (
+	SELECT year, count(*) FROM (
+	  SELECT extract(year from s.survey_date) AS year, volunteer_id, count(*)
+	  FROM survey_volunteers sv LEFT JOIN surveys s on s.id = sv.survey_id
+	  WHERE extract(year from s.survey_date) >= 1999 AND
+		role = 'data collector' AND
+		is_survey and is_complete
+	  GROUP BY year, volunteer_id ORDER BY year DESC
+	) as volunteers_by_year
+	GROUP BY year ORDER BY year ASC
+) TO '/home/scw/coasst/da/lib/analysis/volunteers-per-year-1999-present.csv' WITH CSV HEADER;

@@ -1,0 +1,24 @@
+# == Schema Information
+#
+#  id   :integer       not null, primary key
+#  code :string(255)   not null
+#  name :string(255)   not null
+#
+
+--- 
+migrant_regions_001: 
+  name: Washington, Oregon and California
+  code: WA/OR/CA
+  id: "1"
+migrant_regions_002: 
+  name: Aleutians and Bering Sea
+  code: AI/BS
+  id: "2"
+migrant_regions_003: 
+  name: Gulf of Alaska and Southeast Alaska
+  code: GAK/SEAK
+  id: "3"
+migrant_regions_004: 
+  name: Hawaii
+  code: HI
+  id: "4"
